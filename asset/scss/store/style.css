@@ -1,0 +1,289 @@
+@charset "UTF-8";
+/* Color*/
+html {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #570000;
+  height: 40px;
+  max-height: 40px;
+}
+.header .header-container {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #ffffff;
+  font-family: "Metal Mania";
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.header .header-container div {
+  text-align: center;
+  padding: 4px 10px;
+  text-decoration: none;
+}
+.header .header-container .strength {
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* Menu */
+.topnavbar {
+  background-color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topnavbar .topnav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 70%;
+}
+.topnavbar .topnav-container #logo {
+  height: 70px;
+}
+.topnavbar .topnav-container .topnav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.topnavbar .topnav-container .topnav .topnav-item {
+  height: 100%;
+}
+.topnavbar .topnav-container .topnav div a {
+  color: #ffffff;
+  float: left;
+  text-align: center;
+  padding: 4px 10px;
+  text-decoration: none;
+  height: 100%;
+  font-size: 20px;
+  font-family: "Metal Mania";
+}
+.topnavbar .topnav-container .topnav a:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+.topnavbar .topnav-container .topnav input[type=text] {
+  font-size: 20px;
+  font-family: "Metal Mania";
+  float: right;
+  padding: 6px;
+  margin-top: 5px;
+}
+.topnavbar .topnav-container .topnav a.search {
+  float: right;
+}
+.topnavbar .topnav-container .topnav a.search:hover {
+  background-color: #111111;
+  color: #ffffff;
+  cursor: pointer;
+}
+.topnavbar .topnav-container .topnav .drop-bands {
+  position: relative;
+}
+.topnavbar .topnav-container .topnav .drop-bands:hover .drop-bands-content {
+  display: block;
+}
+.topnavbar .topnav-container .topnav .drop-bands .drop-bands-content {
+  width: 100%;
+  margin-top: 32px;
+  position: absolute;
+  display: none;
+  list-style-type: none;
+}
+.topnavbar .topnav-container .topnav .drop-bands .drop-bands-content a {
+  width: 200%;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: #5e5e5e transparent transparent transparent;
+  transform: translateX(-25%);
+  background-color: #111111;
+  font-size: 18px !important;
+}
+.topnavbar .topnav-container .topnav .drop-merchs {
+  position: relative;
+}
+.topnavbar .topnav-container .topnav .drop-merchs:hover .drop-merchs-content {
+  display: block;
+}
+.topnavbar .topnav-container .topnav .drop-merchs .drop-merchs-content {
+  width: 100%;
+  margin-top: 32px;
+  position: absolute;
+  display: none;
+  list-style-type: none;
+}
+.topnavbar .topnav-container .topnav .drop-merchs .drop-merchs-content a {
+  width: 200%;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: #5e5e5e transparent transparent transparent;
+  transform: translateX(-25%);
+  background-color: #111111;
+  font-size: 18px !important;
+}
+
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url("/images/background/homebg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+.main-content .breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2px 0;
+}
+.main-content .breadcrumb .breadcrumb-container {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  background-color: #111111;
+}
+.main-content .breadcrumb .breadcrumb-container .breadcrumb-item {
+  padding: 10px 0;
+  background-color: #570000;
+  height: 100%;
+  padding-left: 10px;
+  font-family: "Metal Mania";
+  font-size: 18px;
+  color: #cccccc;
+}
+.main-content .breadcrumb .breadcrumb-container .breadcrumb-item a {
+  color: #cccccc;
+  text-decoration: none;
+}
+.main-content .breadcrumb .breadcrumb-container .breadcrumb-item a:hover {
+  color: #ffffff;
+}
+.main-content .breadcrumb .breadcrumb-container .breadcrumb-item + .breadcrumb-item::before {
+  color: #111111;
+  content: "/ ";
+}
+.main-content .breadcrumb .breadcrumb-container .triangle {
+  padding: 0 !important;
+  padding-left: 0 !important;
+  background-color: transparent !important;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 21px solid transparent;
+  border-bottom: 21px solid transparent;
+  border-left: 21px solid #570000;
+  border-right: 15px solid transparent;
+}
+.main-content .breadcrumb .breadcrumb-container .triangle::before {
+  content: none !important;
+}
+.main-content .main-content-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2vh;
+  background-color: #ffffff;
+}
+
+/* Footer */
+.footer {
+  padding-top: 2vh;
+  border-top: 4px solid #570000;
+  background-color: #111111;
+}
+.footer .footer-container {
+  font-family: "Metal Mania";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer .footer-container .footer-row {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5vh;
+}
+.footer .footer-container .footer-row .footer-col .footer-heading {
+  font-size: 24px;
+  color: #cccccc;
+}
+.footer .footer-container .footer-row .footer-col .footer-list {
+  padding: 0;
+  list-style: none;
+}
+.footer .footer-container .footer-row .footer-col .footer-list .footer-item .footer-item-link {
+  font-size: 18px;
+  text-decoration: none;
+  padding: 5px 0;
+  display: block;
+  color: #5e5e5e;
+}
+.footer .footer-container .footer-row .footer-col .footer-list .footer-item .footer-item-link:hover {
+  color: #ffffff;
+}
+.footer .footer-container .footer-row .footer-col hr {
+  height: 1px;
+  background-color: #5e5e5e;
+  border: none;
+}
+.footer .footer-container .footer-row .footer-col-subscribe {
+  grid-column: 1/3;
+}
+.footer .footer-container .footer-row .footer-col-subscribe .subscribe .subscribe-field {
+  display: flex;
+  align-items: center;
+}
+.footer .footer-container .footer-row .footer-col-subscribe .subscribe .subscribe-field .subscribe-icon {
+  width: 10vw;
+}
+.footer .footer-container .footer-row .footer-col-subscribe .subscribe .subscribe-field .subscribe-input {
+  height: 30px;
+}
+.footer .footer-container .footer-row .footer-col-subscribe .subscribe .subscribe-field .subscribe-button {
+  font-family: "Metal Mania";
+  font-size: 18px;
+  background-color: #5e5e5e;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 10px;
+}
+.footer .footer-container .footer-row .footer-about-us {
+  font-size: 18px;
+  color: #5e5e5e;
+}
+.footer hr {
+  margin: 0;
+  height: 1px;
+  background-color: #5e5e5e;
+  border: none;
+}
+.footer .footer-bottom {
+  text-align: center;
+  font-family: "Metal Mania";
+  font-size: 20px;
+  color: #cccccc;
+  background-color: #570000;
+  padding: 1vh;
+}/*# sourceMappingURL=style.css.map */
