@@ -4,3 +4,10 @@ $color-primary-red: #570000;
 $color-primary-black: #111111;
 $color-primary-grey: #cccccc;
 $color-primary-dark-grey: #5e5e5e;
+$color-primary-light-grey: #dedede;
+$color-shadow: rgba(0, 0, 0, 0.35);
+/* Screen Size */
+$mobile: 'only screen and (max-width: 479px)';
+$tablet: 'only screen and (min-width: 480px) and (max-width: 767px)';
+$big-tablet: 'only screen and (min-width: 768px) and (max-width: 1023px)';
+$small-pc: 'only screen and (min-width: 1024px) and (max-width: 1399px)';

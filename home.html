@@ -16,7 +16,7 @@
         <!-- Header -->
         <header class="header">
             <div class="header-container">
-                <div class="header-item strength">100% Imaginarily Licensed Merchandises</div>
+                <div class="header-item slogan">100% Imaginarily Licensed Merchandises</div>
                 <div class="header-item wistlist"><a>Wishlist</a></div>
                 <div class="header-item register"><a>Register</a></div>
                 <div class="header-item account"><a><i class="fa-solid fa-user"></i></a></div>
@@ -100,7 +100,7 @@
                 <!-- End Top Banner -->
 
                 <!-- Latest Products -->
-                <div class="latest-title">Lastest Products</div>
+                <div class="section-title latest-title">Lastest Products</div>
                 <div class="latest-slider">
                     <div class="latest-item">
                         <div class="latest-content">
@@ -226,7 +226,7 @@
                 <!-- End Latest Products -->
 
                 <!-- Bands And Genres -->
-                <div class="bands-title">Infamous Bands</div>
+                <div class="section-title bands-title">Infamous Bands</div>
                 <div class="bands-slider">
                     <div class="bands-item">
                         <div class="band">
@@ -299,7 +299,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="genres-title">Genres</div>
+                <div class="section-title genres-title">Genres</div>
                 <div class="genres-slider">
                     <div class="genres-item">
                         <div class="genre">
@@ -383,7 +383,7 @@
                 </div>
 
                 <!-- Customer Review -->
-                <div class="review-title">Customers' Reviews</div>
+                <div class="section-title review-title">Customers' Reviews</div>
                 <div class="review">
                     <div class="review-container">
                         <div class="review-item">
@@ -406,7 +406,7 @@
                 <!-- End Customer Review -->
 
                 <!-- Blog -->
-                <div class="blog-title">Newest Blogs</div>
+                <div class="section-title blog-title">Newest Blogs</div>
                 <div class="blog-container">
                     <div class="blog-item">
                         <div class="blog-image"><a href="#"><img src="./images/blog/blog1.png" alt=""></a></div>
@@ -456,12 +456,10 @@
                     <div class="footer-col footer-col-subscribe">
                         <h3 class="footer-heading">Subscribe To Receive Newest Sales!</h3>
                         <hr>
-                        <div class="subscribe">
-                            <div class="subscribe-field">
-                                <img src="./logo/logo_transparent_2.png" alt="" class="subscribe-icon">
-                                <input type="email" class="subscribe-input" placeholder="Enter your email here">
-                                <button class="subscribe-button">Subscribe</button>
-                            </div>
+                        <div class="subscribe-field">
+                            <img src="./logo/logo_transparent_2.png" alt="" class="subscribe-icon">
+                            <input type="email" class="subscribe-input" placeholder="Enter your email here">
+                            <button class="subscribe-button">Subscribe</button>
                         </div>
                     </div>
                     <div class="footer-col">
@@ -523,6 +521,32 @@
             draggable: false,
             prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
             nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+            responsive: [
+                {
+                    breakpoint: 1399,
+                    settings: {
+                        slidesToShow: 4,
+                    }
+                },
+                {
+                    breakpoint: 1023,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 479,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                },
+            ],
         });
         $('.bands-slider').slick({
             slidesToShow: 5,
@@ -532,6 +556,32 @@
             draggable: false,
             prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
             nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+            responsive: [
+                {
+                    breakpoint: 1399,
+                    settings: {
+                        slidesToShow: 4,
+                    }
+                },
+                {
+                    breakpoint: 1023,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 479,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                },
+            ],
         });
         $('.genres-slider').slick({
             slidesToShow: 5,
@@ -541,6 +591,32 @@
             draggable: false,
             prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
             nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+            responsive: [
+                {
+                    breakpoint: 1399,
+                    settings: {
+                        slidesToShow: 4,
+                    }
+                },
+                {
+                    breakpoint: 1023,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 479,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                },
+            ],
         });
     </script>
 </body>

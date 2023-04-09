@@ -1,3 +1,5 @@
+@import "../../scss/variables";
+@import "../home/mixins";
 html {
 	margin: 0;
 }
@@ -9,7 +11,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #570000;
+	background-color: $color-primary-red;
 	height: 40px;
 	max-height: 40px;
 }
@@ -18,7 +20,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	color: white;
+	color: $color-white;
 	font-family: 'Metal Mania';
 	font-size: 18px;
 	white-space: nowrap;
@@ -29,14 +31,14 @@ body {
 		padding: 4px 10px;
 		text-decoration: none;
 	}
-	.strength {
+	.slogan {
 		flex-grow: 1;
 		text-align: left;
 	}
 }
 /* Menu */
 .topnavbar {
-	background-color: #111111;
+	background-color: $color-primary-black;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -61,7 +63,7 @@ body {
 	}
 	div {
 		a {
-			color: white;
+			color: $color-white;
 			float: left;
 			text-align: center;
 			padding: 4px 10px;
@@ -73,8 +75,8 @@ body {
 	}
 	a {
 		&:hover {
-			background-color: white;
-			color: #111111;
+			background-color: $color-white;
+			color: $color-primary-black;
 		}
 	}
 	input[type=text] {
@@ -87,8 +89,8 @@ body {
 	a.search {
 		float: right;
 		&:hover {
-			background-color: #111111;
-			color: white;
+			background-color: $color-primary-black;
+			color: $color-white;
 			cursor: pointer;
 		}
 	}
@@ -119,9 +121,9 @@ body {
 		width: 200%;
 		border-width: 0.5px;
 		border-style: solid;
-		border-color: #5e5e5e transparent transparent transparent;
+		border-color: $color-primary-dark-grey transparent transparent transparent;
 		transform: translateX(-25%);
-		background-color: #111111;
+		background-color: $color-primary-black;
 		font-size: 18px !important;
 	}
 }
@@ -135,29 +137,27 @@ body {
 		width: 200%;
 		border-width: 0.5px;
 		border-style: solid;
-		border-color: #5e5e5e transparent transparent transparent;
+		border-color: $color-primary-dark-grey transparent transparent transparent;
 		transform: translateX(-25%);
-		background-color: #111111;
+		background-color: $color-primary-black;
 		font-size: 18px !important;
 	}
 }
 /* Main Content */
-.main-content{
+.main-content {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background-image: url("/images/background/homebg.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center;
+	width: 100%;
+	background: url("/images/background/homebg.jpg") no-repeat center center fixed;
 	background-size: cover;
 	.main-content-container {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		background-color: white;
+		background-color: $color-white;
 		width: 70%;
 		/* Top Slider */
 		.slider-container {
@@ -171,8 +171,8 @@ body {
 			width: 100%;
 		}
 		.top-slides {
+			aspect-ratio: 16/9;
 			width: 100%;
-			height: 75vh;
 			display: none;
 		}
 		.slider-btn {
@@ -183,12 +183,11 @@ body {
 			width: 70%;
 		}
 		.slider-button {
-			color: white;
+			color: $color-white;
 			opacity: 80%;
-			background-color: #111111;
+			background-color: $color-primary-black;
 			text-align: center;
 			font-size: 30px;
-			width: 2vw;
 			padding: 2vh;
 			&:hover {
 				cursor: pointer;
@@ -205,14 +204,12 @@ body {
 			padding: 1vh;
 		}
 		.strength-list {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: row;
-			width: 70%;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 10px;
 		}
 		.strength-item {
-			flex-grow: 1;
+			text-align: center;
 		}
 		/* Top Banner */
 		.top-banner {
@@ -226,7 +223,7 @@ body {
 			grid-template-columns: repeat(3, 1fr);
 			grid-template-rows: auto auto;
 			gap: 1vw;
-			width: 50%;
+			width: 60%;
 			.item1 {
 				grid-column: 1/3;
 				grid-row: 1/3;
@@ -248,7 +245,7 @@ body {
 			text-align: center;
 			font-family: "Metal Mania";
 			font-size: 40px;
-			background-color: #dedede;
+			background-color: $color-primary-light-grey;
 			width: 100%;
 			padding: 4vh 0;
 			margin-top: 4vh;
@@ -266,7 +263,7 @@ body {
 				top: 50%;
 				transform: translateY(-50%);
 				left: -40px;
-				background-color: white;
+				background-color: $color-white;
 				color: #111111;
 				border: none;
 			}
@@ -274,14 +271,15 @@ body {
 				top: 50%;
 				transform: translateY(-50%);
 				right: -40px;
-				background-color: white;
-				color: #111111;
+				background-color: $color-white;
+				color: $color-primary-black;
 				border: none;
 			}
 			.latest-item {
 				padding: 17px;
+				width: 10vw;
 				:hover {
-					box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+					box-shadow: $color-shadow 0px 5px 15px;
 				}
 				.latest-content {
 					border-radius: 10px;
@@ -291,10 +289,10 @@ body {
 					flex-direction: column;
 					.latest-image{
 						pointer-events: none;
-						height: 17vh;
 						img {
 							border-radius: 10px;
-							max-height: 17vh;
+							aspect-ratio: 1/1;
+							max-width: 100%;
 						}
 					}
 					.latest-description {
@@ -330,7 +328,7 @@ body {
 			text-align: center;
 			font-family: "Metal Mania";
 			font-size: 40px;
-			background-color: #dedede;
+			background-color: $color-primary-light-grey;
 			width: 100%;
 			padding: 4vh 0;
 			margin-top: 4vh;
@@ -348,36 +346,35 @@ body {
 				top: 50%;
 				transform: translateY(-50%);
 				left: -40px;
-				background-color: white;
-				color: #111111;
+				background-color: $color-white;
+				color: $color-primary-black;
 				border: none;
 			}
 			.slick-next {
 				top: 50%;
 				transform: translateY(-50%);
 				right: -40px;
-				background-color: white;
-				color: #111111;
+				background-color: $color-white;
+				color: $color-primary-black;
 				border: none;
 			}
 			.bands-item {
 				padding: 17px;
 				:hover {
-					box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+					box-shadow: $color-shadow 0px 5px 15px;
 				}
 				.band {
 					border-radius: 10px;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					height: 10vh;
+					position: relative;
+					left: auto;
+					right: auto;
 					.band-link {
 						pointer-events: none;
-						height: fit-content;
+						width: fit-content;
 						img {
 							pointer-events: none;
-							max-width: 10vw;
-							max-height: 8vh;
+							aspect-ratio: 8/4;
+							width: 100%;
 						}
 					}
 				}
@@ -388,7 +385,7 @@ body {
 			text-align: center;
 			font-family: "Metal Mania";
 			font-size: 40px;
-			background-color: #dedede;
+			background-color: $color-primary-light-grey;
 			width: 100%;
 			padding: 4vh 0;
 			margin-top: 4vh;
@@ -406,36 +403,35 @@ body {
 				top: 50%;
 				transform: translateY(-50%);
 				left: -40px;
-				background-color: white;
-				color: #111111;
+				background-color: $color-white;
+				color: $color-primary-black;
 				border: none;
 			}
 			.slick-next {
 				top: 50%;
 				transform: translateY(-50%);
 				right: -40px;
-				background-color: white;
-				color: #111111;
+				background-color: $color-white;
+				color: $color-primary-black;
 				border: none;
 			}
 			.genres-item {
 				padding: 17px;
 				:hover {
-					box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+					box-shadow: $color-shadow 0px 5px 15px;
 				}
 				.genre {
 					border-radius: 10px;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					height: 10vh;
+					position: relative;
+					left: auto;
+					right: auto;
 					.genre-link {
 						pointer-events: none;
-						height: fit-content;
+						width: fit-content;
 						img {
 							pointer-events: none;
-							max-width: 10vw;
-							max-height: 8vh;
+							aspect-ratio: 8/4;
+							width: 100%;
 						}
 					}
 				}
@@ -453,7 +449,7 @@ body {
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-rows: auto auto;
 			gap: 1vw;
-			width: 50%;
+			width: 60%;
 		}
 		.bottom-banner-item {
 			img {
@@ -471,7 +467,7 @@ body {
 			text-align: center;
 			font-family: "Metal Mania";
 			font-size: 40px;
-			background-color: #dedede;
+			background-color: $color-primary-light-grey;
 			width: 100%;
 			padding: 4vh 0;
 			margin-top: 4vh;
@@ -480,10 +476,9 @@ body {
 			width: 90%;
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
-			grid-gap: 2vh;
+			gap: 2vh;
 			padding: 2vh 0;
 			.review-item {
-				height: 30vw;
 				width: 20vw;
 				display: flex;
 				align-items: center;
@@ -495,13 +490,13 @@ body {
 				}
 				.review-star {
 					font-size: 20px;
-					color: #111111;
+					color: $color-primary-black;
 				}
 				.review-text {
 					text-align: center;
 					font-family: "Metal Mania";
 					font-size: 20px;
-					color: #111111;
+					color: $color-primary-black;
 					overflow: hidden;
 					display: -webkit-box;
 					-webkit-line-clamp: 2;
@@ -516,7 +511,7 @@ body {
 			text-align: center;
 			font-family: "Metal Mania";
 			font-size: 40px;
-			background-color: #dedede;
+			background-color: $color-primary-light-grey;
 			width: 100%;
 			padding: 4vh 0;
 			margin-top: 4vh;
@@ -525,24 +520,22 @@ body {
 			width: 90%;
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
-			grid-gap: 2vh;
+			gap: 2vh;
 			padding: 2vh 0;
 			.blog-item {
 				font-family: "Metal Mania";
-				height: 30vw;
-				width: 20vw;
-				background-color: #dedede;
+				background-color: $color-primary-light-grey;
 				border-radius: 10px;
 				.blog-image {
 					img {
-						width: 20vw;
-						height: 13vw;
+						width: 100%;
+						aspect-ratio: 16/9;
 						border-radius: 10px 10px 0 0;
 					}
 				}
 				.blog-item-title {
 					padding: 0 10px;
-					height: 60px;
+					height: 65px;
 					font-size: 24px;
 					overflow: hidden;
 					display: -webkit-box;
@@ -551,7 +544,7 @@ body {
 					-webkit-box-orient: vertical;
 					a {
 						text-decoration: none;
-						color: #111111;
+						color: $color-primary-black;
 					}
 				}
 				.blog-description {
@@ -567,14 +560,31 @@ body {
 					padding: 0 10px;
 					a {
 						text-decoration: none;
-						color: #111111;
+						color: $color-primary-black;
 					}
 				}
 				.blog-info {
-					padding: 0 10px;
+					padding: 0 10px 10px 10px;
 					display: grid;
 					grid-template-columns: repeat(2, 1fr);
+					gap: 10px;
 					font-size: 16px;
+					.blog-date {
+						text-align: center;
+						overflow: hidden;
+						display: -webkit-box;
+						-webkit-line-clamp: 1;
+						line-clamp: 1; 
+						-webkit-box-orient: vertical;
+					}
+					.blog-author {
+						overflow: hidden;
+						display: -webkit-box;
+						-webkit-line-clamp: 1;
+						line-clamp: 1; 
+						-webkit-box-orient: vertical;
+						text-align: center;
+					}
 				}
 			}
 		}
@@ -584,7 +594,7 @@ body {
 .footer {
 	padding-top: 2vh;
 	border-top: 4px solid #570000;
-	background-color: #111111;
+	background-color: $color-primary-black;
 	.footer-container {
 		font-family: "Metal Mania";
 		display: flex;
@@ -594,11 +604,11 @@ body {
 			width: 80%;
 			display: grid;
 			grid-template-columns: repeat(5, 1fr);
-			grid-gap: 5vh;
+			gap: 5vh;
 			.footer-col {
 				.footer-heading {
 					font-size: 24px;
-					color: #cccccc;
+					color: $color-primary-grey;
 				}
 				.footer-list {
 					padding: 0;
@@ -609,62 +619,62 @@ body {
 							text-decoration: none;
 							padding: 5px 0;
 							display: block;
-							color: #5e5e5e;
+							color: $color-primary-dark-grey;
 						}
 						.footer-item-link:hover {
-							color: white;
+							color: $color-white;
 						}
 					}
 				}
 				hr {
 					height: 1px;
-					background-color: #5e5e5e;
+					background-color: $color-primary-dark-grey;
 					border: none;
 				}
 			}
 			.footer-col-subscribe {
 				grid-column: 1/3;
-				.subscribe {
-					.subscribe-field {
-						display: flex;
-						align-items: center;
-						.subscribe-icon {
-							width: 10vw;
-						}
-						.subscribe-input {
-							height: 30px;
-						}
-						.subscribe-button {
-							font-family: "Metal Mania";
-							font-size: 18px;
-							background-color: #5e5e5e;
-							color: white;
-							border: 1px solid white;
-							border-radius: 5px;
-							padding: 10px;
-							margin-left: 10px;
-						}
+				.subscribe-field {
+					display: flex;
+					align-items: center;
+					.subscribe-icon {
+						width: 10vw;
+					}
+					.subscribe-input {
+						height: 30px;
+						min-width: 20%;
+					}
+					.subscribe-button {
+						font-family: "Metal Mania";
+						font-size: 18px;
+						background-color: $color-primary-dark-grey;
+						color: $color-white;
+						border: 1px solid $color-white;
+						border-radius: 5px;
+						padding: 10px;
+						margin-left: 10px;
 					}
 				}
 			}
 			.footer-about-us {
 				font-size: 18px;
-				color: #5e5e5e;
+				color: $color-primary-dark-grey;
 			}
 		}
 	}
 	hr {
 		margin: 0;
 		height: 1px;
-		background-color: #5e5e5e;
+		background-color: $color-primary-dark-grey;
 		border: none;
 	}
 	.footer-bottom {
 		text-align: center;
 		font-family: "Metal Mania";
 		font-size: 20px;
-		color: #cccccc;
-		background-color: #570000;
+		color: $color-primary-grey;
+		background-color: $color-primary-red;
 		padding: 1vh;
 	}
 }
+@import "../home/responsive";

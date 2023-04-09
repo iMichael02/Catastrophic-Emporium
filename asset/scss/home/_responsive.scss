@@ -1,0 +1,185 @@
+
+/* Mobile */
+// @include mobile() {
+
+// }
+// /* Tablet */
+@include tablet() {
+    .main-content {
+        background: none !important;
+    }
+    .main-content-container {
+        width: 100% !important;
+    }
+    .top-banner-container {
+        width: 70% !important;
+    }
+    .slider-btn {
+        width: 100% !important;
+    }
+    .slider-button {
+        padding: 1vw !important;
+    }
+    .strength-item {
+        font-size: 14px;
+    }
+    .slick-arrow {
+        font-size: 20px !important;
+    }
+    .slick-prev {
+        left: -30px !important;
+    }
+    .slick-next {
+        right: -30px !important;
+    }
+    .section-title {
+        padding: 2vh 0 !important;
+        font-size: 25px !important;
+        margin-top: 2vh !important;
+    }
+    .bottom-banner-container {
+        width: 70% !important;
+    }
+    .blog-container {
+        width: 95% !important;
+        gap: 10px !important;
+    }
+    .blog-item-title {
+        height: 55px !important;
+        font-size: 20px !important;
+    }
+    .blog-description {
+        -webkit-line-clamp: 3 !important;
+		line-clamp: 3 !important;
+    }
+    .subscribe-field {
+        margin-top: 10px !important;
+        .subscribe-icon {
+            width: 8vw !important;
+        }
+        .subscribe-input {
+            width: 40%;
+        }
+        .subscribe-button {
+            font-size: 16px !important;
+            padding: 10px !important;
+            margin-left: 5px !important;
+        }
+    }
+}
+// /* Big Tablet */
+@include bigtablet() {
+    .main-content-container {
+        width: 80% !important;
+    }
+    .top-banner-container {
+        width: 70% !important;
+    }
+    .slider-btn {
+        width: 80% !important;
+    }
+    .slider-button {
+        padding: 1vw !important;
+    }
+    .strength-item {
+        font-size: 14px;
+    }
+    .slick-arrow {
+        font-size: 20px !important;
+    }
+    .slick-prev {
+        left: -30px !important;
+    }
+    .slick-next {
+        right: -30px !important;
+    }
+    .section-title {
+        padding: 2vh 0 !important;
+        font-size: 30px !important;
+        margin-top: 2vh !important;
+    }
+    .bottom-banner-container {
+        width: 70% !important;
+    }
+    .blog-container {
+        width: 95% !important;
+        gap: 10px !important;
+    }
+    .blog-item-title {
+        height: 55px !important;
+        font-size: 20px !important;
+    }
+    .blog-description {
+        -webkit-line-clamp: 3 !important;
+		line-clamp: 3 !important;
+    }
+    .subscribe-field {
+        margin-top: 10px !important;
+        .subscribe-icon {
+            width: 8vw !important;
+        }
+        .subscribe-input {
+            width: 40%;
+        }
+        .subscribe-button {
+            font-size: 16px !important;
+            padding: 10px !important;
+            margin-left: 5px !important;
+        }
+    }
+}
+/* Small PC */
+@include smallpc() {
+    .top-banner-container {
+        width: 70% !important;
+    }
+    .slider-button {
+        padding: 1vw !important;
+    }
+    .strength-item {
+        font-size: 18px;
+    }
+    .slick-arrow {
+        font-size: 20px !important;
+    }
+    .slick-prev {
+        left: -30px !important;
+    }
+    .slick-next {
+        right: -30px !important;
+    }
+    .section-title {
+        padding: 2vh 0 !important;
+        font-size: 30px !important;
+        margin-top: 2vh !important;
+    }
+    .bottom-banner-container {
+        width: 70% !important;
+    }
+    .blog-container {
+        width: 95% !important;
+        gap: 15px !important;
+    }
+    .blog-item-title {
+        height: 55px !important;
+        font-size: 20px !important;
+    }
+    .blog-description {
+        -webkit-line-clamp: 3 !important;
+		line-clamp: 3 !important;
+    }
+    .subscribe-field {
+        margin-top: 10px !important;
+        .subscribe-icon {
+            width: 8vw !important;
+        }
+        .subscribe-input {
+            width: 40%;
+        }
+        .subscribe-button {
+            font-size: 16px !important;
+            padding: 10px !important;
+            margin-left: 5px !important;
+        }
+    }
+}

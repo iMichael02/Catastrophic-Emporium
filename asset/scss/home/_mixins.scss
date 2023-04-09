@@ -1,0 +1,20 @@
+@mixin mobile() {
+	@media #{$mobile} {
+		@content;
+	}
+}
+@mixin tablet() {
+	@media #{$tablet} {
+		@content;
+	}
+}
+@mixin bigtablet() {
+	@media #{$big-tablet} {
+		@content;
+	}
+}
+@mixin smallpc() {
+	@media #{$small-pc} {
+		@content;
+	}
+}
