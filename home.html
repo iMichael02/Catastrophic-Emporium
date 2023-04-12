@@ -13,6 +13,22 @@
 </head>
 <body>
     <div class="page-wrapper">
+        <!-- Mobile Search Bar -->
+        <div class="mobile-search-bar" id="mobile-search-bar">
+            <div class="top-search-bar">
+                <div class="top-search-bar-item back-icon" onclick="closeSearch()"><i class="fa-solid fa-arrow-left"></i></div>
+                <div class="top-search-bar-item"><input type="text" class="search-field-mobile"></div>
+                <div class="top-search-bar-item search-icon"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+            </div>
+            <div class="search-title">Recently searched</div>
+            <div class="search-list">
+                <div class="search-list-item">placeholder</div>
+                <div class="search-list-item">placeholder</div>
+                <div class="search-list-item">placeholder</div>
+            </div>
+        </div>
+        <!-- End Mobile Search Bar -->
+
         <!-- Header -->
         <header class="header">
             <div class="header-container">
@@ -40,7 +56,7 @@
             </div>
         </div>
         <div class="topnav-mobile" id="topnav-mobile">
-            <a href="#" class="searchm"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+            <a class="searchm" onclick="openSearch()"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
             <a href="#" class="bandsm">Store</a>
             <a href="#" class="merchm">Bands</a>
             <a href="#" class="aboutm">Genres</a>
@@ -518,6 +534,7 @@
     ></script>
     <script src="./asset/js/home/slider.js"></script>
     <script src="./asset/js/navbar.js"></script>
+    <script src="./asset/js/search.js"></script>
     <script>
         $('.latest-slider').slick({
             slidesToShow: 5,

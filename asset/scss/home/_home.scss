@@ -76,7 +76,7 @@ body {
 			color: $color-primary-black;
 		}
 	}
-	input[type=text] {
+	.search-field {
 		font-size: 20px;
 		font-family: "Metal Mania";
 		float: right;
@@ -128,6 +128,50 @@ body {
 	a.active {
 		background-color: $color-white;
 		color: $color-primary-black;	
+	}
+}
+.mobile-search-bar {
+	display: none;
+	font-family: "Metal Mania";
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+	.top-search-bar {
+		display: flex;
+		align-items: center;
+		height: 40px;
+		background-color: $color-primary-red;
+		color: $color-white;
+		.top-search-bar-item {
+			padding: 8px;
+			font-size: 18px;
+			.search-field-mobile {
+				font-family: "Metal Mania";
+				font-size: 20px;
+				width: 75vw;
+				background-color: $color-primary-red;
+				color: $color-white;
+				border: none;
+			}
+			a {
+				color: $color-white;
+				text-decoration: none;
+			}
+		}
+	}
+	.search-title {
+		font-size: 16px;
+		color: $color-primary-black;
+		background-color: $color-primary-dark-grey;
+	}
+	.search-list {
+		.search-list-item {
+			padding: 10px;
+			font-size: 24px;
+			background-color: $color-primary-grey;
+			color: $color-primary-black;
+			border-bottom: 0.5px solid $color-primary-dark-grey;
+		}
 	}
 }
 /* Main Content */

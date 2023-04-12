@@ -1,5 +1,15 @@
-@mixin mobile() {
-	@media #{$mobile} {
+@mixin smallmobile() {
+	@media #{$smallmobile} {
+		@content;
+	}
+}
+@mixin medmobile() {
+	@media #{$medmobile} {
+		@content;
+	}
+}
+@mixin bigmobile() {
+	@media #{$bigmobile} {
 		@content;
 	}
 }

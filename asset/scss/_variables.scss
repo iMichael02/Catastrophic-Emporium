@@ -7,8 +7,10 @@ $color-primary-dark-grey: #5e5e5e;
 $color-primary-light-grey: #dedede;
 $color-shadow: rgba(0, 0, 0, 0.35);
 /* Screen Size */
-$mobile: 'only screen and (max-width: 479px)';
-$tablet: 'only screen and (min-width: 480px) and (max-width: 767px)';
+$smallmobile: 'only screen and (max-width: 319px)';
+$medmobile: 'only screen and (min-width: 320px) and (max-width: 374px)';
+$bigmobile: 'only screen and (min-width: 375px) and (max-width: 424px)';
+$tablet: 'only screen and (min-width: 425px) and (max-width: 767px)';
 $big-tablet: 'only screen and (min-width: 768px) and (max-width: 1023px)';
-$small-pc: 'only screen and (min-width: 1024px) and (max-width: 1399px)';
-$pc: 'only screen and (min-width: 1400px) and (max-width: 3000px)';
+$small-pc: 'only screen and (min-width: 1024px) and (max-width: 1439px)';
+$pc: 'only screen and (min-width: 1440px) and (max-width: 3000px)';
