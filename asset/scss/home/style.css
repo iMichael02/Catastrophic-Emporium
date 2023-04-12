@@ -39,6 +39,10 @@ body {
   flex-grow: 1;
   text-align: left;
 }
+.header-container .header-item a {
+  color: #ffffff;
+  text-decoration: none;
+}
 
 /* Menu */
 .topnavbar {
@@ -49,6 +53,7 @@ body {
 }
 
 .topnav-container {
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,12 +69,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
 }
-.topnav .topnav-item {
-  height: 100%;
-}
-.topnav div a {
+.topnav a {
   color: #ffffff;
   float: left;
   text-align: center;
@@ -99,52 +100,46 @@ body {
   cursor: pointer;
 }
 
-.drop-bands {
-  position: relative;
-}
-.drop-bands:hover .drop-bands-content {
-  display: block;
-}
-
-.drop-merchs {
-  position: relative;
-}
-.drop-merchs:hover .drop-merchs-content {
-  display: block;
-}
-
-.drop-bands-content {
-  width: 100%;
-  margin-top: 32px;
-  position: absolute;
+.topnav-icon {
+  font-size: 30px;
+  color: #ffffff;
+  height: 70px;
   display: none;
-  list-style-type: none;
 }
-.drop-bands-content a {
-  width: 200%;
-  border-width: 0.5px;
-  border-style: solid;
-  border-color: #5e5e5e transparent transparent transparent;
-  transform: translateX(-25%);
-  background-color: #111111;
-  font-size: 18px !important;
+.topnav-icon a {
+  padding: 20px;
 }
 
-.drop-merchs-content {
-  width: 100%;
-  margin-top: 32px;
-  position: absolute;
-  display: none;
-  list-style-type: none;
+.topnav-icon a:hover {
+  background-color: #ffffff;
+  color: #111111;
 }
-.drop-merchs-content a {
-  width: 200%;
-  border-width: 0.5px;
-  border-style: solid;
-  border-color: #5e5e5e transparent transparent transparent;
-  transform: translateX(-25%);
+
+.topnav-icon a.active {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+.topnav-mobile {
+  display: none;
+}
+.topnav-mobile a {
+  display: block;
+  padding: 20px;
+  font-family: "Metal Mania";
+  font-size: 20px;
   background-color: #111111;
-  font-size: 18px !important;
+  color: #ffffff;
+  border-top: 0.5px solid #5e5e5e;
+  text-decoration: none;
+}
+.topnav-mobile a:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+.topnav-mobile a.active {
+  background-color: #ffffff;
+  color: #111111;
 }
 
 /* Main Content */
@@ -292,6 +287,10 @@ body {
 .main-content .main-content-container .latest-slider .latest-item :hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+.main-content .main-content-container .latest-slider .latest-item a {
+  color: #111111;
+  text-decoration: none;
+}
 .main-content .main-content-container .latest-slider .latest-item .latest-content {
   border-radius: 10px;
   display: flex;
@@ -380,7 +379,6 @@ body {
   right: auto;
 }
 .main-content .main-content-container .bands-slider .bands-item .band .band-link {
-  pointer-events: none;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -437,7 +435,6 @@ body {
   right: auto;
 }
 .main-content .main-content-container .genres-slider .genres-item .genre .genre-link {
-  pointer-events: none;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -485,7 +482,6 @@ body {
   padding: 2vh 0;
 }
 .main-content .main-content-container .review-container .review-item {
-  width: 20vw;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -553,7 +549,7 @@ body {
 }
 .main-content .main-content-container .blog-container .blog-item .blog-description {
   padding: 0 10px;
-  font-size: 16px;
+  font-size: 18px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -638,11 +634,13 @@ body {
 .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field {
   display: flex;
   align-items: center;
+  flex-direction: row;
 }
 .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-icon {
   width: 10vw;
 }
 .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-input {
+  font-family: "Metal Mania";
   height: 30px;
   min-width: 20%;
 }
@@ -676,181 +674,349 @@ body {
 }
 
 /* Mobile */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+@media only screen and (max-width: 479px) {
+  .header-container {
+    width: 100%;
+    font-size: 16px;
+    justify-content: center;
+  }
+  .header-container .slogan {
+    position: absolute;
+    flex-grow: 0;
+    display: none;
+  }
+  .topnav-container {
+    width: 100%;
+  }
+  .topnav {
+    display: none;
+  }
+  .search-field {
+    position: absolute;
+    display: none;
+  }
+  .topnav-icon {
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    flex-grow: 1;
+  }
   .main-content {
-    background: none !important;
+    background: none;
   }
   .main-content-container {
-    width: 100% !important;
+    width: 100%;
   }
   .top-banner-container {
-    width: 70% !important;
+    width: 70%;
   }
   .slider-btn {
-    width: 100% !important;
+    width: 100%;
   }
   .slider-button {
-    padding: 1vw !important;
+    padding: 1vw;
   }
   .strength-item {
     font-size: 14px;
   }
-  .slick-arrow {
-    font-size: 20px !important;
-  }
   .slick-prev {
-    left: -30px !important;
+    left: -17px;
   }
   .slick-next {
-    right: -30px !important;
+    right: -17px;
   }
   .section-title {
-    padding: 2vh 0 !important;
-    font-size: 25px !important;
-    margin-top: 2vh !important;
+    padding: 2vh 0;
+    font-size: 25px;
+    margin-top: 2vh;
   }
   .bottom-banner-container {
-    width: 70% !important;
+    width: 70%;
+  }
+  .review-container {
+    width: 95%;
+    gap: 15px;
   }
   .blog-container {
-    width: 95% !important;
-    gap: 10px !important;
+    width: 95%;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .blog-item:nth-child(3) {
+    position: absolute;
+    display: none;
   }
   .blog-item-title {
-    height: 55px !important;
-    font-size: 20px !important;
+    height: 53px;
+    font-size: 20px;
   }
   .blog-description {
-    -webkit-line-clamp: 3 !important;
-    line-clamp: 3 !important;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  .footer-row {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-heading {
+    text-align: center;
   }
   .subscribe-field {
-    margin-top: 10px !important;
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: center;
   }
   .subscribe-field .subscribe-icon {
-    width: 8vw !important;
+    width: 40vw;
+    padding: 10px;
   }
   .subscribe-field .subscribe-input {
     width: 40%;
   }
   .subscribe-field .subscribe-button {
-    font-size: 16px !important;
-    padding: 10px !important;
-    margin-left: 5px !important;
+    font-size: 20px;
+    margin-left: 5px;
+    margin-top: 10px;
+  }
+  .footer-item-link {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .header-container {
+    width: 100%;
+    font-size: 16px;
+  }
+  .topnav-container {
+    width: 100%;
+  }
+  .search-field {
+    position: absolute;
+    display: none;
+  }
+  .main-content {
+    background: none;
+  }
+  .main-content-container {
+    width: 100%;
+  }
+  .top-banner-container {
+    width: 70%;
+  }
+  .slider-btn {
+    width: 100%;
+  }
+  .slider-button {
+    padding: 1vw;
+  }
+  .strength-item {
+    font-size: 14px;
+  }
+  .slick-prev {
+    left: -24px;
+  }
+  .slick-next {
+    right: -24px;
+  }
+  .section-title {
+    padding: 2vh 0;
+    font-size: 25px;
+    margin-top: 2vh;
+  }
+  .bottom-banner-container {
+    width: 70%;
+  }
+  .review-container {
+    width: 95%;
+    gap: 15px;
+  }
+  .blog-container {
+    width: 95%;
+    gap: 10px;
+  }
+  .blog-item-title {
+    height: 53px;
+    font-size: 20px;
+  }
+  .blog-description {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  .footer-row {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-heading {
+    text-align: center;
+  }
+  .subscribe-field {
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .subscribe-field .subscribe-icon {
+    width: 40vw;
+    padding: 10px;
+  }
+  .subscribe-field .subscribe-input {
+    width: 40%;
+  }
+  .subscribe-field .subscribe-button {
+    font-size: 20px;
+    margin-left: 5px;
+    margin-top: 10px;
+  }
+  .footer-item-link {
+    font-size: 24px;
+    text-align: center;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .main-content-container {
-    width: 80% !important;
+  .main-content .main-content-container {
+    width: 80%;
   }
-  .top-banner-container {
-    width: 70% !important;
+  .main-content .main-content-container .slider-btn {
+    width: 80%;
   }
-  .slider-btn {
-    width: 80% !important;
+  .main-content .main-content-container .slider-button {
+    padding: 1vw;
   }
-  .slider-button {
-    padding: 1vw !important;
-  }
-  .strength-item {
+  .main-content .main-content-container .strength-item {
     font-size: 14px;
   }
-  .slick-arrow {
-    font-size: 20px !important;
+  .main-content .main-content-container .top-banner-container {
+    width: 70%;
   }
-  .slick-prev {
-    left: -30px !important;
+  .main-content .main-content-container .strength-item {
+    font-size: 18px;
   }
-  .slick-next {
-    right: -30px !important;
+  .main-content .main-content-container .latest-slider .slick-prev {
+    left: -30px;
   }
-  .section-title {
-    padding: 2vh 0 !important;
-    font-size: 30px !important;
-    margin-top: 2vh !important;
+  .main-content .main-content-container .latest-slider .slick-next {
+    right: -30px;
   }
-  .bottom-banner-container {
-    width: 70% !important;
+  .main-content .main-content-container .section-title {
+    padding: 2vh 0;
+    font-size: 30px;
+    margin-top: 2vh;
   }
-  .blog-container {
-    width: 95% !important;
-    gap: 10px !important;
+  .main-content .main-content-container .bands-slider .slick-prev {
+    left: -30px;
   }
-  .blog-item-title {
-    height: 55px !important;
-    font-size: 20px !important;
+  .main-content .main-content-container .bands-slider .slick-next {
+    right: -30px;
   }
-  .blog-description {
-    -webkit-line-clamp: 3 !important;
-    line-clamp: 3 !important;
+  .main-content .main-content-container .genres-slider .slick-prev {
+    left: -30px;
   }
-  .subscribe-field {
-    margin-top: 10px !important;
+  .main-content .main-content-container .genres-slider .slick-next {
+    right: -30px;
   }
-  .subscribe-field .subscribe-icon {
-    width: 8vw !important;
+  .main-content .main-content-container .bottom-banner-container {
+    width: 70%;
   }
-  .subscribe-field .subscribe-input {
-    width: 40%;
+  .main-content .main-content-container .review-container {
+    width: 95%;
+    gap: 15px;
   }
-  .subscribe-field .subscribe-button {
-    font-size: 16px !important;
-    padding: 10px !important;
-    margin-left: 5px !important;
+  .main-content .main-content-container .blog-container {
+    width: 95%;
+    gap: 10px;
+  }
+  .main-content .main-content-container .blog-container .blog-item .blog-item-title {
+    height: 55px;
+    font-size: 20px;
+  }
+  .main-content .main-content-container .blog-container .blog-item .blog-description {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field {
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-icon {
+    width: 15vw;
+    padding: 10px;
+  }
+  .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-input {
+    width: 60%;
+  }
+  .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-button {
+    font-size: 16px;
+    margin-left: 5px;
+    margin-top: 10px;
   }
 }
 /* Small PC */
 @media only screen and (min-width: 1024px) and (max-width: 1399px) {
-  .top-banner-container {
-    width: 70% !important;
+  .main-content .main-content-container .slider-button {
+    padding: 1vw;
   }
-  .slider-button {
-    padding: 1vw !important;
+  .main-content .main-content-container .top-banner-container {
+    width: 70%;
   }
-  .strength-item {
+  .main-content .main-content-container .strength-item {
     font-size: 18px;
   }
-  .slick-arrow {
-    font-size: 20px !important;
+  .main-content .main-content-container .latest-slider .slick-prev {
+    left: -30px;
   }
-  .slick-prev {
-    left: -30px !important;
+  .main-content .main-content-container .latest-slider .slick-next {
+    right: -30px;
   }
-  .slick-next {
-    right: -30px !important;
+  .main-content .main-content-container .section-title {
+    padding: 2vh 0;
+    font-size: 30px;
+    margin-top: 2vh;
   }
-  .section-title {
-    padding: 2vh 0 !important;
-    font-size: 30px !important;
-    margin-top: 2vh !important;
+  .main-content .main-content-container .bands-slider .slick-prev {
+    left: -30px;
   }
-  .bottom-banner-container {
-    width: 70% !important;
+  .main-content .main-content-container .bands-slider .slick-next {
+    right: -30px;
   }
-  .blog-container {
-    width: 95% !important;
-    gap: 15px !important;
+  .main-content .main-content-container .genres-slider .slick-prev {
+    left: -30px;
   }
-  .blog-item-title {
-    height: 55px !important;
-    font-size: 20px !important;
+  .main-content .main-content-container .genres-slider .slick-next {
+    right: -30px;
   }
-  .blog-description {
-    -webkit-line-clamp: 3 !important;
-    line-clamp: 3 !important;
+  .main-content .main-content-container .bottom-banner-container {
+    width: 70%;
   }
-  .subscribe-field {
-    margin-top: 10px !important;
+  .main-content .main-content-container .review-container {
+    width: 95%;
+    gap: 15px;
   }
-  .subscribe-field .subscribe-icon {
-    width: 8vw !important;
+  .main-content .main-content-container .blog-container {
+    width: 95%;
+    gap: 15px;
   }
-  .subscribe-field .subscribe-input {
+  .main-content .main-content-container .blog-container .blog-item .blog-item-title {
+    height: 55px;
+    font-size: 20px;
+  }
+  .main-content .main-content-container .blog-container .blog-item .blog-description {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field {
+    margin-top: 10px;
+  }
+  .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-icon {
+    width: 8vw;
+  }
+  .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-input {
     width: 40%;
   }
-  .subscribe-field .subscribe-button {
-    font-size: 16px !important;
-    padding: 10px !important;
-    margin-left: 5px !important;
+  .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-button {
+    font-size: 16px;
+    margin-left: 5px;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -17,10 +17,10 @@
         <header class="header">
             <div class="header-container">
                 <div class="header-item slogan">100% Imaginarily Licensed Merchandises</div>
-                <div class="header-item wistlist"><a>Wishlist</a></div>
-                <div class="header-item register"><a>Register</a></div>
-                <div class="header-item account"><a><i class="fa-solid fa-user"></i></a></div>
-                <div class="header-item cart"><a><i class="fa-solid fa-cart-shopping"></i></a></div>
+                <div class="header-item wistlist"><a href="#">Wishlist</a></div>
+                <div class="header-item register"><a href="#">Register</a></div>
+                <div class="header-item account"><a href="#"><i class="fa-solid fa-user"></i></a></div>
+                <div class="header-item cart"><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></div>
             </div>
         </header>
         <!-- End Header -->
@@ -30,33 +30,20 @@
             <div class="topnav-container">
                 <div class="home"><a href="home.html"><img src="/logo/logo_transparent_2.png" id="logo"></a></div>
                 <div class="topnav">
-                    <div class="topnav-item drop-bands">
-                        <a href="#">Bands <i class="fa-solid fa-angle-down fa-2xs"></i></a>
-                        <ul class="drop-bands-content">
-                            <li><a>Korn</a></li>
-                            <li><a>Slipknot</a></li>
-                            <li><a>Thy Art Is Murder</a></li>
-                            <li><a>Architects</a></li>
-                            <li><a>Lorna Shore</a></li>
-                            <li><a>Slaughter To Prevail</a></li>
-                            <li><a>View All Bands List</a></li>
-                        </ul>
-                    </div>
-                    <div class="topnav-item drop-merchs">
-                        <a href="#">Merchs <i class="fa-solid fa-angle-down fa-2xs"></i></a>
-                        <ul class="drop-merchs-content">
-                            <li><a>Vinyls / CDs</a></li>
-                            <li><a>Apparels</a></li>
-                            <li><a>Accessories</a></li>
-                            <li><a>Home Decor</a></li>
-                            <li><a>Novelties</a></li>
-                        </ul>
-                    </div>
-                    <div class="topnav-item about"><a href="#">About</a></div>
-                    <div class="topnav-item search-button"><a class="search"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+                    <a class="topnav-item" href="#">Store</a>
+                    <a class="topnav-item" href="#">Bands</a>
+                    <a class="topnav-item" href="#">Genres</a>
+                    <a class="topnav-item search"><i class="fa-solid fa-magnifying-glass"></i></a>
                     <input class="topnav-item search-field" type="text" placeholder="Search...">
                 </div>
+                <div class="topnav-icon" id="myTopNavIcon"><a onclick="showNavItem()"><i class="fa-solid fa-bars"></i></a></div>
             </div>
+        </div>
+        <div class="topnav-mobile" id="topnav-mobile">
+            <a href="#" class="searchm"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+            <a href="#" class="bandsm">Store</a>
+            <a href="#" class="merchm">Bands</a>
+            <a href="#" class="aboutm">Genres</a>
         </div>
         <!-- End Menu -->
 
@@ -66,11 +53,11 @@
                 <!-- Slider -->
                 <div class="slider-container">
                     <div class="slider">
-                        <img class="top-slides" src="/images/slider/slide1.jpeg">
-                        <img class="top-slides" src="/images/slider/slide2.jpg">
-                        <img class="top-slides" src="/images/slider/slide3.png">
-                        <img class="top-slides" src="/images/slider/slide4.jpg">
-                        <img class="top-slides" src="/images/slider/slide5.jpg">
+                        <a href="#"><img class="top-slides" src="/images/slider/slide1.jpeg"></a>
+                        <a href="#"><img class="top-slides" src="/images/slider/slide2.jpg"></a>
+                        <a href="#"><img class="top-slides" src="/images/slider/slide3.png"></a>
+                        <a href="#"><img class="top-slides" src="/images/slider/slide4.jpg"></a>
+                        <a href="#"><img class="top-slides" src="/images/slider/slide5.jpg"></a>
                     </div>
                     <div class="slider-btn">
                         <div class="slider-button left" type="button" onclick="plusDivs(-1)"><i class="fa-solid fa-angle-left"></i></div>
@@ -92,9 +79,9 @@
                 <!-- Top Banner -->
                 <div class="top-banner">
                     <div class="top-banner-container">
-                        <div class="top-banner-item item1"><a><img src="./images/banner/top/banner1.png" alt=""></a></div>
-                        <div class="top-banner-item item2"><a><img src="./images/banner/top/banner2.png" alt=""></a></div>
-                        <div class="top-banner-item item2"><a><img src="./images/banner/top/banner3.png" alt=""></a></div>
+                        <div class="top-banner-item item1"><a href="#"><img src="./images/banner/top/banner1.png" alt=""></a></div>
+                        <div class="top-banner-item item2"><a href="#"><img src="./images/banner/top/banner2.png" alt=""></a></div>
+                        <div class="top-banner-item item2"><a href="#"><img src="./images/banner/top/banner3.png" alt=""></a></div>
                     </div>
                 </div>
                 <!-- End Top Banner -->
@@ -103,124 +90,144 @@
                 <div class="section-title latest-title">Lastest Products</div>
                 <div class="latest-slider">
                     <div class="latest-item">
-                        <div class="latest-content">
-                            <div class="latest-image">
-                                <img src="./images/latest/latest1.png" alt="">
+                        <a href="#">
+                            <div class="latest-content">
+                                <div class="latest-image">
+                                    <img src="./images/latest/latest1.png" alt="">
+                                </div>
+                                <p class="latest-description">
+                                    <span class="latest-item-title">Bring Me The Horizon</span><br>
+                                    <span class="latest-name">Sempiternal T-Shirt</span>
+                                </p>
+                                <p class="latest-price">280.000VND</p>
                             </div>
-                            <p class="latest-description">
-                                <span class="latest-item-title">Bring Me The Horizon</span><br>
-                                <span class="latest-name">Sempiternal T-Shirt</span>
-                            </p>
-                            <p class="latest-price">280.000VND</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="latest-item">
-                        <div class="latest-content">
-                            <div class="latest-image">
-                                <img src="./images/latest/latest2.png" alt="">
+                        <a href="#">
+                            <div class="latest-content">
+                                <div class="latest-image">
+                                    <img src="./images/latest/latest2.png" alt="">
+                                </div>
+                                <p class="latest-description">
+                                    <span class="latest-item-title">Architects</span><br>
+                                    <span class="latest-name">Wolf T-Shirt</span>
+                                </p>
+                                <p class="latest-price">280.000VND</p>
                             </div>
-                            <p class="latest-description">
-                                <span class="latest-item-title">Architects</span><br>
-                                <span class="latest-name">Wolf T-Shirt</span>
-                            </p>
-                            <p class="latest-price">280.000VND</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="latest-item">
-                        <div class="latest-content">
-                            <div class="latest-image">
-                                <img src="./images/latest/latest3.png" alt="">
+                        <a href="#">
+                            <div class="latest-content">
+                                <div class="latest-image">
+                                    <img src="./images/latest/latest3.png" alt="">
+                                </div>
+                                <p class="latest-description">
+                                    <span class="latest-item-title">Lorna Shore</span><br>
+                                    <span class="latest-name">And I Return To Nothingness... T-Shirt</span>
+                                </p>
+                                <p class="latest-price">280.000VND</p>
                             </div>
-                            <p class="latest-description">
-                                <span class="latest-item-title">Lorna Shore</span><br>
-                                <span class="latest-name">And I Return To Nothingness... T-Shirt</span>
-                            </p>
-                            <p class="latest-price">280.000VND</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="latest-item">
-                        <div class="latest-content">
-                            <div class="latest-image">
-                                <img src="./images/latest/latest4.png" alt="">
+                        <a href="#">
+                            <div class="latest-content">
+                                <div class="latest-image">
+                                    <img src="./images/latest/latest4.png" alt="">
+                                </div>
+                                <p class="latest-description">
+                                    <span class="latest-item-title">Slaughter To Prevail</span><br>
+                                    <span class="latest-name">Demon Mask T-Shirt</span>
+                                </p>
+                                <p class="latest-price">280.000VND</p>
                             </div>
-                            <p class="latest-description">
-                                <span class="latest-item-title">Slaughter To Prevail</span><br>
-                                <span class="latest-name">Demon Mask T-Shirt</span>
-                            </p>
-                            <p class="latest-price">280.000VND</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="latest-item">
-                        <div class="latest-content">
-                            <div class="latest-image">
-                                <img src="./images/latest/latest5.png" alt="">
+                        <a href="#">
+                            <div class="latest-content">
+                                <div class="latest-image">
+                                    <img src="./images/latest/latest5.png" alt="">
+                                </div>
+                                <p class="latest-description">
+                                    <span class="latest-item-title">Slipknot</span><br>
+                                    <span class="latest-name">New Masks T-Shirt</span>
+                                </p>
+                                <p class="latest-price">280.000VND</p>
                             </div>
-                            <p class="latest-description">
-                                <span class="latest-item-title">Slipknot</span><br>
-                                <span class="latest-name">New Masks T-Shirt</span>
-                            </p>
-                            <p class="latest-price">280.000VND</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="latest-item">
-                        <div class="latest-content">
-                            <div class="latest-image">
-                                <img src="./images/latest/latest6.png" alt="">
+                        <a href="#">
+                            <div class="latest-content">
+                                <div class="latest-image">
+                                    <img src="./images/latest/latest6.png" alt="">
+                                </div>
+                                <p class="latest-description">
+                                    <span class="latest-item-title">Motionless In White</span><br>
+                                    <span class="latest-name">Face Split T-Shirt</span>
+                                </p>
+                                <p class="latest-price">280.000VND</p>
                             </div>
-                            <p class="latest-description">
-                                <span class="latest-item-title">Motionless In White</span><br>
-                                <span class="latest-name">Face Split T-Shirt</span>
-                            </p>
-                            <p class="latest-price">280.000VND</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="latest-item">
-                        <div class="latest-content">
-                            <div class="latest-image">
-                                <img src="./images/latest/latest7.png" alt="">
+                        <a href="#">
+                            <div class="latest-content">
+                                <div class="latest-image">
+                                    <img src="./images/latest/latest7.png" alt="">
+                                </div>
+                                <p class="latest-description">
+                                    <span class="latest-item-title">Metallica</span><br>
+                                    <span class="latest-name">Overprint Justice T-Shirt</span>
+                                </p>
+                                <p class="latest-price">280.000VND</p>
                             </div>
-                            <p class="latest-description">
-                                <span class="latest-item-title">Metallica</span><br>
-                                <span class="latest-name">Overprint Justice T-Shirt</span>
-                            </p>
-                            <p class="latest-price">280.000VND</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="latest-item">
-                        <div class="latest-content">
-                            <div class="latest-image">
-                                <img src="./images/latest/latest8.png" alt="">
+                        <a href="#">
+                            <div class="latest-content">
+                                <div class="latest-image">
+                                    <img src="./images/latest/latest8.png" alt="">
+                                </div>
+                                <p class="latest-description">
+                                    <span class="latest-item-title">Thy Art Is Murder</span><br>
+                                    <span class="latest-name">Skull Pile T-Shirt</span>
+                                </p>
+                                <p class="latest-price">280.000VND</p>
                             </div>
-                            <p class="latest-description">
-                                <span class="latest-item-title">Thy Art Is Murder</span><br>
-                                <span class="latest-name">Skull Pile T-Shirt</span>
-                            </p>
-                            <p class="latest-price">280.000VND</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="latest-item">
-                        <div class="latest-content">
-                            <div class="latest-image">
-                                <img src="./images/latest/latest9.png" alt="">
+                        <a href="#">
+                            <div class="latest-content">
+                                <div class="latest-image">
+                                    <img src="./images/latest/latest9.png" alt="">
+                                </div>
+                                <p class="latest-description">
+                                    <span class="latest-item-title">Lamb Of God</span><br>
+                                    <span class="latest-name">Crow T-Shirt</span>
+                                </p>
+                                <p class="latest-price">280.000VND</p>
                             </div>
-                            <p class="latest-description">
-                                <span class="latest-item-title">Lamb Of God</span><br>
-                                <span class="latest-name">Crow T-Shirt</span>
-                            </p>
-                            <p class="latest-price">280.000VND</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="latest-item">
-                        <div class="latest-content">
-                            <div class="latest-image">
-                                <img src="./images/latest/latest10.png" alt="">
+                        <a href="#">
+                            <div class="latest-content">
+                                <div class="latest-image">
+                                    <img src="./images/latest/latest10.png" alt="">
+                                </div>
+                                <p class="latest-description">
+                                    <span class="latest-item-title">Cannibal Corpse</span><br>
+                                    <span class="latest-name">Cannibal Feast T-Shirt</span>
+                                </p>
+                                <p class="latest-price">280.000VND</p>
                             </div>
-                            <p class="latest-description">
-                                <span class="latest-item-title">Cannibal Corpse</span><br>
-                                <span class="latest-name">Cannibal Feast T-Shirt</span>
-                            </p>
-                            <p class="latest-price">280.000VND</p>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <!-- End Latest Products -->
@@ -384,23 +391,21 @@
 
                 <!-- Customer Review -->
                 <div class="section-title review-title">Customers' Reviews</div>
-                <div class="review">
-                    <div class="review-container">
-                        <div class="review-item">
-                            <img src="./images/review/review1.png" alt="" class="review-image">
-                            <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-                            <p class="review-text">"Very nice! Nothing's better than the good old AC/DC, loving it!" - D. Harris</p>
-                        </div>
-                        <div class="review-item">
-                            <img src="./images/review/review2.png" alt="" class="review-image">
-                            <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></p>
-                            <p class="review-text">"Like it so far" - K. Russells</p>
-                        </div>
-                        <div class="review-item">
-                            <img src="./images/review/review3.png" alt="" class="review-image">
-                            <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-                            <p class="review-text">"The cloth is great, the print is great, keep jamming hard! \m/" - O. Espinoza</p>
-                        </div>
+                <div class="review-container">
+                    <div class="review-item">
+                        <img src="./images/review/review1.png" alt="" class="review-image">
+                        <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                        <p class="review-text">"Very nice! Nothing's better than the good old AC/DC, loving it!" - D. Harris</p>
+                    </div>
+                    <div class="review-item">
+                        <img src="./images/review/review2.png" alt="" class="review-image">
+                        <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></p>
+                        <p class="review-text">"Like it so far" - K. Russells</p>
+                    </div>
+                    <div class="review-item">
+                        <img src="./images/review/review3.png" alt="" class="review-image">
+                        <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                        <p class="review-text">"The cloth is great, the print is great, keep jamming hard! \m/" - O. Espinoza</p>
                     </div>
                 </div>
                 <!-- End Customer Review -->
@@ -511,7 +516,8 @@
         type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
-    <script src="./asset/js/slider.js"></script>
+    <script src="./asset/js/home/slider.js"></script>
+    <script src="./asset/js/navbar.js"></script>
     <script>
         $('.latest-slider').slick({
             slidesToShow: 5,
@@ -543,7 +549,7 @@
                 {
                     breakpoint: 479,
                     settings: {
-                        slidesToShow: 1,
+                        slidesToShow: 2,
                     }
                 },
             ],
@@ -578,7 +584,7 @@
                 {
                     breakpoint: 479,
                     settings: {
-                        slidesToShow: 1,
+                        slidesToShow: 2,
                     }
                 },
             ],
@@ -613,7 +619,7 @@
                 {
                     breakpoint: 479,
                     settings: {
-                        slidesToShow: 1,
+                        slidesToShow: 2,
                     }
                 },
             ],

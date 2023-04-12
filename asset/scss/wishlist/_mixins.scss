@@ -18,8 +18,3 @@
 		@content;
 	}
 }
-@mixin pc() {
-	@media #{$pc} {
-		@content;
-	}
-}
