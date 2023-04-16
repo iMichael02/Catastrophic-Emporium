@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" href="./asset/scss/home/style.css"/>
+    <link rel="stylesheet" href="./asset/scss/style.css"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Catastrophic Emporium</title>
@@ -17,7 +17,7 @@
         <div class="mobile-search-bar" id="mobile-search-bar">
             <div class="top-search-bar">
                 <div class="top-search-bar-item back-icon" onclick="closeSearch()"><i class="fa-solid fa-arrow-left"></i></div>
-                <div class="top-search-bar-item"><input type="text" class="search-field-mobile"></div>
+                <div class="top-search-bar-item"><input type="text" class="search-field-mobile" placeholder="Search..."></div>
                 <div class="top-search-bar-item search-icon"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
             </div>
             <div class="search-title">Recently searched</div>
@@ -33,8 +33,8 @@
         <header class="header">
             <div class="header-container">
                 <div class="header-item slogan">100% Imaginarily Licensed Merchandises</div>
-                <div class="header-item wistlist"><a href="#">Wishlist</a></div>
-                <div class="header-item register"><a href="#">Register</a></div>
+                <div class="header-item wistlist"><a href="wishlist.html">Wishlist</a></div>
+                <div class="header-item register"><a href="register.html">Register</a></div>
                 <div class="header-item account"><a href="#"><i class="fa-solid fa-user"></i></a></div>
                 <div class="header-item cart"><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></div>
             </div>
@@ -46,8 +46,8 @@
             <div class="topnav-container">
                 <div class="home"><a href="home.html"><img src="/logo/logo_transparent_2.png" id="logo"></a></div>
                 <div class="topnav">
-                    <a class="topnav-item" href="#">Store</a>
-                    <a class="topnav-item" href="#">Bands</a>
+                    <a class="topnav-item" href="store.html">Store</a>
+                    <a class="topnav-item" href="bands.html">Bands</a>
                     <a class="topnav-item" href="#">Genres</a>
                     <a class="topnav-item search"><i class="fa-solid fa-magnifying-glass"></i></a>
                     <input class="topnav-item search-field" type="text" placeholder="Search...">
@@ -322,7 +322,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="section-title genres-title">Genres</div>
+                <div class="section-title genres-title">Popular Genres</div>
                 <div class="genres-slider">
                     <div class="genres-item">
                         <div class="genre">
@@ -400,29 +400,35 @@
                 <!-- Bottom Banner -->
                 <div class="bottom-banner">
                     <div class="bottom-banner-container">
-                        <div class="bottom-banner-item item1"><a><img src="./images/banner/bottom/banner1.png" alt=""></a></div>
-                        <div class="bottom-banner-item item2"><a><img src="./images/banner/bottom/banner2.png" alt=""></a></div>
+                        <div class="bottom-banner-item item1"><a href="#"><img src="./images/banner/bottom/banner1.png" alt=""></a></div>
+                        <div class="bottom-banner-item item2"><a href="#"><img src="./images/banner/bottom/banner2.png" alt=""></a></div>
                     </div>
                 </div>
 
                 <!-- Customer Review -->
                 <div class="section-title review-title">Customers' Reviews</div>
                 <div class="review-container">
-                    <div class="review-item">
-                        <img src="./images/review/review1.png" alt="" class="review-image">
-                        <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-                        <p class="review-text">"Very nice! Nothing's better than the good old AC/DC, loving it!" - D. Harris</p>
-                    </div>
-                    <div class="review-item">
-                        <img src="./images/review/review2.png" alt="" class="review-image">
-                        <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></p>
-                        <p class="review-text">"Like it so far" - K. Russells</p>
-                    </div>
-                    <div class="review-item">
-                        <img src="./images/review/review3.png" alt="" class="review-image">
-                        <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-                        <p class="review-text">"The cloth is great, the print is great, keep jamming hard! \m/" - O. Espinoza</p>
-                    </div>
+                    <a href="#" class="review-link">
+                        <div class="review-item">
+                            <img src="./images/review/review1.png" alt="" class="review-image">
+                            <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                            <p class="review-text">"Very nice! Nothing's better than the good old AC/DC, loving it!" - D. Harris</p>
+                        </div>
+                    </a>
+                    <a href="#" class="review-link">
+                        <div class="review-item">
+                            <img src="./images/review/review2.png" alt="" class="review-image">
+                            <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></p>
+                            <p class="review-text">"Like it so far" - K. Russells</p>
+                        </div>
+                    </a>
+                    <a href="#" class="review-link">
+                        <div class="review-item">
+                            <img src="./images/review/review3.png" alt="" class="review-image">
+                            <p class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                            <p class="review-text">"The cloth is great, the print is great, keep jamming hard! \m/" - O. Espinoza</p>
+                        </div>
+                    </a>
                 </div>
                 <!-- End Customer Review -->
 
@@ -564,7 +570,7 @@
                     }
                 },
                 {
-                    breakpoint: 479,
+                    breakpoint: 424,
                     settings: {
                         slidesToShow: 2,
                     }
@@ -599,7 +605,7 @@
                     }
                 },
                 {
-                    breakpoint: 479,
+                    breakpoint: 424,
                     settings: {
                         slidesToShow: 2,
                     }
@@ -634,7 +640,7 @@
                     }
                 },
                 {
-                    breakpoint: 479,
+                    breakpoint: 424,
                     settings: {
                         slidesToShow: 2,
                     }

@@ -1,0 +1,129 @@
+/* Main Content */
+.main-content-store {
+    display: flex;
+    align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-image: url("/images/background/homebg.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 2px 0;
+        .breadcrumb-container {
+            width: 70%;
+            display: flex;
+            align-items: center;
+            background-color: $color-primary-black;
+            .breadcrumb-item {
+                padding: 10px 0;
+                background-color: $color-primary-red;
+                height: 100%;
+                padding-left: 10px;
+                font-family: "Metal Mania";
+                font-size: 18px;
+                color: $color-primary-grey;
+                a {
+                    color: $color-primary-grey;
+                    text-decoration: none;
+                    &:hover {
+                        color: $color-white;
+                    }
+                }
+            }
+            .breadcrumb-item+.breadcrumb-item {
+                &::before {
+                    color: $color-primary-black;
+                    content: "/\00a0";
+                }
+            }
+            .triangle {
+                padding: 0 !important;
+                padding-left: 0 !important;
+                background-color: transparent !important;
+                content: '';
+                    width: 0;
+                    height: 0;
+                    border-top: 21px solid transparent;
+                    border-bottom: 21px solid transparent;
+                    border-left: 21px solid $color-primary-red;
+                    border-right: 15px solid transparent;
+                &::before {
+                    content: none !important;
+                }
+            }
+        }
+    }
+    .main-content-container {
+        margin-bottom: 2px;
+        width: 100%;
+		display: grid;
+        grid-template-columns: repeat(20, 1fr);
+        grid-gap: 10px;
+        .left-grid {
+            grid-column: 1/4;
+            background-color: $color-white;
+            opacity: 0.8;
+        }
+        .mid-grid {
+            grid-column: 4/18;
+            background-color: $color-white;
+            width: 100%;
+            padding: 1vh 0;
+            .slick-arrow {
+				position: absolute;
+				cursor: pointer;
+				font-size: 30px;
+				z-index: 10;
+			}
+			.slick-prev {
+				top: 50%;
+				transform: translateY(-50%);
+				left: 0;
+				background-color: $color-white;
+				color: #111111;
+				border: none;
+			}
+			.slick-next {
+				top: 50%;
+				transform: translateY(-50%);
+				right: 0;
+				background-color: $color-white;
+				color: $color-primary-black;
+				border: none;
+			}
+            .grid-item {
+                padding: 17px;
+                a {
+                    display: block;
+                    text-decoration: none;
+                    color: $color-primary-black;
+                    width: 20vw;
+                }
+                .grid-item-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    .grid-item-image {
+                        img {
+                            border-radius: 10px;
+                            aspect-ratio: 1/1;
+                            max-width: 100%;
+                        }
+                    }
+                }
+            }
+            
+        }
+        .right-grid {
+            grid-column: 18/21;
+            background-color: $color-white;
+        }
+    }
+}

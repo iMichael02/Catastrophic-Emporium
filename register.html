@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./asset/scss/style.css"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>Wishlist</title>
+    <title>Register</title>
 </head>
 <body>
     <div class="page-wrapper">
@@ -64,74 +64,23 @@
         <!-- End Menu -->
 
         <!-- Main Content -->
-        <div class="main-content-wl">
-            <!-- Breadcrumb -->
-            <div class="breadcrumb">
-                <div class="breadcrumb-container">
-                    <div class="breadcrumb-item"><a href="#">Home</a></div>
-                    <div class="breadcrumb-item"><a href="#">Wishlist</a></div>
-                    <div class="breadcrumb-item triangle"></div>
-                </div>
-            </div>
-            <!-- End Breadcrumb -->
+        <div class="main-content-register">
             <div class="main-content-container">
-                <div class="headings">
-                    <div class="heading-item"></div>
-                    <div class="heading-item">Item Name</div>
-                    <div class="heading-item">Type</div>
-                    <div class="heading-item">Price</div>
-                    <div class="heading-item">Actions</div>
-                </div>
-                <div class="items-list">
-                    <div class="item">
-                        <div class="item-info item-image">
-                            <a href="#">
-                                <img src="./images/latest/latest1.png">
-                            </a>
-                        </div>
-                        <div class="item-info item-name"><p>Sempiternal T-Shirt</p></div>
-                        <div class="item-info item-type"><p>XL</p></div>
-                        <div class="item-info item-price"><p>280.000 VND</p></div>
-                        <div class="item-info item-action">
-                            <div class="action-container">
-                                <div class="action1"><a href="#">Delete item</a></div>
-                                <div class="action2"><a href="#">Find similar items</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-info item-image">
-                            <a href="#">
-                                <img src="./images/latest/latest2.png">
-                            </a>
-                        </div>
-                        <div class="item-info item-name"><p>Wolf T-Shirt</p></div>
-                        <div class="item-info item-type"><p>XL</p></div>
-                        <div class="item-info item-price"><p>280.000 VND</p></div>
-                        <div class="item-info item-action">
-                            <div class="action-container">
-                                <div class="action1"><a href="#">Delete item</a></div>
-                                <div class="action2"><a href="#">Find similar items</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-info item-image">
-                            <a href="#">
-                                <img src="./images/latest/latest3.png">
-                            </a>
-                        </div>
-                        <div class="item-info item-name"><p>And I Return To Nothingness T-Shirt</p></div>
-                        <div class="item-info item-type"><p>XL</p></div>
-                        <div class="item-info item-price"><p>280.000 VND</p></div>
-                        <div class="item-info item-action">
-                            <div class="action-container">
-                                <div class="action1"><a href="#">Delete item</a></div>
-                                <div class="action2"><a href="#">Find similar items</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <form class="subscribe-form">
+                    <label for="fname" class="subscribe-label">First Name:</label><br><br>
+                    <input type="text" id="fname" name="fname" class="subscribe-input" placeholder="Enter your first name"><br><br>
+                    <label for="lname" class="subscribe-label">Last Name:</label><br><br>
+                    <input type="text" id="lname" name="lname" class="subscribe-input" placeholder="Enter your last name"><br><br>
+                    <label for="email" class="subscribe-label">Email:</label><br><br>
+                    <input type="email" id="email" name="email" class="subscribe-input" placeholder="Enter your email"><br><br>
+                    <label for="password" class="subscribe-label">Password:</label><br><br>
+                    <input type="password" id="password" name="password" class="subscribe-input" placeholder="Enter you password"><br><br>
+                    <label for="cfpassword" class="subscribe-label">Confirm Password:</label><br><br>
+                    <input type="password" id="cfpassword" name="cfpassword" class="subscribe-input" placeholder="Enter you password again"><br><br>
+                    <input type="checkbox"><span class="submit-text">I agree with all <a href="#">Terms and Conditions</a></span>
+                    <br><br>
+                    <input type="submit" value="Submit">
+                </form>
             </div>
         </div>
         <!-- End Main Content -->
@@ -143,10 +92,12 @@
                     <div class="footer-col footer-col-subscribe">
                         <h3 class="footer-heading">Subscribe To Receive Newest Sales!</h3>
                         <hr>
-                        <div class="subscribe-field">
-                            <img src="./logo/logo_transparent_2.png" alt="" class="subscribe-icon">
-                            <input type="email" class="subscribe-input" placeholder="Enter your email here">
-                            <button class="subscribe-button">Subscribe</button>
+                        <div class="subscribe">
+                            <div class="subscribe-field">
+                                <img src="./logo/logo_transparent_2.png" alt="" class="subscribe-icon">
+                                <input type="email" class="subscribe-input" placeholder="Enter your email here">
+                                <button class="subscribe-button">Subscribe</button>
+                            </div>
                         </div>
                     </div>
                     <div class="footer-col">
@@ -186,7 +137,5 @@
         </footer>
         <!-- End Footer -->
     </div>
-    <script src="./asset/js/navbar.js"></script>
-    <script src="./asset/js/search.js"></script>
 </body>
 </html>

@@ -4,22 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="./asset/scss/store/style.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="./asset/scss/style.css"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Store</title>
 </head>
 <body>
     <div class="page-wrapper">
+        <!-- Mobile Search Bar -->
+        <div class="mobile-search-bar" id="mobile-search-bar">
+            <div class="top-search-bar">
+                <div class="top-search-bar-item back-icon" onclick="closeSearch()"><i class="fa-solid fa-arrow-left"></i></div>
+                <div class="top-search-bar-item"><input type="text" class="search-field-mobile"></div>
+                <div class="top-search-bar-item search-icon"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+            </div>
+            <div class="search-title">Recently searched</div>
+            <div class="search-list">
+                <div class="search-list-item">placeholder</div>
+                <div class="search-list-item">placeholder</div>
+                <div class="search-list-item">placeholder</div>
+            </div>
+        </div>
+        <!-- End Mobile Search Bar -->
+
         <!-- Header -->
         <header class="header">
             <div class="header-container">
-                <div class="header-item strength">100% Imaginarily Licensed Merchandises</div>
-                <div class="header-item wistlist"><a>Wishlist</a></div>
-                <div class="header-item register"><a>Register</a></div>
-                <div class="header-item account"><a><i class="fa-solid fa-user"></i></a></div>
-                <div class="header-item cart"><a><i class="fa-solid fa-cart-shopping"></i></a></div>
+                <div class="header-item slogan">100% Imaginarily Licensed Merchandises</div>
+                <div class="header-item wistlist"><a href="#">Wishlist</a></div>
+                <div class="header-item register"><a href="#">Register</a></div>
+                <div class="header-item account"><a href="#"><i class="fa-solid fa-user"></i></a></div>
+                <div class="header-item cart"><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></div>
             </div>
         </header>
         <!-- End Header -->
@@ -29,38 +46,25 @@
             <div class="topnav-container">
                 <div class="home"><a href="home.html"><img src="/logo/logo_transparent_2.png" id="logo"></a></div>
                 <div class="topnav">
-                    <div class="topnav-item drop-bands">
-                        <a href="#">Bands <i class="fa-solid fa-angle-down fa-2xs"></i></a>
-                        <ul class="drop-bands-content">
-                            <li><a>Korn</a></li>
-                            <li><a>Slipknot</a></li>
-                            <li><a>Thy Art Is Murder</a></li>
-                            <li><a>Architects</a></li>
-                            <li><a>Lorna Shore</a></li>
-                            <li><a>Slaughter To Prevail</a></li>
-                            <li><a>View All Bands List</a></li>
-                        </ul>
-                    </div>
-                    <div class="topnav-item drop-merchs">
-                        <a href="#">Merchs <i class="fa-solid fa-angle-down fa-2xs"></i></a>
-                        <ul class="drop-merchs-content">
-                            <li><a>Vinyls / CDs</a></li>
-                            <li><a>Apparels</a></li>
-                            <li><a>Accessories</a></li>
-                            <li><a>Home Decor</a></li>
-                            <li><a>Novelties</a></li>
-                        </ul>
-                    </div>
-                    <div class="topnav-item about"><a href="#">About</a></div>
-                    <div class="topnav-item search-button"><a class="search"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+                    <a class="topnav-item" href="#">Store</a>
+                    <a class="topnav-item" href="#">Bands</a>
+                    <a class="topnav-item" href="#">Genres</a>
+                    <a class="topnav-item search"><i class="fa-solid fa-magnifying-glass"></i></a>
                     <input class="topnav-item search-field" type="text" placeholder="Search...">
                 </div>
+                <div class="topnav-icon" id="myTopNavIcon"><a onclick="showNavItem()"><i class="fa-solid fa-bars"></i></a></div>
             </div>
+        </div>
+        <div class="topnav-mobile" id="topnav-mobile">
+            <a class="searchm" onclick="openSearch()"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+            <a href="#" class="bandsm">Store</a>
+            <a href="#" class="merchm">Bands</a>
+            <a href="#" class="aboutm">Genres</a>
         </div>
         <!-- End Menu -->
 
         <!-- Main Content -->
-        <div class="main-content">
+        <div class="main-content-store">
             <!-- Breadcrumb -->
             <div class="breadcrumb">
                 <div class="breadcrumb-container">
@@ -71,14 +75,166 @@
             </div>
             <!-- End Breadcrumb -->
             <div class="main-content-container">
-                <div class="left-grid"></div>
+                <div class="left-grid">
+                    <div class="types-title">Types</div>
+                    <div class="types"></div>
+                    <div class="apparels-title">Apparels</div>
+                    <ul class="apparels">
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">T-Shirts</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Sweat Shirts</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Shorts</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Pants</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Shoes</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Hats</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Tank-tops</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Masks</li>
+                    </ul>
+                    <div class="accessories-title">Accessories</div>
+                    <ul class="accessories">
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Necklaces</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Rings</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Bracelets</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Earings</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Nose Rings</li>
+                    </ul>
+                    <div class="collectibles-title">Collectibles</div>
+                    <ul class="collectibles">
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Figures</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Guitar Picks</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Patches</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Others</li>
+                    </ul>
+                    <div class="decors-title">Decors</div>
+                    <ul class="decors">
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Banners</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Picture Frames</li>
+                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Others</li>
+                    </ul>
+                </div>
                 <div class="mid-grid">
                     <div class="grid-item">
-                        <div class="grid-item-image"><img src="" alt=""></div>
-                        <div class="grid-item-title"></div>
-                        <div class="grid-item-description"></div>
-                        <div class="grid-item-price"></div>
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
+                                <p class="grid-item-title">Bring Me The Horizon</p>
+                                <p class="grid-item-description">Sempiternal T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
                     </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
+                                <p class="grid-item-title">Bring Me The Horizon</p>
+                                <p class="grid-item-description">Sempiternal T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
+                                <p class="grid-item-title">Bring Me The Horizon</p>
+                                <p class="grid-item-description">Sempiternal T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
+                                <p class="grid-item-title">Bring Me The Horizon</p>
+                                <p class="grid-item-description">Sempiternal T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
+                                <p class="grid-item-title">Bring Me The Horizon</p>
+                                <p class="grid-item-description">Sempiternal T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
+                                <p class="grid-item-title">Bring Me The Horizon</p>
+                                <p class="grid-item-description">Sempiternal T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
+                                <p class="grid-item-title">Architects</p>
+                                <p class="grid-item-description">Wolf T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
+                                <p class="grid-item-title">Architects</p>
+                                <p class="grid-item-description">Wolf T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
+                                <p class="grid-item-title">Architects</p>
+                                <p class="grid-item-description">Wolf T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
+                                <p class="grid-item-title">Architects</p>
+                                <p class="grid-item-description">Wolf T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
+                                <p class="grid-item-title">Architects</p>
+                                <p class="grid-item-description">Wolf T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <a href="#">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
+                                <p class="grid-item-title">Architects</p>
+                                <p class="grid-item-description">Wolf T-Shirt</p>
+                                <p class="grid-item-price">280.000VND</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="right-grid">
+                    
                 </div>
             </div>
         </div>
@@ -136,5 +292,30 @@
         </footer>
         <!-- End Footer -->
     </div>
+    <script
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script src="./asset/js/navbar.js"></script>
+    <script src="./asset/js/search.js"></script>
+    <script>
+        $('.mid-grid').slick({
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            rows: 2,
+            infinite: false,
+            draggable: false,
+            prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+            nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+        });
+    </script>
 </body>
 </html>

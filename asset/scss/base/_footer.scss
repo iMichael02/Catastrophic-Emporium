@@ -1,0 +1,89 @@
+/* Footer */
+.footer {
+	padding-top: 2vh;
+	border-top: 4px solid $color-primary-red;
+	background-color: $color-primary-black;
+	.footer-container {
+		font-family: $font-primary;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.footer-row {
+			width: 80%;
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			gap: 5vh;
+			.footer-col {
+				.footer-heading {
+					font-size: 24px;
+					color: $color-primary-grey;
+				}
+				.footer-list {
+					padding: 0;
+					list-style: none;
+					.footer-item {
+						.footer-item-link {
+							font-size: 18px;
+							text-decoration: none;
+							padding: 5px 0;
+							display: block;
+							color: $color-primary-dark-grey;
+						}
+						.footer-item-link:hover {
+							color: $color-white;
+						}
+					}
+				}
+				hr {
+					height: 1px;
+					background-color: $color-primary-dark-grey;
+					border: none;
+				}
+			}
+			.footer-col-subscribe {
+				grid-column: 1/3;
+				.subscribe-field {
+					display: flex;
+					align-items: center;
+					flex-direction: row;
+					.subscribe-icon {
+						width: 10vw;
+					}
+					.subscribe-input {
+						font-family: $font-primary;
+						height: 30px;
+						min-width: 20%;
+					}
+					.subscribe-button {
+						font-family: $font-primary;
+						font-size: 18px;
+						background-color: $color-primary-dark-grey;
+						color: $color-white;
+						border: 1px solid $color-white;
+						border-radius: 5px;
+						padding: 10px;
+						margin-left: 10px;
+					}
+				}
+			}
+			.footer-about-us {
+				font-size: 18px;
+				color: $color-primary-dark-grey;
+			}
+		}
+	}
+	hr {
+		margin: 0;
+		height: 1px;
+		background-color: $color-primary-dark-grey;
+		border: none;
+	}
+	.footer-bottom {
+		text-align: center;
+		font-family: $font-primary;
+		font-size: 20px;
+		color: $color-primary-grey;
+		background-color: $color-primary-red;
+		padding: 1vh;
+	}
+}

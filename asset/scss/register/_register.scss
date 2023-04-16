@@ -1,0 +1,39 @@
+/* Main Content */
+.main-content-register {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	background: url("/images/background/homebg.jpg") no-repeat center center fixed;
+	background-size: cover;
+    .main-content-container {
+        display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		background-color: $color-white;
+		width: 40%;
+        .subscribe-form {
+            padding: 2vh;
+            font-family: $font-primary;
+            .subscribe-label {
+                font-size: 4vh;
+            }
+            .subscribe-input {
+                font-family: $font-primary;
+                font-size: 3vh;
+                padding: 4px;
+                width: 400px;
+            }
+            input[type=submit] {
+                padding: 10px 40px;
+                font-family: $font-primary;
+                font-size: 3vh;
+                background-color: $color-primary-red;
+                color: $color-white;
+                border-radius: 10px;
+            }
+        }
+    }
+}

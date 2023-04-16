@@ -1,0 +1,81 @@
+/* Main Content */
+.main-content-bands {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-image: url("/images/background/homebg.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 2px 0;
+        .breadcrumb-container {
+            width: 70%;
+            display: flex;
+            align-items: center;
+            background-color: $color-primary-black;
+            .breadcrumb-item {
+                padding: 10px 0;
+                background-color: $color-primary-red;
+                height: 100%;
+                padding-left: 10px;
+                font-family: "Metal Mania";
+                font-size: 18px;
+                color: $color-primary-grey;
+                a {
+                    color: $color-primary-grey;
+                    text-decoration: none;
+                    &:hover {
+                        color: $color-white;
+                    }
+                }
+            }
+            .breadcrumb-item+.breadcrumb-item {
+                &::before {
+                    color: $color-primary-black;
+                    content: "/\00a0";
+                }
+            }
+            .triangle {
+                padding: 0 !important;
+                padding-left: 0 !important;
+                background-color: transparent !important;
+                content: '';
+                    width: 0;
+                    height: 0;
+                    border-top: 21px solid transparent;
+                    border-bottom: 21px solid transparent;
+                    border-left: 21px solid $color-primary-red;
+                    border-right: 15px solid transparent;
+                &::before {
+                    content: none !important;
+                }
+            }
+        }
+    }
+    .main-content-container {
+		display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2vh;
+		background-color: $color-white;
+		width: 70%;
+        .main-content-grid-item {
+            padding: 20px;
+            font-family: "Metal Mania";
+            .grid-item-title {
+                background-color: $color-primary-grey;
+                padding: 10px;
+                font-size: 30px;
+            }
+            .grid-list {
+                font-size: 20px;
+            }
+        }
+    }
+}

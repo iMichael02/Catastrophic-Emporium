@@ -4,22 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bands List</title>
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="./asset/scss/bands/style.css"/>
+    <link rel="stylesheet" href="./asset/scss/style.css"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Bands List</title>
 </head>
 <body>
     <div class="page-wrapper">
+        <!-- Mobile Search Bar -->
+        <div class="mobile-search-bar" id="mobile-search-bar">
+            <div class="top-search-bar">
+                <div class="top-search-bar-item back-icon" onclick="closeSearch()"><i class="fa-solid fa-arrow-left"></i></div>
+                <div class="top-search-bar-item"><input type="text" class="search-field-mobile"></div>
+                <div class="top-search-bar-item search-icon"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+            </div>
+            <div class="search-title">Recently searched</div>
+            <div class="search-list">
+                <div class="search-list-item">placeholder</div>
+                <div class="search-list-item">placeholder</div>
+                <div class="search-list-item">placeholder</div>
+            </div>
+        </div>
+        <!-- End Mobile Search Bar -->
+
         <!-- Header -->
         <header class="header">
             <div class="header-container">
-                <div class="header-item strength">100% Imaginarily Licensed Merchandises</div>
-                <div class="header-item wistlist"><a>Wishlist</a></div>
-                <div class="header-item register"><a>Register</a></div>
-                <div class="header-item account"><a><i class="fa-solid fa-user"></i></a></div>
-                <div class="header-item cart"><a><i class="fa-solid fa-cart-shopping"></i></a></div>
+                <div class="header-item slogan">100% Imaginarily Licensed Merchandises</div>
+                <div class="header-item wistlist"><a href="#">Wishlist</a></div>
+                <div class="header-item register"><a href="#">Register</a></div>
+                <div class="header-item account"><a href="#"><i class="fa-solid fa-user"></i></a></div>
+                <div class="header-item cart"><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></div>
             </div>
         </header>
         <!-- End Header -->
@@ -29,43 +45,29 @@
             <div class="topnav-container">
                 <div class="home"><a href="home.html"><img src="/logo/logo_transparent_2.png" id="logo"></a></div>
                 <div class="topnav">
-                    <div class="topnav-item drop-bands">
-                        <a href="#">Bands <i class="fa-solid fa-angle-down fa-2xs"></i></a>
-                        <ul class="drop-bands-content">
-                            <li><a>Korn</a></li>
-                            <li><a>Slipknot</a></li>
-                            <li><a>Thy Art Is Murder</a></li>
-                            <li><a>Architects</a></li>
-                            <li><a>Lorna Shore</a></li>
-                            <li><a>Slaughter To Prevail</a></li>
-                            <li><a>View All Bands List</a></li>
-                        </ul>
-                    </div>
-                    <div class="topnav-item drop-merchs">
-                        <a href="#">Merchs <i class="fa-solid fa-angle-down fa-2xs"></i></a>
-                        <ul class="drop-merchs-content">
-                            <li><a>Vinyls / CDs</a></li>
-                            <li><a>Apparels</a></li>
-                            <li><a>Accessories</a></li>
-                            <li><a>Home Decor</a></li>
-                            <li><a>Novelties</a></li>
-                        </ul>
-                    </div>
-                    <div class="topnav-item about"><a href="#">About</a></div>
-                    <div class="topnav-item search-button"><a class="search"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+                    <a class="topnav-item" href="#">Store</a>
+                    <a class="topnav-item" href="#">Bands</a>
+                    <a class="topnav-item" href="#">Genres</a>
+                    <a class="topnav-item search"><i class="fa-solid fa-magnifying-glass"></i></a>
                     <input class="topnav-item search-field" type="text" placeholder="Search...">
                 </div>
+                <div class="topnav-icon" id="myTopNavIcon"><a onclick="showNavItem()"><i class="fa-solid fa-bars"></i></a></div>
             </div>
+        </div>
+        <div class="topnav-mobile" id="topnav-mobile">
+            <a class="searchm" onclick="openSearch()"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+            <a href="#" class="bandsm">Store</a>
+            <a href="#" class="merchm">Bands</a>
+            <a href="#" class="aboutm">Genres</a>
         </div>
         <!-- End Menu -->
 
         <!-- Main Content -->
-        <div class="main-content">
+        <div class="main-content-bands">
             <!-- Breadcrumb -->
             <div class="breadcrumb">
                 <div class="breadcrumb-container">
                     <div class="breadcrumb-item"><a href="#">Home</a></div>
-                    <div class="breadcrumb-item"><a href="#">Store</a></div>
                     <div class="breadcrumb-item">Bands</div>
                     <div class="breadcrumb-item triangle"></div>
                 </div>
@@ -141,7 +143,7 @@
                     <ul class="grid-list">
                         <li class="grid-list-item"><a>Impending Doom</a></li>
                         <li class="grid-list-item"><a>Infant Annihilator</a></li>
-                        <li class="grid-list-item"><a>Ice Nine Kills</a></li>
+                        <li class="grid-list-item"><a>Iron Maiden</a></li>
                     </ul>
                 </div>
                 <div class="main-content-grid-item">
@@ -219,7 +221,7 @@
                     <div class="grid-item-title">S</div>
                     <ul class="grid-list">
                         <li class="grid-list-item"><a>Slaughter To Prevail</a></li>
-                        <li class="grid-list-item"><a>Spiritbox</a></li>
+                        <li class="grid-list-item"><a>Slipknot</a></li>
                         <li class="grid-list-item"><a>Suicide Silence</a></li>
                     </ul>
                 </div>
@@ -330,5 +332,7 @@
         </footer>
         <!-- End Footer -->
     </div>
+    <script src="./asset/js/navbar.js"></script>
+    <script src="./asset/js/search.js"></script>
 </body>
 </html>

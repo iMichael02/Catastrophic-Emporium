@@ -83,6 +83,10 @@
                 width: 95%;
                 gap: 15px;
                 grid-template-columns: repeat(2, 1fr);
+                .review-link:nth-child(3) {
+                    position: absolute;
+                    display: none;
+                }
                 .review-item {
                     .review-image {
                         height: 30vw;
@@ -94,10 +98,6 @@
                     .review-text {
                         font-size: 18px;
                     }
-                }
-                .review-item:nth-child(3) {
-                    position: absolute;
-                    display: none;
                 }
             }
             .blog-container {
@@ -241,6 +241,10 @@
                 width: 95%;
                 gap: 15px;
                 grid-template-columns: repeat(2, 1fr);
+                .review-link:nth-child(3) {
+                    position: absolute;
+                    display: none;
+                }
                 .review-item {
                     .review-image {
                         height: 30vw;
@@ -252,10 +256,6 @@
                     .review-text {
                         font-size: 18px;
                     }
-                }
-                .review-item:nth-child(3) {
-                    position: absolute;
-                    display: none;
                 }
             }
             .blog-container {
@@ -691,8 +691,8 @@
 }
 /* Small PC */
 @include smallpc() {
-    .main-content{
-        .main-content-container{
+    .main-content {
+        .main-content-container {
             .slider-button {
                 padding: 1vw;
             }

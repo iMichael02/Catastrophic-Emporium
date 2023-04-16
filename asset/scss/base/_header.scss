@@ -1,0 +1,178 @@
+html {
+	margin: 0;
+}
+body {
+	margin: 0;
+}
+/* Header */
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $color-primary-red;
+	height: 40px;
+	max-height: 40px;
+}
+.header-container {
+	width: 70%;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	color: $color-white;
+	font-family: 'Metal Mania';
+	font-size: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	div {
+		text-align: center;
+		padding: 4px 10px;
+		text-decoration: none;
+	}
+	.slogan {
+		flex-grow: 1;
+		text-align: left;
+	}
+	.header-item {
+		a {
+			color: $color-white;
+			text-decoration: none;
+		}
+	}
+}
+/* Menu */
+.topnavbar {
+	background-color: $color-primary-black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.topnav-container {
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 70%;
+}
+#logo {
+	height: 70px;
+}
+.topnav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	a {
+		color: $color-white;
+		float: left;
+		text-align: center;
+		padding: 4px 10px;
+		text-decoration: none;
+		height: 100%;
+		font-size: 20px;
+		font-family: $font-primary;
+		&:hover {
+			background-color: $color-white;
+			color: $color-primary-black;
+		}
+	}
+	.search-field {
+		font-size: 20px;
+		font-family: $font-primary;
+		float: right;
+		padding: 6px;
+		margin-top: 5px;
+	}
+	a.search {
+		float: right;
+		&:hover {
+			background-color: $color-primary-black;
+			color: $color-white;
+			cursor: pointer;
+		}
+	}
+}
+.topnav-icon {
+	font-size: 30px;
+	color: $color-white;
+	height: 70px;
+	display: none;
+	a {
+		padding: 20px;
+	}
+}
+.topnav-icon a:hover {
+	background-color: $color-white;
+	color: $color-primary-black;
+}
+.topnav-icon a.active {
+	background-color: $color-white;
+	color: $color-primary-black;
+}
+.topnav-mobile {
+	display: none;
+	a {
+		display: block;
+		padding: 20px;
+		font-family: $font-primary;
+		font-size: 20px;
+		background-color: $color-primary-black;
+		color: $color-white;
+		border-top: 0.5px solid $color-primary-dark-grey;
+		text-decoration: none;
+	}
+	a:hover {
+		background-color: $color-white;
+		color: $color-primary-black;		
+	}
+	a.active {
+		background-color: $color-white;
+		color: $color-primary-black;	
+	}
+}
+.mobile-search-bar {
+	display: none;
+	font-family: $font-primary;
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+	.top-search-bar {
+		display: flex;
+		align-items: center;
+		height: 40px;
+		background-color: $color-primary-red;
+		color: $color-white;
+		.top-search-bar-item {
+			padding: 8px;
+			font-size: 18px;
+			.search-field-mobile {
+				font-family: $font-primary;
+				font-size: 20px;
+				width: 75vw;
+				background-color: $color-primary-red;
+				color: $color-white;
+				border: none;
+			}
+			a {
+				color: $color-white;
+				text-decoration: none;
+			}
+		}
+	}
+	.search-title {
+		padding: 0 10px;
+		font-size: 16px;
+		color: $color-primary-black;
+		background-color: $color-primary-dark-grey;
+	}
+	.search-list {
+		.search-list-item {
+			padding: 10px;
+			font-size: 24px;
+			background-color: $color-primary-grey;
+			color: $color-primary-black;
+			border-bottom: 0.5px solid $color-primary-dark-grey;
+		}
+	}
+}
