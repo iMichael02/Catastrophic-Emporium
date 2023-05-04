@@ -1,5 +1,5 @@
 /* Main Content */
-.main-content-wl {
+.main-content-cart {
     display: flex;
 	align-items: center;
 	justify-content: center;
@@ -69,7 +69,7 @@
         .headings {
             display: grid;
             width: 100%;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(7, 1fr);
             border-top: 1px solid $color-primary-grey;
             .heading-item {
 				padding: 10px;
@@ -84,7 +84,7 @@
 				padding: 10px 0;
 				display: grid;
 				width: 100%;
-				grid-template-columns: repeat(5, 1fr);
+				grid-template-columns: repeat(7, 1fr);
 				border-top: 1px solid $color-primary-grey;
 				.item-info {
 					display: flex;
@@ -102,12 +102,39 @@
 						}
 					}
 				}
-				.item-action {
+				.action {
 					a {
-						
 						text-decoration: none;
 					}
 				}
+                .item-quantity {
+                    .counter {
+                        width: 150px;
+                        margin: auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        input {
+                            width: 40px;
+                            border: 0;
+                            line-height: 30px;
+                            font-size: 16px;
+                            text-align: center;
+                            appearance: none;
+                            outline: 0;
+                        }
+                        span {
+                            display: block;
+                            font-size: 20px;
+                            padding: 3px 0;
+                            width: 30px;
+                            cursor: pointer;
+                            background-color: $color-primary-red;
+                            color: $color-white;
+                            user-select: none;
+                        }
+                    }
+                }
 			}
         }
     }

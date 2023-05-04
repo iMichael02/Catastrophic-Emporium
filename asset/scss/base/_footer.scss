@@ -52,17 +52,22 @@
 					.subscribe-input {
 						font-family: $font-primary;
 						height: 30px;
+						font-size: 18px;
 						min-width: 20%;
 					}
 					.subscribe-button {
 						font-family: $font-primary;
 						font-size: 18px;
-						background-color: $color-primary-dark-grey;
+						background-color: $color-primary-red;
 						color: $color-white;
 						border: 1px solid $color-white;
 						border-radius: 5px;
 						padding: 10px;
 						margin-left: 10px;
+						&:hover {
+							background-color: $color-primary-light-red;
+							cursor: pointer;
+						}
 					}
 				}
 			}

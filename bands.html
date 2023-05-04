@@ -5,69 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="./asset/scss/style.css"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>Bands List</title>
+    <script> 
+        $(function(){
+            $("#header").load("./asset/header&footer/header.html");
+            $("#footer").load("./asset/header&footer/footer.html");
+        });
+    </script>
+    <title>Bands</title>
 </head>
 <body>
     <div class="page-wrapper">
-        <!-- Mobile Search Bar -->
-        <div class="mobile-search-bar" id="mobile-search-bar">
-            <div class="top-search-bar">
-                <div class="top-search-bar-item back-icon" onclick="closeSearch()"><i class="fa-solid fa-arrow-left"></i></div>
-                <div class="top-search-bar-item"><input type="text" class="search-field-mobile"></div>
-                <div class="top-search-bar-item search-icon"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
-            </div>
-            <div class="search-title">Recently searched</div>
-            <div class="search-list">
-                <div class="search-list-item">placeholder</div>
-                <div class="search-list-item">placeholder</div>
-                <div class="search-list-item">placeholder</div>
-            </div>
-        </div>
-        <!-- End Mobile Search Bar -->
-
         <!-- Header -->
-        <header class="header">
-            <div class="header-container">
-                <div class="header-item slogan">100% Imaginarily Licensed Merchandises</div>
-                <div class="header-item wistlist"><a href="#">Wishlist</a></div>
-                <div class="header-item register"><a href="#">Register</a></div>
-                <div class="header-item account"><a href="#"><i class="fa-solid fa-user"></i></a></div>
-                <div class="header-item cart"><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></div>
-            </div>
-        </header>
+        <div id="header"></div>
         <!-- End Header -->
-
-        <!-- Menu -->
-        <div class="topnavbar">
-            <div class="topnav-container">
-                <div class="home"><a href="home.html"><img src="/logo/logo_transparent_2.png" id="logo"></a></div>
-                <div class="topnav">
-                    <a class="topnav-item" href="#">Store</a>
-                    <a class="topnav-item" href="#">Bands</a>
-                    <a class="topnav-item" href="#">Genres</a>
-                    <a class="topnav-item search"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    <input class="topnav-item search-field" type="text" placeholder="Search...">
-                </div>
-                <div class="topnav-icon" id="myTopNavIcon"><a onclick="showNavItem()"><i class="fa-solid fa-bars"></i></a></div>
-            </div>
-        </div>
-        <div class="topnav-mobile" id="topnav-mobile">
-            <a class="searchm" onclick="openSearch()"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
-            <a href="#" class="bandsm">Store</a>
-            <a href="#" class="merchm">Bands</a>
-            <a href="#" class="aboutm">Genres</a>
-        </div>
-        <!-- End Menu -->
 
         <!-- Main Content -->
         <div class="main-content-bands">
             <!-- Breadcrumb -->
             <div class="breadcrumb">
                 <div class="breadcrumb-container">
-                    <div class="breadcrumb-item"><a href="#">Home</a></div>
+                    <div class="breadcrumb-item"><a href="./home.html">Home</a></div>
                     <div class="breadcrumb-item">Bands</div>
                     <div class="breadcrumb-item triangle"></div>
                 </div>
@@ -87,7 +48,7 @@
                     <ul class="grid-list">
                         <li class="grid-list-item"><a>Black Sabbath</a></li>
                         <li class="grid-list-item"><a>Bring Me The Horizon</a></li>
-                        <li class="grid-list-item"><a>Bullet For My valentine</a></li>
+                        <li class="grid-list-item"><a>Bon Jovi</a></li>
                     </ul>
                 </div>
                 <div class="main-content-grid-item">
@@ -259,9 +220,8 @@
                 <div class="main-content-grid-item">
                     <div class="grid-item-title">X</div>
                     <ul class="grid-list">
-                        <li class="grid-list-item"><a>XavlegbmaofffassssitimiwoamndutroabcwapwaeiippohfffX</a></li>
+                        <li class="grid-list-item"><a><span>Xavleg...</span></a></li>
                         <li class="grid-list-item"><a>X-Japan</a></li>
-                        <li class="grid-list-item"><a>X-Sinner</a></li>
                     </ul>
                 </div>
                 <div class="main-content-grid-item">
@@ -279,59 +239,23 @@
             </div>
         </div>
         <!-- End Main Content -->
-
+        
         <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-container">
-                <div class="footer-row">
-                    <div class="footer-col footer-col-subscribe">
-                        <h3 class="footer-heading">Subscribe To Receive Newest Sales!</h3>
-                        <hr>
-                        <div class="subscribe">
-                            <div class="subscribe-field">
-                                <img src="./logo/logo_transparent_2.png" alt="" class="subscribe-icon">
-                                <input type="email" class="subscribe-input" placeholder="Enter your email here">
-                                <button class="subscribe-button">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h3 class="footer-heading">Customer Services</h3>
-                        <hr>
-                        <ul class="footer-list">
-                            <li class="footer-item"><a href="#" class="footer-item-link">Contact Us</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">FAQ</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Terms & Conditions</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Return Policy</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Privacy Policy</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Review</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Blog</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h3 class="footer-heading">Shopping Resources</h3>
-                        <hr>
-                        <ul class="footer-list">
-                            <li class="footer-item"><a href="#" class="footer-item-link">Gift Cards</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Sizing Chart</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Shipping Info</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Categories</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Bands</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Genres</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h3 class="footer-heading">About Us</h3>
-                        <hr>
-                        <p class="footer-about-us">Catastrophic Emporium is a University graduation project of Bùi Tuấn Minh, 11th generation of USTH. This project aims to create a website for online commerce of Metal bands' merchandises and is non-profitable.</p>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="footer-bottom">@ 2023, Catastrophic Emporium, Inc.</div>
-        </footer>
+        <div id="footer"></div>
         <!-- End Footer -->
     </div>
+    <script
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
     <script src="./asset/js/navbar.js"></script>
     <script src="./asset/js/search.js"></script>
 </body>

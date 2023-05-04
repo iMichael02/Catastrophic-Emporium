@@ -15,7 +15,7 @@
             $("#footer").load("./asset/header&footer/footer.html");
         });
     </script>
-    <title>Blogs</title>
+    <title>Cart</title>
 </head>
 <body>
     <div class="page-wrapper">
@@ -24,12 +24,12 @@
         <!-- End Header -->
 
         <!-- Main Content -->
-        <div class="main-content-wl">
+        <div class="main-content-cart">
             <!-- Breadcrumb -->
             <div class="breadcrumb">
                 <div class="breadcrumb-container">
                     <div class="breadcrumb-item"><a href="./home.html">Home</a></div>
-                    <div class="breadcrumb-item"><a>Wishlist</a></div>
+                    <div class="breadcrumb-item"><a>Cart</a></div>
                     <div class="breadcrumb-item triangle"></div>
                 </div>
             </div>
@@ -39,11 +39,13 @@
                     <div class="heading-item"></div>
                     <div class="heading-item">Item Name</div>
                     <div class="heading-item">Type</div>
-                    <div class="heading-item">Price</div>
+                    <div class="heading-item">Item Price</div>
+                    <div class="heading-item">Quantity</div>
+                    <div class="heading-item">Total Price</div>
                     <div class="heading-item">Actions</div>
                 </div>
                 <div class="items-list">
-                    <div class="item">
+                    <div class="item" id="item1">
                         <div class="item-info item-image">
                             <a href="#">
                                 <img src="./images/latest/latest1.png">
@@ -52,14 +54,22 @@
                         <div class="item-info item-name"><p>Sempiternal T-Shirt</p></div>
                         <div class="item-info item-type"><p>XL</p></div>
                         <div class="item-info item-price"><p>280.000 VND</p></div>
-                        <div class="item-info item-action">
+                        <div class="item-info item-quantity">
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(this)'>-</span>
+                                <input type="text" value="1">
+                                <span class="up" onClick='increaseCount(this)'>+</span>
+                            </div>
+                        </div>
+                        <div class="item-info total-price"></div>
+                        <div class="item-info action">
                             <div class="action-container">
                                 <div class="action1"><a href="#">Delete item</a></div>
                                 <div class="action2"><a href="#">Find similar items</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
+                    <div class="item" id="item2">
                         <div class="item-info item-image">
                             <a href="#">
                                 <img src="./images/latest/latest2.png">
@@ -68,14 +78,22 @@
                         <div class="item-info item-name"><p>Wolf T-Shirt</p></div>
                         <div class="item-info item-type"><p>XL</p></div>
                         <div class="item-info item-price"><p>280.000 VND</p></div>
-                        <div class="item-info item-action">
+                        <div class="item-info item-quantity">
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(this)'>-</span>
+                                <input type="text" value="1">
+                                <span class="up" onClick='increaseCount(this)'>+</span>
+                            </div>
+                        </div>
+                        <div class="item-info total-price"></div>
+                        <div class="item-info action">
                             <div class="action-container">
                                 <div class="action1"><a href="#">Delete item</a></div>
                                 <div class="action2"><a href="#">Find similar items</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
+                    <div class="item" id="item3">
                         <div class="item-info item-image">
                             <a href="#">
                                 <img src="./images/latest/latest3.png">
@@ -84,7 +102,15 @@
                         <div class="item-info item-name"><p>And I Return To Nothingness T-Shirt</p></div>
                         <div class="item-info item-type"><p>XL</p></div>
                         <div class="item-info item-price"><p>280.000 VND</p></div>
-                        <div class="item-info item-action">
+                        <div class="item-info item-quantity">
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(this)'>-</span>
+                                <input type="text" value="1">
+                                <span class="up" onClick='increaseCount(this)'>+</span>
+                            </div>
+                        </div>
+                        <div class="item-info total-price"></div>
+                        <div class="item-info action">
                             <div class="action-container">
                                 <div class="action1"><a href="#">Delete item</a></div>
                                 <div class="action2"><a href="#">Find similar items</a></div>
@@ -95,7 +121,7 @@
             </div>
         </div>
         <!-- End Main Content -->
-
+        
         <!-- Footer -->
         <div id="footer"></div>
         <!-- End Footer -->
@@ -114,5 +140,6 @@
     ></script>
     <script src="./asset/js/navbar.js"></script>
     <script src="./asset/js/search.js"></script>
+    <script src="./asset/js/cart/qtyCount.js"></script>
 </body>
 </html>

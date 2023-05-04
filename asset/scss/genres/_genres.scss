@@ -1,11 +1,13 @@
 /* Main Content */
-.main-content-register {
+.main-content-genres {
     display: flex;
-	align-items: center;
+    align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 100%;
-	background: url("/images/background/homebg.jpg") no-repeat center center fixed;
+	background-image: url("/images/background/homebg.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
 	background-size: cover;
     .breadcrumb {
         display: flex;
@@ -58,37 +60,33 @@
         }
     }
     .main-content-container {
-        display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
+        background-color: $color-white;
+        display: block;
 		background-color: $color-white;
-		width: 40%;
-        .subscribe-form {
-            padding: 2vh;
-            font-family: $font-primary;
-            .subscribe-label {
-                font-size: 4vh;
-            }
-            .subscribe-input {
-                font-family: $font-primary;
-                font-size: 3vh;
-                padding: 4px;
-                width: 400px;
-            }
-            .submit-text {
+		width: 70%;
+        font-family: $font-primary;
+        .genres-list {
+            column-count: 2;
+            .genre {
+                font-size: 20px;
+                padding: 10px;
                 a {
                     text-decoration: none;
-                    color: $color-primary-light-red;
+                    color: $color-primary-black;
+                    &::after {
+                        content: '';
+                        display: block;
+                        width: 0;
+                        height: 2px;
+                        background: linear-gradient(to right, $color-primary-black 0% 40%, transparent 50% 100% );
+                        transition: width .3s;
+                    }
+                    &:hover {
+                        &::after {
+                            width: 100%;
+                        }
+                    }
                 }
-            }
-            input[type=submit] {
-                padding: 10px 40px;
-                font-family: $font-primary;
-                font-size: 3vh;
-                background-color: $color-primary-red;
-                color: $color-white;
-                border-radius: 10px;
             }
         }
     }

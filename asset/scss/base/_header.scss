@@ -38,6 +38,9 @@ body {
 		a {
 			color: $color-white;
 			text-decoration: none;
+			&:hover {
+				filter: brightness(0.8);
+			}
 		}
 	}
 }
@@ -72,9 +75,19 @@ body {
 		height: 100%;
 		font-size: 20px;
 		font-family: $font-primary;
+		&::after {
+			content: '';
+			display: block;
+			width: 0;
+			height: 2px;
+			border-radius: 1px;
+			background: linear-gradient(to right, $color-white 0% 87%, transparent 87% 95%, $color-white 95% 100%);
+			transition: width .3s;
+		}
 		&:hover {
-			background-color: $color-white;
-			color: $color-primary-black;
+			&::after {
+				width: 100%;
+			}
 		}
 	}
 	.search-field {
@@ -90,6 +103,9 @@ body {
 			background-color: $color-primary-black;
 			color: $color-white;
 			cursor: pointer;
+		}
+		&::after {
+			background: none;
 		}
 	}
 }

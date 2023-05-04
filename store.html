@@ -9,66 +9,26 @@
     <link rel="stylesheet" href="./asset/scss/style.css"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script> 
+        $(function(){
+            $("#header").load("./asset/header&footer/header.html"); 
+            $("#footer").load("./asset/header&footer/footer.html"); 
+        });
+    </script>
     <title>Store</title>
 </head>
 <body>
     <div class="page-wrapper">
-        <!-- Mobile Search Bar -->
-        <div class="mobile-search-bar" id="mobile-search-bar">
-            <div class="top-search-bar">
-                <div class="top-search-bar-item back-icon" onclick="closeSearch()"><i class="fa-solid fa-arrow-left"></i></div>
-                <div class="top-search-bar-item"><input type="text" class="search-field-mobile"></div>
-                <div class="top-search-bar-item search-icon"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
-            </div>
-            <div class="search-title">Recently searched</div>
-            <div class="search-list">
-                <div class="search-list-item">placeholder</div>
-                <div class="search-list-item">placeholder</div>
-                <div class="search-list-item">placeholder</div>
-            </div>
-        </div>
-        <!-- End Mobile Search Bar -->
-
         <!-- Header -->
-        <header class="header">
-            <div class="header-container">
-                <div class="header-item slogan">100% Imaginarily Licensed Merchandises</div>
-                <div class="header-item wistlist"><a href="#">Wishlist</a></div>
-                <div class="header-item register"><a href="#">Register</a></div>
-                <div class="header-item account"><a href="#"><i class="fa-solid fa-user"></i></a></div>
-                <div class="header-item cart"><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></div>
-            </div>
-        </header>
+        <div id="header"></div>
         <!-- End Header -->
-
-        <!-- Menu -->
-        <div class="topnavbar">
-            <div class="topnav-container">
-                <div class="home"><a href="home.html"><img src="/logo/logo_transparent_2.png" id="logo"></a></div>
-                <div class="topnav">
-                    <a class="topnav-item" href="#">Store</a>
-                    <a class="topnav-item" href="#">Bands</a>
-                    <a class="topnav-item" href="#">Genres</a>
-                    <a class="topnav-item search"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    <input class="topnav-item search-field" type="text" placeholder="Search...">
-                </div>
-                <div class="topnav-icon" id="myTopNavIcon"><a onclick="showNavItem()"><i class="fa-solid fa-bars"></i></a></div>
-            </div>
-        </div>
-        <div class="topnav-mobile" id="topnav-mobile">
-            <a class="searchm" onclick="openSearch()"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
-            <a href="#" class="bandsm">Store</a>
-            <a href="#" class="merchm">Bands</a>
-            <a href="#" class="aboutm">Genres</a>
-        </div>
-        <!-- End Menu -->
 
         <!-- Main Content -->
         <div class="main-content-store">
             <!-- Breadcrumb -->
             <div class="breadcrumb">
                 <div class="breadcrumb-container">
-                    <div class="breadcrumb-item"><a href="#">Home</a></div>
+                    <div class="breadcrumb-item"><a href="./home.html">Home</a></div>
                     <div class="breadcrumb-item">Store</div>
                     <div class="breadcrumb-item triangle"></div>
                 </div>
@@ -76,220 +36,312 @@
             <!-- End Breadcrumb -->
             <div class="main-content-container">
                 <div class="left-grid">
-                    <div class="types-title">Types</div>
-                    <div class="types"></div>
-                    <div class="apparels-title">Apparels</div>
-                    <ul class="apparels">
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">T-Shirts</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Sweat Shirts</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Shorts</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Pants</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Shoes</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Hats</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Tank-tops</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Masks</li>
+                    <div class="product-type-title apparels-title">Apparels</div>
+                    <ul class="product-type apparels">
+                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">T-Shirts</li>
+                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Sweat Shirts</li>
+                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Shorts</li>
+                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Pants</li>
+                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Shoes</li>
+                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Hats</li>
+                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Tank-tops</li>
+                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Masks</li>
                     </ul>
-                    <div class="accessories-title">Accessories</div>
-                    <ul class="accessories">
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Necklaces</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Rings</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Bracelets</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Earings</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Nose Rings</li>
+                    <hr>
+                    <div class="product-type-title accessories-title">Accessories</div>
+                    <ul class="product-type accessories">
+                        <li class="product-option accessories-option"><input type="checkbox" id="" name="" class="option">Necklaces</li>
+                        <li class="product-option accessories-option"><input type="checkbox" id="" name="" class="option">Rings</li>
+                        <li class="product-option accessories-option"><input type="checkbox" id="" name="" class="option">Bracelets</li>
+                        <li class="product-option accessories-option"><input type="checkbox" id="" name="" class="option">Earings</li>
+                        <li class="product-option accessories-option"><input type="checkbox" id="" name="" class="option">Nose Rings</li>
                     </ul>
-                    <div class="collectibles-title">Collectibles</div>
-                    <ul class="collectibles">
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Figures</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Guitar Picks</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Patches</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Others</li>
+                    <hr>
+                    <div class="product-type-title collectibles-title">Collectibles</div>
+                    <ul class="product-type collectibles">
+                        <li class="product-option collectibles-option"><input type="checkbox" id="" name="" class="option">Figures</li>
+                        <li class="product-option collectibles-option"><input type="checkbox" id="" name="" class="option">Guitar Picks</li>
+                        <li class="product-option collectibles-option"><input type="checkbox" id="" name="" class="option">Patches</li>
+                        <li class="product-option collectibles-option"><input type="checkbox" id="" name="" class="option">Others</li>
                     </ul>
-                    <div class="decors-title">Decors</div>
-                    <ul class="decors">
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Banners</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Picture Frames</li>
-                        <li class="apparels-option"><input type="checkbox" id="" name="" class="option">Others</li>
+                    <hr>
+                    <div class="product-type-title decors-title">Decors</div>
+                    <ul class="product-type decors">
+                        <li class="product-option decors-option"><input type="checkbox" id="" name="" class="option">Banners</li>
+                        <li class="product-option decors-option"><input type="checkbox" id="" name="" class="option">Picture Frames</li>
+                        <li class="product-option decors-option"><input type="checkbox" id="" name="" class="option">Others</li>
                     </ul>
+                    <hr>
                 </div>
                 <div class="mid-grid">
-                    <div class="grid-item">
-                        <a href="#">
+                    <div class="mid-grid-container" id="page1">
+                        <div class="grid-item">
                             <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
-                                <p class="grid-item-title">Bring Me The Horizon</p>
-                                <p class="grid-item-description">Sempiternal T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
+                                <div class="grid-item-title">Bring Me The Horizon</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
                             </div>
-                        </a>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
+                                <div class="grid-item-title">Bring Me The Horizon</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
+                                <div class="grid-item-title">Bring Me The Horizon</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
+                                <div class="grid-item-title">Bring Me The Horizon</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
+                                <div class="grid-item-title">Bring Me The Horizon</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
+                                <div class="grid-item-title">Bring Me The Horizon</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="grid-item">
-                        <a href="#">
+                    <div class="mid-grid-container" id="page2">
+                        <div class="grid-item">
                             <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
-                                <p class="grid-item-title">Bring Me The Horizon</p>
-                                <p class="grid-item-description">Sempiternal T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
+                                <div class="grid-item-title">Architects</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
                             </div>
-                        </a>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
+                                <div class="grid-item-title">Architects</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
+                                <div class="grid-item-title">Architects</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
+                                <div class="grid-item-title">Architects</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
+                                <div class="grid-item-title">Architects</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
+                                <div class="grid-item-title">Architects</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="grid-item">
-                        <a href="#">
+                    <div class="mid-grid-container" id="page3">
+                        <div class="grid-item">
                             <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
-                                <p class="grid-item-title">Bring Me The Horizon</p>
-                                <p class="grid-item-description">Sempiternal T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
+                                <div class="grid-item-title">Lorna Shore</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
                             </div>
-                        </a>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
+                                <div class="grid-item-title">Lorna Shore</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
+                                <div class="grid-item-title">Lorna Shore</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
+                                <div class="grid-item-title">Lorna Shore</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
+                                <div class="grid-item-title">Lorna Shore</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="grid-item-container">
+                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
+                                <div class="grid-item-title">Lorna Shore</div>
+                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
+                                <div class="grid-item-price">280.000VND</div>
+                                <div class="grid-item-shopping-options">
+                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="grid-item">
-                        <a href="#">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
-                                <p class="grid-item-title">Bring Me The Horizon</p>
-                                <p class="grid-item-description">Sempiternal T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
-                                <p class="grid-item-title">Bring Me The Horizon</p>
-                                <p class="grid-item-description">Sempiternal T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest1.png" alt=""></div>
-                                <p class="grid-item-title">Bring Me The Horizon</p>
-                                <p class="grid-item-description">Sempiternal T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
-                                <p class="grid-item-title">Architects</p>
-                                <p class="grid-item-description">Wolf T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
-                                <p class="grid-item-title">Architects</p>
-                                <p class="grid-item-description">Wolf T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
-                                <p class="grid-item-title">Architects</p>
-                                <p class="grid-item-description">Wolf T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
-                                <p class="grid-item-title">Architects</p>
-                                <p class="grid-item-description">Wolf T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
-                                <p class="grid-item-title">Architects</p>
-                                <p class="grid-item-description">Wolf T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><img src="./images/latest/latest2.png" alt=""></div>
-                                <p class="grid-item-title">Architects</p>
-                                <p class="grid-item-description">Wolf T-Shirt</p>
-                                <p class="grid-item-price">280.000VND</p>
-                            </div>
-                        </a>
+                    <div class="page-nav">
+                        <ul class="page-nav-container" id="page-nav-container">
+                            <li class="page-nav-item" onclick="pageChange(this)" id="page-nav-item1">1</li>
+                            <li class="page-nav-item" onclick="pageChange(this)" id="page-nav-item2">2</li>
+                            <li class="page-nav-item" onclick="pageChange(this)" id="page-nav-item3">3</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="right-grid">
-                    
+                    <div class="bands-title">Bands</div>
+                    <ul class="bands">
+                        <li class="bands-option"><input type="checkbox" id="" name="" class="option">Architects</li>
+                        <li class="bands-option"><input type="checkbox" id="" name="" class="option">Bring Me The Horizon</li>
+                        <li class="bands-option"><input type="checkbox" id="" name="" class="option">Cannibal Corpse</li>
+                        <li class="bands-option"><input type="checkbox" id="" name="" class="option">Infant Annihilator</li>
+                        <li class="bands-option"><input type="checkbox" id="" name="" class="option">Jinjer</li>
+                        <li class="bands-option"><input type="checkbox" id="" name="" class="option">Korn</li>
+                        <li class="bands-option"><input type="checkbox" id="" name="" class="option">Lorna Shore</li>
+                        <li class="bands-option"><input type="checkbox" id="" name="" class="option">Metallica</li>
+                        <li class="bands-option"><input type="checkbox" id="" name="" class="option">Pantera</li>
+                        <li class="bands-option"><input type="checkbox" id="" name="" class="option">Slipknot</li>
+                        <li class="bands-option"><a href="./bands.html">View all bands list <i class="fa-solid fa-angles-right"></i></a></li>
+                    </ul>
+                    <hr>
+                    <div class="genres-title">Genres</div>
+                    <ul class="genres">
+                        <li class="genres-option"><input type="checkbox" id="" name="" class="option">Alternative Metal</li>
+                        <li class="genres-option"><input type="checkbox" id="" name="" class="option">Black Metal</li>
+                        <li class="genres-option"><input type="checkbox" id="" name="" class="option">Christian Metal</li>
+                        <li class="genres-option"><input type="checkbox" id="" name="" class="option">Death Metal</li>
+                        <li class="genres-option"><input type="checkbox" id="" name="" class="option">Deathcore</li>
+                        <li class="genres-option"><input type="checkbox" id="" name="" class="option">Heavy Metal</li>
+                        <li class="genres-option"><input type="checkbox" id="" name="" class="option">Grindcore</li>
+                        <li class="genres-option"><input type="checkbox" id="" name="" class="option">Metalcore</li>
+                        <li class="genres-option"><input type="checkbox" id="" name="" class="option">Nü Metal</li>
+                        <li class="genres-option"><input type="checkbox" id="" name="" class="option">Thrash Metal</li>
+                        <li class="genres-option"><a href="#">View all genres list <i class="fa-solid fa-angles-right"></i></a></li>
+                    </ul>
+                    <hr>
                 </div>
             </div>
         </div>
         <!-- End Main Content -->
 
         <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-container">
-                <div class="footer-row">
-                    <div class="footer-col footer-col-subscribe">
-                        <h3 class="footer-heading">Subscribe To Receive Newest Sales!</h3>
-                        <hr>
-                        <div class="subscribe">
-                            <div class="subscribe-field">
-                                <img src="./logo/logo_transparent_2.png" alt="" class="subscribe-icon">
-                                <input type="email" class="subscribe-input" placeholder="Enter your email here">
-                                <button class="subscribe-button">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h3 class="footer-heading">Customer Services</h3>
-                        <hr>
-                        <ul class="footer-list">
-                            <li class="footer-item"><a href="#" class="footer-item-link">Contact Us</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">FAQ</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Terms & Conditions</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Return Policy</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Privacy Policy</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Review</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Blog</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h3 class="footer-heading">Shopping Resources</h3>
-                        <hr>
-                        <ul class="footer-list">
-                            <li class="footer-item"><a href="#" class="footer-item-link">Gift Cards</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Sizing Chart</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Shipping Info</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Categories</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Bands</a></li>
-                            <li class="footer-item"><a href="#" class="footer-item-link">Genres</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h3 class="footer-heading">About Us</h3>
-                        <hr>
-                        <p class="footer-about-us">Catastrophic Emporium is a University graduation project of Bùi Tuấn Minh, 11th generation of USTH. This project aims to create a website for online commerce of Metal bands' merchandises and is non-profitable.</p>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="footer-bottom">@ 2023, Catastrophic Emporium, Inc.</div>
-        </footer>
+        <div id="footer"></div>
         <!-- End Footer -->
     </div>
     <script
@@ -306,16 +358,6 @@
     ></script>
     <script src="./asset/js/navbar.js"></script>
     <script src="./asset/js/search.js"></script>
-    <script>
-        $('.mid-grid').slick({
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            rows: 2,
-            infinite: false,
-            draggable: false,
-            prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-            nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-        });
-    </script>
+    <script src="./asset/js/store/pagenav.js"></script>
 </body>
 </html>
