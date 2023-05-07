@@ -1974,6 +1974,334 @@ body {
           user-select: none;
 }
 
+.main-content-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url("/images/background/homebg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+.main-content-product .breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2px 0;
+}
+.main-content-product .breadcrumb .breadcrumb-container {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  background-color: #111111;
+}
+.main-content-product .breadcrumb .breadcrumb-container .breadcrumb-item {
+  padding: 10px 0;
+  background-color: #570000;
+  height: 100%;
+  padding-left: 10px;
+  font-family: "Metal Mania";
+  font-size: 18px;
+  color: #cccccc;
+}
+.main-content-product .breadcrumb .breadcrumb-container .breadcrumb-item a {
+  color: #cccccc;
+  text-decoration: none;
+}
+.main-content-product .breadcrumb .breadcrumb-container .breadcrumb-item a:hover {
+  color: #ffffff;
+}
+.main-content-product .breadcrumb .breadcrumb-container .breadcrumb-item + .breadcrumb-item::before {
+  color: #111111;
+  content: "/ ";
+}
+.main-content-product .breadcrumb .breadcrumb-container .triangle {
+  padding: 0 !important;
+  padding-left: 0 !important;
+  background-color: transparent !important;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 21px solid transparent;
+  border-bottom: 21px solid transparent;
+  border-left: 21px solid #570000;
+  border-right: 15px solid transparent;
+}
+.main-content-product .breadcrumb .breadcrumb-container .triangle::before {
+  content: none !important;
+}
+.main-content-product .main-content-container {
+  font-family: "Metal Mania";
+  background-color: #ffffff;
+  width: 70%;
+}
+.main-content-product .main-content-container .product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 2vh;
+}
+.main-content-product .main-content-container .product-grid .product-image {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  z-index: 1;
+  max-width: 500px;
+  position: relative;
+}
+.main-content-product .main-content-container .product-grid .product-image #lens {
+  z-index: 2;
+  position: absolute;
+  height: 125px;
+  width: 125px;
+  box-shadow: 2px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  cursor: none;
+}
+.main-content-product .main-content-container .product-grid .product-image img {
+  margin: 5px;
+  width: 500px;
+  aspect-ratio: 1/1;
+}
+.main-content-product .main-content-container .product-grid .slide-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.main-content-product .main-content-container .product-grid .slide-wrapper .slider .thumbnail {
+  width: 100px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.main-content-product .main-content-container .product-grid .slide-wrapper .slider .thumbnail:hover {
+  filter: brightness(1.1);
+}
+.main-content-product .main-content-container .product-grid .slide-wrapper .slider .active {
+  opacity: 1;
+}
+.main-content-product .main-content-container .product-grid .slide-wrapper .arrow {
+  font-size: 25px;
+  padding: 10px;
+  cursor: pointer;
+}
+.main-content-product .main-content-container .product-grid .slide-wrapper #slide-left {
+  transform: translateX(-20px);
+}
+.main-content-product .main-content-container .product-grid .slide-wrapper #slide-right {
+  transform: translateX(20px);
+}
+.main-content-product .main-content-container .product-grid .product-info {
+  margin: 0 10px;
+  grid-column: 2/3;
+  grid-row: 1/3;
+}
+.main-content-product .main-content-container .product-grid .product-info .size {
+  font-size: 20px;
+}
+.main-content-product .main-content-container .product-grid .product-info .size .open-size-chart {
+  font-size: 16px;
+  color: #5e5e5e;
+}
+.main-content-product .main-content-container .product-grid .product-info .size .open-size-chart:hover {
+  cursor: pointer;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-chart {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  background: #ffffff;
+  max-width: 620px;
+  z-index: 10;
+  opacity: 1;
+  top: 15vh;
+  bottom: 15vh;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  overflow: scroll;
+  padding: 15px;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-chart .fa-xmark {
+  position: absolute;
+  right: 15px;
+  font-size: 20px;
+  opacity: 0.85;
+  z-index: 11;
+  cursor: pointer;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-chart .inner .chart-header {
+  margin: 0;
+  text-align: center;
+  font-size: 35px;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-chart .inner table {
+  width: 100%;
+  text-align: center;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-chart .inner table caption {
+  padding: 20px;
+  font-size: 30px;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-chart .inner table tbody {
+  font-size: 20px;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-chart .inner table tbody td {
+  padding: 5px;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-chart .inner table tbody tr:nth-child(odd) {
+  background-color: #ebe7dd;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-options .container {
+  position: relative;
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-options .container input {
+  display: none;
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-options .container input:checked ~ .size-btn {
+  border: 2px solid #111111;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-options .container .size-btn {
+  line-height: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #dedede;
+  border: 2px solid transparent;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-options .container .size-btn:hover {
+  background-color: #cccccc;
+}
+.main-content-product .main-content-container .product-grid .product-info .size-options .container .size-btn::after {
+  display: none;
+}
+.main-content-product .main-content-container .product-grid .product-info .quantity {
+  margin-top: 20px;
+}
+.main-content-product .main-content-container .product-grid .product-info .quantity input {
+  width: 100px;
+  padding: 5px 0;
+  text-align: center;
+}
+.main-content-product .main-content-container .product-grid .product-info .quantity .buttons .add-to-cart {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-family: "Metal Mania";
+  font-size: 20px;
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+.main-content-product .main-content-container .product-grid .product-info .quantity .buttons .add-to-cart:hover {
+  background-color: #ffffff;
+  color: #111111;
+  cursor: pointer;
+}
+.main-content-product .main-content-container .product-grid .product-info .quantity .buttons .add-to-wishlist {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-family: "Metal Mania";
+  font-size: 20px;
+  background-color: #ffffff;
+  color: #111111;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+.main-content-product .main-content-container .product-grid .product-info .quantity .buttons .add-to-wishlist:hover {
+  background-color: #111111;
+  color: #ffffff;
+  cursor: pointer;
+}
+.main-content-product .main-content-container .section-divider {
+  margin: 20px;
+}
+.main-content-product .main-content-container .banner {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-content-product .main-content-container .banner img {
+  width: 55%;
+  margin: 5px;
+}
+.main-content-product .main-content-container .banner .band-info {
+  margin: 0 5px;
+}
+.main-content-product .main-content-container .banner .band-info .name {
+  margin: 0;
+}
+.main-content-product .main-content-container .banner .band-info .description {
+  margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.main-content-product .main-content-container .banner .band-info .page-btn {
+  padding: 10px;
+  margin-top: 20px;
+}
+.main-content-product .main-content-container .banner .band-info .page-btn a {
+  padding: 10px;
+  font-size: 18px;
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  transition: 0.2s;
+  text-decoration: none;
+}
+.main-content-product .main-content-container .banner .band-info .page-btn a:hover {
+  background-color: #ffffff;
+  color: #111111;
+  cursor: pointer;
+}
+.main-content-product .main-content-container .review-title {
+  margin: 30px 0 10px 20px;
+}
+.main-content-product .main-content-container .review {
+  margin: 20px;
+}
+.main-content-product .main-content-container .review .review-container .review-item {
+  margin: 5px 0;
+  padding: 10px;
+  background-color: #ebe7dd;
+}
+.main-content-product .main-content-container .review .review-container .review-item .reviewer {
+  display: flex;
+}
+.main-content-product .main-content-container .review .review-container .review-item .reviewer img {
+  width: 40px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+.main-content-product .main-content-container .review .review-container .review-item .reviewer .name {
+  margin: 5px;
+  font-size: 20px;
+}
+.main-content-product .main-content-container .review .review-container .review-item .reviewer .stars {
+  margin: 5px;
+}
+.main-content-product .main-content-container .review .review-container .review-item .review-content {
+  margin: 5px;
+}
+
 /* Small Mobile */
 @media only screen and (max-width: 319px) {
   /* Header */
