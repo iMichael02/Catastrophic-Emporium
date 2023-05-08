@@ -1260,7 +1260,11 @@ body {
   list-style: none;
   font-size: 18px;
 }
-.main-content-store .main-content-container .right-grid .bands .bands-option a {
+.main-content-store .main-content-container .right-grid .bands .bands-option .band {
+  text-decoration: none;
+  color: #111111;
+}
+.main-content-store .main-content-container .right-grid .bands .bands-option .view-all {
   text-decoration: none;
   color: #570000;
 }
@@ -1273,7 +1277,11 @@ body {
   list-style: none;
   font-size: 18px;
 }
-.main-content-store .main-content-container .right-grid .genres .genres-option a {
+.main-content-store .main-content-container .right-grid .genres .genres-option .genre {
+  text-decoration: none;
+  color: #111111;
+}
+.main-content-store .main-content-container .right-grid .genres .genres-option .view-all {
   text-decoration: none;
   color: #570000;
 }

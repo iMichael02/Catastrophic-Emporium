@@ -225,7 +225,11 @@
                 .bands-option {
                     list-style: none;
                     font-size: 18px;
-                    a {
+                    .band {
+                        text-decoration: none;
+                        color: $color-primary-black;
+                    }
+                    .view-all {
                         text-decoration: none;
                         color: $color-primary-red;
                     }
@@ -240,7 +244,11 @@
                 .genres-option {
                     list-style: none;
                     font-size: 18px;
-                    a {
+                    .genre {
+                        text-decoration: none;
+                        color: $color-primary-black;
+                    }
+                    .view-all {
                         text-decoration: none;
                         color: $color-primary-red;
                     }
