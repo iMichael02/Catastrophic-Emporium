@@ -74,14 +74,14 @@
                 grid-template-columns: 1fr 4fr 1fr;
                 .thumbnail {
                     img {
-                        padding: 5px;
+                        padding: 15px;
                         width: 100%;
                         aspect-ratio: 1/1;
                     }
                 }
                 .post-title-and-author {
                     .post-title {
-                        padding: 10px 10px 0 10px;
+                        padding: 10px 10px 0 30px;
                         font-family: $font-primary;
                         font-size: 30px;
                         color: $color-primary-black;
@@ -97,10 +97,12 @@
                             img {
                                 width: 40px;
                                 border-radius: 20px;
-                                margin: 10px;
+                                margin-top: 5px;
+                                margin-left: 30px;
                             }
                         }
                         .author-info {
+                            margin-left: 15px;
                             font-family: $font-primary;
                             .name {
                                 padding: 10px 0 0 0;
