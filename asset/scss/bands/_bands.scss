@@ -81,10 +81,25 @@
                 .grid-list-item {
                     margin-right: 0;
                     a {
+                        text-decoration: none;
+                        color: $color-primary-black;
                         margin-left: 10px;
                         text-overflow: ellipsis;
                         overflow: hidden;
                         white-space: normal;
+                        &::after {
+                            content: '';
+                            display: block;
+                            width: 0;
+                            height: 2px;
+                            background: linear-gradient(to right, $color-primary-black 0% 40%, transparent 50% 100% );
+                            transition: width .3s;
+                        }
+                        &:hover {
+                            &::after {
+                                width: 100%;
+                            }
+                        }
                     }
                 }
             }
