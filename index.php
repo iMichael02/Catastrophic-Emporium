@@ -29,11 +29,11 @@
                 <!-- Slider -->
                 <div class="slider-container">
                     <div class="slider">
-                        <a href="#"><img class="top-slides" src="/images/slider/slide1.jpeg"></a>
-                        <a href="#"><img class="top-slides" src="/images/slider/slide2.jpg"></a>
-                        <a href="#"><img class="top-slides" src="/images/slider/slide3.png"></a>
-                        <a href="#"><img class="top-slides" src="/images/slider/slide4.jpg"></a>
-                        <a href="#"><img class="top-slides" src="/images/slider/slide5.jpg"></a>
+                        <a href="#"><img class="top-slides" src="./images/slider/slide1.png"></a>
+                        <a href="#"><img class="top-slides" src="./images/slider/slide2.png"></a>
+                        <a href="#"><img class="top-slides" src="./images/slider/slide3.png"></a>
+                        <a href="#"><img class="top-slides" src="./images/slider/slide4.png"></a>
+                        <a href="#"><img class="top-slides" src="./images/slider/slide5.png"></a>
                     </div>
                     <div class="slider-btn">
                         <div class="slider-button left" type="button" onclick="plusDivs(-1)"><i class="fa-solid fa-angle-left"></i></div>
