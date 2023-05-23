@@ -1,3 +1,8 @@
+<?php
+include "./dbconnect.php";
+include "./load-band.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" href="./asset/scss/style.css"/>
+    <link rel="stylesheet" href="./asset/scss/style.css?v=<?php echo time(); ?>"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script> 
         $(function(){
-            $("#header").load("./asset/header&footer/header.html");
-            $("#footer").load("./asset/header&footer/footer.html");
+            $("#header").load("./asset/header&footer/header.php");
+            $("#footer").load("./asset/header&footer/footer.php");
         });
     </script>
     <title>Bring Me The Horizon Store</title>
@@ -24,11 +29,15 @@
         <!-- End Header -->
 
         <!-- Main Content -->
-        <div class="main-content-band-page">
+        <div class="main-content-band-page" style="background: url('./images/background/homebg.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;">
             <!-- Breadcrumb -->
             <div class="breadcrumb">
                 <div class="breadcrumb-container">
-                    <div class="breadcrumb-item"><a href="./home.html">Home</a></div>
+                    <div class="breadcrumb-item"><a href="./index.php">Home</a></div>
                     <div class="breadcrumb-item">Bands</div>
                     <div class="breadcrumb-item triangle"></div>
                 </div>
@@ -37,32 +46,30 @@
             <div class="main-content-container">
                 <div class="band-description">
                     <div class="banner">
-                        <img src="./images/band-banner/Bring-Me-The-Horizon.png" alt="">
+                        <img src="<?php echo "data:image/png;base64,".base64_encode( $result_band['banner'] );?>" alt="">
                     </div>
                     <div class="info-container">
                         <div class="info">
-                            <p class="name">Bring Me The Horizon</p>
+                            <p class="name"><?php echo $result_band['name'];?></p>
                             <div class="description">
-                                <p class="bibliography">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit eaque nemo explicabo asperiores, at ratione laudantium numquam provident. Suscipit consequatur harum similique ullam perferendis a iure laboriosam eveniet cum incidunt?</p>
+                                <p class="bibliography"><?php echo $result_band['bibliography']; ?></p>
                                 <div class="collapsible">
-                                    <div class="accordion">
-                                        <button type="button" class="accordion-button">What was Bring Me The Horizon's biggest hit?</button>
-                                        <div class="accordion-content">
-                                            <p>"Throne" from their fifth studio album "That's The Spirit"</p>
-                                        </div>
-                                    </div>
-                                    <div class="accordion">
-                                        <button type="button" class="accordion-button">Which Bring Me The Horizon's album sold the most?</button>
-                                        <div class="accordion-content">
-                                            <p>"That's The Spirit", their fifth studio album</p>
-                                        </div>
-                                    </div>
-                                    <div class="accordion">
-                                        <button type="button" class="accordion-button">What is Bring Me The Horizon's total album sales?</button>
-                                        <div class="accordion-content">
-                                            <p>Bring Me The Horizon has sold over 4,000,000 albums worldwide, including 1,000,000 in the United States and 680,000 in the United Kingdom</p>
-                                        </div>
-                                    </div>
+                                    <?php
+                                    for ($i = 0; $i < 5; $i++) {
+                                        if ($question[$i] != null) {
+                                            ?>
+                                            <div class="accordion">
+                                                <button type="button" class="accordion-button"><?php echo $question[$i]->question; ?></button>
+                                                <div class="accordion-content">
+                                                    <p><?php echo $question[$i]->answer; ?></p>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        } else {
+                                            continue;
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -107,227 +114,25 @@
                     <hr>
                 </div>
                 <div class="mid-grid">
-                    <div class="mid-grid-container" id="page1">
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
-                                <div class="grid-item-title">Bring Me The Horizon</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                    <div class="mid-grid-container">
+                        <?php
+                        for ($i = 0; $i < sizeof($products_list); $i++) {
+                            ?>
+                            <div class="grid-item">
+                                <div class="grid-item-container">
+                                    <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="<?php echo "data:image/png;base64,".base64_encode( $products_list[$i]['image1'] );?>" alt=""></a></div>
+                                    <div class="grid-item-title"><?php echo $result_band['name'];?></div>
+                                    <div class="grid-item-name"><a href="#" class="grid-item-link"><?php echo $products_list[$i]['name'];?></a></div>
+                                    <div class="grid-item-price">280.000VND</div>
+                                    <div class="grid-item-shopping-options">
+                                        <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                        <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
-                                <div class="grid-item-title">Bring Me The Horizon</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
-                                <div class="grid-item-title">Bring Me The Horizon</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
-                                <div class="grid-item-title">Bring Me The Horizon</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
-                                <div class="grid-item-title">Bring Me The Horizon</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest1.png" alt=""></a></div>
-                                <div class="grid-item-title">Bring Me The Horizon</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Sempiternal T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mid-grid-container" id="page2">
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
-                                <div class="grid-item-title">Architects</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
-                                <div class="grid-item-title">Architects</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
-                                <div class="grid-item-title">Architects</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
-                                <div class="grid-item-title">Architects</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
-                                <div class="grid-item-title">Architects</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest2.png" alt=""></a></div>
-                                <div class="grid-item-title">Architects</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">Wolf T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mid-grid-container" id="page3">
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
-                                <div class="grid-item-title">Lorna Shore</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
-                                <div class="grid-item-title">Lorna Shore</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
-                                <div class="grid-item-title">Lorna Shore</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
-                                <div class="grid-item-title">Lorna Shore</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
-                                <div class="grid-item-title">Lorna Shore</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="grid-item-container">
-                                <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="./images/latest/latest3.png" alt=""></a></div>
-                                <div class="grid-item-title">Lorna Shore</div>
-                                <div class="grid-item-name"><a href="#" class="grid-item-link">And I Return To Nothiness... T-Shirt</a></div>
-                                <div class="grid-item-price">280.000VND</div>
-                                <div class="grid-item-shopping-options">
-                                    <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                    <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
-                                </div>
-                            </div>
-                        </div>
+                            <?php
+                        }
+                        ?>
                     </div>
                     <div class="page-nav">
                         <ul class="page-nav-container" id="page-nav-container">

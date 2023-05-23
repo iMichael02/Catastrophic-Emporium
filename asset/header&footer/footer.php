@@ -8,8 +8,12 @@
                         <div class="subscribe">
                             <div class="subscribe-field">
                                 <img src="./logo/logo_transparent_2.png" alt="" class="subscribe-icon">
-                                <input type="email" class="subscribe-input" placeholder="Enter your email here" name="email">
-                                <button class="subscribe-button" type="submit">Subscribe</button>
+                                <form action="">
+                                    <div class="subscribe-form">
+                                        <input type="email" class="subscribe-input" placeholder="Enter your email here" name="email">
+                                        <button class="subscribe-button" type="submit">Subscribe</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

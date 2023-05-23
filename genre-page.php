@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" href="./asset/scss/style.css"/>
+    <link rel="stylesheet" href="./asset/scss/style.css?v=<?php echo time(); ?>"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script> 
         $(function(){
-            $("#header").load("./asset/header&footer/header.html");
-            $("#footer").load("./asset/header&footer/footer.html");
+            $("#header").load("./asset/header&footer/header.php");
+            $("#footer").load("./asset/header&footer/footer.php");
         });
     </script>
     <title>Metalcore</title>
@@ -24,12 +24,16 @@
         <!-- End Header -->
 
         <!-- Main Content -->
-        <div class="main-content-genre-page">
+        <div class="main-content-genre-page" style="background: url('./images/background/homebg.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;">
             <!-- Breadcrumb -->
             <div class="breadcrumb">
                 <div class="breadcrumb-container">
-                    <div class="breadcrumb-item"><a href="./home.html">Home</a></div>
-                    <div class="breadcrumb-item">Genres</div>
+                    <div class="breadcrumb-item"><a href="./index.php">Home</a></div>
+                    <div class="breadcrumb-item"><a href="./genres.php">Genres</a></div>
                     <div class="breadcrumb-item">Metalcore</div>
                     <div class="breadcrumb-item triangle"></div>
                 </div>

@@ -1,9 +1,10 @@
-
-document.querySelectorAll(".accordion-button").forEach(button => {
-    button.addEventListener("click", () => {
+const buttons = document.querySelectorAll(".accordion-button");
+buttons.forEach(button => {
+    button.addEventListener("click", (e) => {
+        buttons.forEach(f => f.classList.remove(":active"));
         const accordionContent = button.nextElementSibling;
-        button.classList.toggle("accordion-button:active");
-        if (button.classList.contains("accordion-button:active")) {
+        e.target.classList.toggle(":active");
+        if (e.target.classList.contains(":active")) {
             accordionContent.style.display = "block";
         } else {
             accordionContent.style.display = "none";

@@ -98,23 +98,24 @@ body {
 .topnav a:hover::after {
   width: 100%;
 }
-.topnav .search-field {
+.topnav form .search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topnav form .search-form .button {
+  float: right;
+  background-color: #111111;
+  color: #ffffff;
+  border: none;
+  font-size: 20px;
+}
+.topnav form .search-form .search-field {
   font-size: 20px;
   font-family: "Metal Mania";
   float: right;
   padding: 6px;
   margin-top: 5px;
-}
-.topnav a.search {
-  float: right;
-}
-.topnav a.search:hover {
-  background-color: #111111;
-  color: #ffffff;
-  cursor: pointer;
-}
-.topnav a.search::after {
-  background: none;
 }
 
 .topnav-icon {
@@ -255,13 +256,13 @@ body {
 .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-icon {
   width: 10vw;
 }
-.footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-input {
+.footer .footer-container .footer-row .footer-col-subscribe .subscribe-field form .subscribe-form .subscribe-input {
   font-family: "Metal Mania";
   height: 30px;
   font-size: 18px;
   min-width: 20%;
 }
-.footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-button {
+.footer .footer-container .footer-row .footer-col-subscribe .subscribe-field form .subscribe-form .subscribe-button {
   font-family: "Metal Mania";
   font-size: 18px;
   background-color: #570000;
@@ -271,7 +272,7 @@ body {
   padding: 10px;
   margin-left: 10px;
 }
-.footer .footer-container .footer-row .footer-col-subscribe .subscribe-field .subscribe-button:hover {
+.footer .footer-container .footer-row .footer-col-subscribe .subscribe-field form .subscribe-form .subscribe-button:hover {
   background-color: #ad0000;
   cursor: pointer;
 }
@@ -301,7 +302,6 @@ body {
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  background: url("/images/background/homebg.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 .main-content .main-content-container {
@@ -1258,7 +1258,7 @@ body {
 }
 .main-content-store .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:hover {
   cursor: pointer;
-  filter: brightness(1.1);
+  filter: brightness(1.5);
 }
 .main-content-store .main-content-container .right-grid {
   grid-column: 18/21;
@@ -2507,7 +2507,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: url("/images/background/homebg.jpg");
+  background-image: url("./images/background/homebg.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -2694,6 +2694,7 @@ body {
   padding: 5px;
 }
 .main-content-band-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-name {
+  text-align: center;
   font-size: 20px;
   padding: 5px;
 }

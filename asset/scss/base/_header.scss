@@ -90,22 +90,25 @@ body {
 			}
 		}
 	}
-	.search-field {
-		font-size: 20px;
-		font-family: $font-primary;
-		float: right;
-		padding: 6px;
-		margin-top: 5px;
-	}
-	a.search {
-		float: right;
-		&:hover {
-			background-color: $color-primary-black;
-			color: $color-white;
-			cursor: pointer;
-		}
-		&::after {
-			background: none;
+	form {
+		.search-form {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			.button {
+				float: right;
+				background-color: $color-primary-black;
+				color: $color-white;
+				border: none;
+				font-size: 20px;
+			}
+			.search-field {
+				font-size: 20px;
+				font-family: $font-primary;
+				float: right;
+				padding: 6px;
+				margin-top: 5px;
+			}
 		}
 	}
 }

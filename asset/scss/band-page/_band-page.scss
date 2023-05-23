@@ -4,7 +4,7 @@
     align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background-image: url("/images/background/homebg.jpg");
+	background-image: url("./images/background/homebg.png");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
@@ -197,6 +197,7 @@
                             padding: 5px;
                         }
                         .grid-item-name {
+                            text-align: center;
                             font-size: 20px;
                             padding: 5px;
                         }
