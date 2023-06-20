@@ -15,7 +15,7 @@
             $("#footer").load("./asset/header&footer/footer.php");
         });
     </script>
-    <title>Blogs</title>
+    <title>Register</title>
 </head>
 <body>
     <div class="page-wrapper">
@@ -39,21 +39,23 @@
             </div>
             <!-- End Breadcrumb -->
             <div class="main-content-container">
-                <form class="subscribe-form">
-                    <label for="fname" class="subscribe-label">First Name:</label><br><br>
-                    <input type="text" id="fname" name="fname" class="subscribe-input" placeholder="Enter your first name"><br><br>
-                    <label for="lname" class="subscribe-label">Last Name:</label><br><br>
-                    <input type="text" id="lname" name="lname" class="subscribe-input" placeholder="Enter your last name"><br><br>
-                    <label for="email" class="subscribe-label">Email:</label><br><br>
-                    <input type="email" id="email" name="email" class="subscribe-input" placeholder="Enter your email"><br><br>
-                    <label for="password" class="subscribe-label">Password:</label><br><br>
-                    <input type="password" id="password" name="password" class="subscribe-input" placeholder="Enter you password"><br><br>
-                    <label for="cfpassword" class="subscribe-label">Confirm Password:</label><br><br>
-                    <input type="password" id="cfpassword" name="cfpassword" class="subscribe-input" placeholder="Enter you password again"><br><br>
+                <form class="register-form">
+                    <label for="fname" class="register-label">First Name:</label><br><br>
+                    <input type="text" id="fname" name="fname" class="register-input" placeholder="Enter your first name"><br><br>
+                    <label for="lname" class="register-label">Last Name:</label><br><br>
+                    <input type="text" id="lname" name="lname" class="register-input" placeholder="Enter your last name"><br><br>
+                    <label for="email" class="register-label">Email:</label><br><br>
+                    <input type="email" id="email" name="email" class="register-input" placeholder="Enter your email"><br><br>
+                    <label for="password" class="register-label">Password:</label><br><br>
+                    <input type="password" id="password" name="password" class="register-input" placeholder="Enter you password"><br><br>
+                    <label for="cfpassword" class="register-label">Confirm Password:</label><br><br>
+                    <input type="password" id="cfpassword" name="cfpassword" class="register-input" placeholder="Enter you password again"><br><br>
                     <input type="checkbox"><span class="submit-text">I agree with all <a href="#">Terms and Conditions</a></span>
                     <br><br>
-                    <input type="submit" value="Submit">
+                    <button type="submit" name="submit">Register</button>
                 </form>
+                <h2 class="division-line"><span class="division-text">or</span></h2>
+                <div class="login-option"><a href="#" class="login-link">Login</a> if you already have an account</div>
             </div>
         </div>
         <!-- End Main Content -->

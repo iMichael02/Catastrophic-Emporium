@@ -51,7 +51,7 @@
                     <div class="strength-list">
                         <div class="strength-item item1"><i class="fa-solid fa-truck"></i> Free shipping within Hanoi</div>
                         <div class="strength-item item2"><i class="fa-solid fa-tag"></i> New sales every week</div>
-                        <div class="strength-item item3"><i class="fa-solid fa-copyright"></i> Abundant exclusive products</div>
+                        <div class="strength-item item3"><i class="fa-solid fa-copyright"></i> Exclusive products</div>
                     </div>
                 </div>
                 <!-- End Strength -->

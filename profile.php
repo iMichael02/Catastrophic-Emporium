@@ -1,3 +1,8 @@
+<?php
+include "./dbconnect.php";
+include "./load-profile.php";
+include "./functions.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +20,7 @@
             $("#footer").load("./asset/header&footer/footer.php");
         });
     </script>
-    <title>Blogs</title>
+    <title><?php echo $profile->fname." ".$profile->lname ?></title>
 </head>
 <body>
     <div class="page-wrapper">
@@ -45,35 +50,48 @@
                     <div class="profile-pic">
                         <img src="./logo/facebook_profile_image.png" alt="">
                     </div>
-                    <div class="name">Mike Sovereignborn</div>
-                    <div class="description">The Creator</div>
-                    <div class="followers">10k Followers | 100k <i class="fa-solid fa-up-long"></i> | 0 <i class="fa-solid fa-down-long"></i></div>
+                    <div class="name"><?php echo $profile->display_name ?></div>
+                    <div class="description">
+                        <?php
+                        if ($profile->title->the_creator == "") {
+                            if ($profile->title->certified_writer == "") {
+                                if ($profile->title->active_member == "") {
+                                    echo "New Member";
+                                } else {
+                                    echo "Active Member";
+                                }
+                            } else {
+                                echo "Certified Writer";
+                            }
+                        } else {
+                            echo "The Creator";
+                        }
+                        ?>
+                    </div>
+                    <div class="followers"><?php echo sizeof($profile->followers) ?> Followers | 
+                    <?php echo $total_upvote ?> <i class="fa-solid fa-up-long"></i> | <?php echo $total_downvote ?> <i class="fa-solid fa-down-long"></i></div>
                     <button class="follow-button">Follow</button>
                 </div>
                 <div class="profile-block block2">
                     <div class="info row-name">
                         <div class="title">Full Name</div>
-                        <div class="name">Mike Sovereignborn</div>
+                        <div class="name"><?php echo $profile->fname." ".$profile->lname ?></div>
                     </div>
                     <div class="info row-joint-date">
                         <div class="title">Joint Date</div>
-                        <div class="joint-date">Apr 4th, 2023</div>
-                    </div>
-                    <div class="info row-email">
-                        <div class="title">email</div>
-                        <div class="email">btm.qtv@gmail.com</div>
+                        <div class="joint-date"><?php echo $profile->joint_date ?></div>
                     </div>
                     <div class="info row-phone">
                         <div class="title">Phone</div>
-                        <div class="phone">88888888</div>
+                        <div class="phone"><?php echo $profile->phone ?></div>
                     </div>
                     <div class="info row-address">
                         <div class="title">Address</div>
-                        <div class="address">666 Hell Street</div>
+                        <div class="address"><?php echo $profile->address ?></div>
                     </div>
                     <div class="info row-blogs">
                         <div class="title">Blogs Written</div>
-                        <div class="blogs">420</div>
+                        <div class="blogs"><?php echo sizeof($profile->blogs) ?></div>
                     </div>
                 </div>
                 <div class="profile-block block3">
@@ -81,23 +99,23 @@
                     <div class="media-container">
                         <div class="media row-facebook">
                             <div class="icon facebook"><i class="fa-brands fa-facebook-f"></i></div>
-                            <div class="link"><a href="https://www.facebook.com/P0st.Hum4n">facebook.com/P0st.Hum4n</a></div>
+                            <div class="link"><a href="<?php echo $profile->media[0] ?>"><?php echo $profile->media[0] ?></a></div>
                         </div>
                         <div class="media row-instagram">
                             <div class="icon instagram"><i class="fa-brands fa-square-instagram"></i></div>
-                            <div class="link"><a href="https://www.instagram.com/imichael002">instagram.com/imichael002</a></div>
+                            <div class="link"><a href="<?php echo $profile->media[1] ?>"><?php echo $profile->media[1] ?></a></div>
                         </div>
                         <div class="media row-reddit">
                             <div class="icon reddit"><i class="fa-brands fa-reddit-alien"></i></div>
-                            <div class="link"><a href="https://www.reddit.com/user/MikeOzzy">reddit.com/user/MikeOzzy</a></div>
+                            <div class="link"><a href="<?php echo $profile->media[2] ?>"><?php echo $profile->media[2] ?></a></div>
                         </div>
                         <div class="media row-twitter">
                             <div class="icon twitter"><i class="fa-brands fa-twitter"></i></div>
-                            <div class="link"><a href="#"></a></div>
+                            <div class="link"><a href="<?php echo $profile->media[3] ?>"><?php echo $profile->media[3] ?></a></div>
                         </div>
                         <div class="media row-google">
-                            <div class="icon google"><i class="fa-brands fa-google"></i></div>
-                            <div class="link">btm.qtv@gmail.com</div>
+                            <div class="icon google"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="link"><?php echo $profile->media[4] ?></div>
                         </div>
                     </div>
                 </div>
@@ -108,227 +126,43 @@
                     </div>
                     <div class="slide-content">
                         <div class="blogs-content" id="blogs-content">
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog1.png" alt="">
+                            <?php
+                            foreach($display_list as $blog) {
+                                ?>
+                                <div class="blog">
+                                    <div class="thumbnail">
+                                        <img src="data:image/png;base64,<?php echo $blog->thumbnail ?>" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <div class="title"><?php echo $blog->title ?></div>
+                                        <div class="time-date"><?php echo $blog->time ?></div>
+                                    </div>
+                                    <a href="./blog-page.php" class="blog-link">
+                                        <span class="link-spanner"></span>
+                                    </a>
                                 </div>
-                                <div class="info">
-                                    <div class="title">Metallica's "72 Seasons" Album Review</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog1.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Metallica's "72 Seasons" Album Review</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog1.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Metallica's "72 Seasons" Album Review</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog1.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Metallica's "72 Seasons" Album Review</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog1.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Metallica's "72 Seasons" Album Review</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog1.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Metallica's "72 Seasons" Album Review</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog2.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Top 10 Albums of 2023 So Far</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog2.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Top 10 Albums of 2023 So Far</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog2.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Top 10 Albums of 2023 So Far</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog2.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Top 10 Albums of 2023 So Far</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog2.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Top 10 Albums of 2023 So Far</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog2.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Top 10 Albums of 2023 So Far</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog3.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog3.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog3.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog3.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog3.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
-                            <div class="blog">
-                                <div class="thumbnail">
-                                    <img src="./images/blog/blog3.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                    <div class="time-date">9:04 AM, Apr 20th, 2023</div>
-                                </div>
-                                <a href="#" class="blog-link">
-                                    <span class="link-spanner"></span>
-                                </a>
-                            </div>
+                                <?php
+                            }
+                            ?>
                             <div class="blog-nav">
                                 <ul class="blog-nav-container" id="blog-nav-container">
-                                    <li class="blog-nav-item" onclick="blogChange(this)" id="blog-nav-item1">1</li>
-                                    <li class="blog-nav-item" onclick="blogChange(this)" id="blog-nav-item2">2</li>
-                                    <li class="blog-nav-item" onclick="blogChange(this)" id="blog-nav-item3">3</li>
+                                    <?php
+                                    for ($i = 1; $i <= $pages; $i++) {
+                                        if ($page == $i) {
+                                            ?>
+                                            <li class="blog-nav-item selected"><a href="./profile.php?id=<?php echo $profile->_id?>&page=<?php echo $i?>"><?php echo $i?></a></li>
+                                            <?php
+                                        } elseif ($page == "" && $i == 1) {
+                                            ?>
+                                            <li class="blog-nav-item selected"><a href="./profile.php?id=<?php echo $profile->_id?>&page=<?php echo $i?>"><?php echo $i?></a></li>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <li class="blog-nav-item"><a href="./profile.php?id=<?php echo $profile->_id?>&page=<?php echo $i?>"><?php echo $i?></a></li>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                         </div>
@@ -336,34 +170,24 @@
                             <div class="timeline">
                                 <div class="time-stamp">
                                     <div class="time-stamp-content">
-                                        <h3 class="date">Apr 4th, 2023</h3>
+                                        <h3 class="date"><?php echo $profile->joint_date ?></h3>
                                         <p class="achievement">Joint Catastrophic Emporium</p>
                                     </div>
                                 </div>
-                                <div class="time-stamp">
-                                    <div class="time-stamp-content">
-                                        <h3 class="date">Apr 20th, 2023</h3>
-                                        <p class="achievement">First Blog</p>
-                                    </div>
-                                </div>
-                                <div class="time-stamp">
-                                    <div class="time-stamp-content">
-                                        <h3 class="date">Apr 21st, 2023</h3>
-                                        <p class="achievement">Active Member</p>
-                                    </div>
-                                </div>
-                                <div class="time-stamp">
-                                    <div class="time-stamp-content">
-                                        <h3 class="date">Apr 22th, 2023</h3>
-                                        <p class="achievement">Certified Writer</p>
-                                    </div>
-                                </div>
-                                <div class="time-stamp">
-                                    <div class="time-stamp-content">
-                                        <h3 class="date">Apr 24th, 2023</h3>
-                                        <p class="achievement">The Creator</p>
-                                    </div>
-                                </div>
+                                <?php
+                                if ($timeline != []) {
+                                    for ($i = 0; $i < sizeof($timeline); $i++) {
+                                        ?>
+                                        <div class="time-stamp">
+                                            <div class="time-stamp-content">
+                                                <h3 class="date"><?php echo substr($timeline[$i][0]->time, 0, 10) ?></h3>
+                                                <p class="achievement"><?php echo $timeline[$i][1] ?></p>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>

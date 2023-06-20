@@ -19,8 +19,7 @@ body {
   height: 40px;
   max-height: 40px;
 }
-
-.header-container {
+.header .header-container {
   width: 70%;
   position: absolute;
   display: flex;
@@ -33,20 +32,20 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.header-container div {
+.header .header-container div {
   text-align: center;
   padding: 4px 10px;
   text-decoration: none;
 }
-.header-container .slogan {
+.header .header-container .slogan {
   flex-grow: 1;
   text-align: left;
 }
-.header-container .header-item a {
+.header .header-container .header-item a {
   color: #ffffff;
   text-decoration: none;
 }
-.header-container .header-item a:hover {
+.header .header-container .header-item a:hover {
   filter: brightness(0.8);
 }
 
@@ -57,8 +56,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-.topnav-container {
+.topnavbar .topnav-container {
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -66,17 +64,15 @@ body {
   height: 100%;
   width: 70%;
 }
-
-#logo {
+.topnavbar .topnav-container .home #logo {
   height: 70px;
 }
-
-.topnav {
+.topnavbar .topnav-container .topnav {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.topnav a {
+.topnavbar .topnav-container .topnav a {
   color: #ffffff;
   float: left;
   text-align: center;
@@ -86,7 +82,7 @@ body {
   font-size: 20px;
   font-family: "Metal Mania";
 }
-.topnav a::after {
+.topnavbar .topnav-container .topnav a::after {
   content: "";
   display: block;
   width: 0;
@@ -95,45 +91,43 @@ body {
   background: linear-gradient(to right, #ffffff 0% 87%, transparent 87% 95%, #ffffff 95% 100%);
   transition: width 0.3s;
 }
-.topnav a:hover::after {
+.topnavbar .topnav-container .topnav a:hover::after {
   width: 100%;
 }
-.topnav form .search-form {
+.topnavbar .topnav-container .topnav form .search-form {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.topnav form .search-form .button {
+.topnavbar .topnav-container .topnav form .search-form .button {
   float: right;
   background-color: #111111;
   color: #ffffff;
   border: none;
   font-size: 20px;
+  cursor: pointer;
 }
-.topnav form .search-form .search-field {
+.topnavbar .topnav-container .topnav form .search-form .search-field {
   font-size: 20px;
   font-family: "Metal Mania";
   float: right;
   padding: 6px;
   margin-top: 5px;
 }
-
-.topnav-icon {
+.topnavbar .topnav-container .topnav-icon {
   font-size: 30px;
   color: #ffffff;
   height: 70px;
   display: none;
 }
-.topnav-icon a {
+.topnavbar .topnav-container .topnav-icon a {
   padding: 20px;
 }
-
-.topnav-icon a:hover {
+.topnavbar .topnav-container .topnav-icon a:hover {
   background-color: #ffffff;
   color: #111111;
 }
-
-.topnav-icon a.active {
+.topnavbar .topnav-container .topnav-icon a .active {
   background-color: #ffffff;
   color: #111111;
 }
@@ -267,13 +261,15 @@ body {
   font-size: 18px;
   background-color: #570000;
   color: #ffffff;
-  border: 1px solid #ffffff;
   border-radius: 5px;
   padding: 10px;
   margin-left: 10px;
+  border: none;
 }
 .footer .footer-container .footer-row .footer-col-subscribe .subscribe-field form .subscribe-form .subscribe-button:hover {
-  background-color: #ad0000;
+  background-color: #ffffff;
+  color: #111111;
+  border: 2px solid #111111;
   cursor: pointer;
 }
 .footer .footer-container .footer-row .footer-about-us {
@@ -918,30 +914,63 @@ body {
   background-color: #ffffff;
   width: 40%;
 }
-.main-content-register .main-content-container .subscribe-form {
+.main-content-register .main-content-container .register-form {
   padding: 2vh;
   font-family: "Metal Mania";
 }
-.main-content-register .main-content-container .subscribe-form .subscribe-label {
+.main-content-register .main-content-container .register-form .register-label {
   font-size: 4vh;
 }
-.main-content-register .main-content-container .subscribe-form .subscribe-input {
+.main-content-register .main-content-container .register-form .register-input {
   font-family: "Metal Mania";
   font-size: 3vh;
   padding: 4px;
   width: 400px;
 }
-.main-content-register .main-content-container .subscribe-form .submit-text a {
+.main-content-register .main-content-container .register-form .submit-text a {
   text-decoration: none;
   color: #ad0000;
 }
-.main-content-register .main-content-container .subscribe-form input[type=submit] {
+.main-content-register .main-content-container .register-form .submit-text a:hover {
+  text-decoration: underline;
+}
+.main-content-register .main-content-container .register-form button[type=submit] {
   padding: 10px 40px;
   font-family: "Metal Mania";
   font-size: 3vh;
   background-color: #570000;
   color: #ffffff;
   border-radius: 10px;
+  cursor: pointer;
+}
+.main-content-register .main-content-container .register-form button[type=submit]:hover {
+  color: #111111;
+  background-color: #ffffff;
+  border: 2px solid #111111;
+}
+.main-content-register .main-content-container .division-line {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #cccccc;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+}
+.main-content-register .main-content-container .division-line .division-text {
+  font-family: "Metal Mania";
+  background: #ffffff;
+  padding: 0 10px;
+}
+.main-content-register .main-content-container .login-option {
+  font-family: "Metal Mania";
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+.main-content-register .main-content-container .login-option .login-link {
+  text-decoration: none;
+  color: #ad0000;
+}
+.main-content-register .main-content-container .login-option .login-link:hover {
+  text-decoration: underline;
 }
 
 /* Main Content */
@@ -1179,6 +1208,7 @@ body {
 .main-content-store .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-name {
   font-size: 20px;
   padding: 5px;
+  text-align: center;
 }
 .main-content-store .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-price {
   font-size: 20px;
@@ -1223,12 +1253,6 @@ body {
 .main-content-store .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .shopping-option-link:hover {
   filter: brightness(1.5);
 }
-.main-content-store .main-content-container .mid-grid #page2 {
-  display: none;
-}
-.main-content-store .main-content-container .mid-grid #page3 {
-  display: none;
-}
 .main-content-store .main-content-container .mid-grid .page-nav {
   display: flex;
   align-items: center;
@@ -1242,23 +1266,36 @@ body {
 }
 .main-content-store .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item {
   float: left;
-  padding: 13px 15px;
-  width: 20px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   font-size: 18px;
   border-radius: 10px;
   margin: 3px;
-}
-.main-content-store .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:nth-child(1) {
-  background-color: #570000;
-  color: #ffffff;
-}
-.main-content-store .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:not(:nth-child(1)) {
   background-color: #dedede;
+}
+.main-content-store .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item a {
+  color: #111111;
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
 }
 .main-content-store .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:hover {
   cursor: pointer;
   filter: brightness(1.5);
+}
+.main-content-store .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item a {
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
+}
+.main-content-store .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item.selected {
+  background-color: #570000;
+}
+.main-content-store .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item.selected a {
+  color: #ffffff;
 }
 .main-content-store .main-content-container .right-grid {
   grid-column: 18/21;
@@ -1414,13 +1451,13 @@ body {
 .main-content-blogs .main-content-container .blog .blog-container .post-title-and-author .post-author .author-info .title {
   font-size: 16px;
 }
-.main-content-blogs .main-content-container .time-date {
+.main-content-blogs .main-content-container .blog .blog-container .time-date {
   font-family: "Metal Mania";
   font-size: 16px;
   text-align: right;
   padding: 10px;
 }
-.main-content-blogs .main-content-container .blog-link .link-spanner {
+.main-content-blogs .main-content-container .blog .blog-link .link-spanner {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1778,8 +1815,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Metal Mania";
-  padding-top: 20px;
 }
 .main-content-profile .main-content-container .block4 .slide-content .blogs-content .blog-nav .blog-nav-container {
   list-style-type: none;
@@ -1789,23 +1824,30 @@ body {
 }
 .main-content-profile .main-content-container .block4 .slide-content .blogs-content .blog-nav .blog-nav-container .blog-nav-item {
   float: left;
-  padding: 13px 15px;
-  width: 20px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   font-size: 18px;
   border-radius: 10px;
   margin: 3px;
-}
-.main-content-profile .main-content-container .block4 .slide-content .blogs-content .blog-nav .blog-nav-container .blog-nav-item:nth-child(1) {
-  background-color: #570000;
-  color: #ffffff;
-}
-.main-content-profile .main-content-container .block4 .slide-content .blogs-content .blog-nav .blog-nav-container .blog-nav-item:not(:nth-child(1)) {
   background-color: #dedede;
+}
+.main-content-profile .main-content-container .block4 .slide-content .blogs-content .blog-nav .blog-nav-container .blog-nav-item a {
+  color: #111111;
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
 }
 .main-content-profile .main-content-container .block4 .slide-content .blogs-content .blog-nav .blog-nav-container .blog-nav-item:hover {
   cursor: pointer;
-  filter: brightness(1.1);
+  filter: brightness(1.5);
+}
+.main-content-profile .main-content-container .block4 .slide-content .blogs-content .blog-nav .blog-nav-container .blog-nav-item.selected {
+  background-color: #570000;
+}
+.main-content-profile .main-content-container .block4 .slide-content .blogs-content .blog-nav .blog-nav-container .blog-nav-item.selected a {
+  color: #ffffff;
 }
 .main-content-profile .main-content-container .block4 .slide-content .achievements-content {
   display: none;
@@ -2741,12 +2783,6 @@ body {
 .main-content-band-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .shopping-option-link:hover {
   filter: brightness(1.5);
 }
-.main-content-band-page .main-content-container .mid-grid #page2 {
-  display: none;
-}
-.main-content-band-page .main-content-container .mid-grid #page3 {
-  display: none;
-}
 .main-content-band-page .main-content-container .mid-grid .page-nav {
   display: flex;
   align-items: center;
@@ -2760,23 +2796,30 @@ body {
 }
 .main-content-band-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item {
   float: left;
-  padding: 13px 15px;
-  width: 20px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   font-size: 18px;
   border-radius: 10px;
   margin: 3px;
-}
-.main-content-band-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:nth-child(1) {
-  background-color: #570000;
-  color: #ffffff;
-}
-.main-content-band-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:not(:nth-child(1)) {
   background-color: #dedede;
+}
+.main-content-band-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item a {
+  color: #111111;
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
 }
 .main-content-band-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:hover {
   cursor: pointer;
-  filter: brightness(1.1);
+  filter: brightness(1.5);
+}
+.main-content-band-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item.selected {
+  background-color: #570000;
+}
+.main-content-band-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item.selected a {
+  color: #ffffff;
 }
 .main-content-band-page .main-content-container .right-grid {
   grid-column: 18/21;
@@ -3012,6 +3055,7 @@ body {
 .main-content-genre-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-name {
   font-size: 20px;
   padding: 5px;
+  text-align: center;
 }
 .main-content-genre-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-price {
   font-size: 20px;
@@ -3056,12 +3100,6 @@ body {
 .main-content-genre-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .shopping-option-link:hover {
   filter: brightness(1.5);
 }
-.main-content-genre-page .main-content-container .mid-grid #page2 {
-  display: none;
-}
-.main-content-genre-page .main-content-container .mid-grid #page3 {
-  display: none;
-}
 .main-content-genre-page .main-content-container .mid-grid .page-nav {
   display: flex;
   align-items: center;
@@ -3075,23 +3113,36 @@ body {
 }
 .main-content-genre-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item {
   float: left;
-  padding: 13px 15px;
-  width: 20px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   font-size: 18px;
   border-radius: 10px;
   margin: 3px;
-}
-.main-content-genre-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:nth-child(1) {
-  background-color: #570000;
-  color: #ffffff;
-}
-.main-content-genre-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:not(:nth-child(1)) {
   background-color: #dedede;
+}
+.main-content-genre-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item a {
+  color: #111111;
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
 }
 .main-content-genre-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:hover {
   cursor: pointer;
-  filter: brightness(1.1);
+  filter: brightness(1.5);
+}
+.main-content-genre-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item a {
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
+}
+.main-content-genre-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item.selected {
+  background-color: #570000;
+}
+.main-content-genre-page .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item.selected a {
+  color: #ffffff;
 }
 .main-content-genre-page .main-content-container .right-grid {
   grid-column: 18/21;
@@ -3133,6 +3184,591 @@ body {
   color: #570000;
 }
 
+.main-content-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url("/images/background/homebg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+.main-content-search .breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2px 0;
+}
+.main-content-search .breadcrumb .breadcrumb-container {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  background-color: #111111;
+}
+.main-content-search .breadcrumb .breadcrumb-container .breadcrumb-item {
+  padding: 10px 0;
+  background-color: #570000;
+  height: 100%;
+  padding-left: 10px;
+  font-family: "Metal Mania";
+  font-size: 18px;
+  color: #cccccc;
+}
+.main-content-search .breadcrumb .breadcrumb-container .breadcrumb-item a {
+  color: #cccccc;
+  text-decoration: none;
+}
+.main-content-search .breadcrumb .breadcrumb-container .breadcrumb-item a:hover {
+  color: #ffffff;
+}
+.main-content-search .breadcrumb .breadcrumb-container .breadcrumb-item + .breadcrumb-item::before {
+  color: #111111;
+  content: "/ ";
+}
+.main-content-search .breadcrumb .breadcrumb-container .triangle {
+  padding: 0 !important;
+  padding-left: 0 !important;
+  background-color: transparent !important;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 21px solid transparent;
+  border-bottom: 21px solid transparent;
+  border-left: 21px solid #570000;
+  border-right: 15px solid transparent;
+}
+.main-content-search .breadcrumb .breadcrumb-container .triangle::before {
+  content: none !important;
+}
+.main-content-search .main-content-container {
+  margin-bottom: 2px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: auto, auto;
+  grid-gap: 10px;
+  font-family: "Metal Mania";
+}
+.main-content-search .main-content-container .left-grid {
+  grid-column: 1/4;
+  grid-row: 1/2;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.main-content-search .main-content-container .left-grid .product-type-title {
+  padding: 10px 10px 0 10px;
+  font-size: 20px;
+  color: #570000;
+}
+.main-content-search .main-content-container .left-grid .product-type .product-option {
+  list-style: none;
+  font-size: 18px;
+}
+.main-content-search .main-content-container .mid-grid {
+  grid-column: 4/18;
+  grid-row: 1/2;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  padding: 1vh 0;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item {
+  padding: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: scale(1.05);
+  transition-duration: 0.3s;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container:not(:hover) {
+  transform: scale(1);
+  transition-duration: 0.3s;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-image img {
+  border-radius: 10px;
+  aspect-ratio: 1/1;
+  max-width: 100%;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-link {
+  text-decoration: none;
+  color: #111111;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-title {
+  padding: 5px;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-name {
+  font-size: 20px;
+  padding: 5px;
+  text-align: center;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-price {
+  font-size: 20px;
+  padding: 5px;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 20px;
+  height: 40px;
+  align-items: center;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .buy-now-link {
+  grid-column: 1/4;
+  height: 100%;
+  border-right: 1px solid #ffffff;
+  border-radius: 0 0 0 10px;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .buy-now {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .add-to-cart-link {
+  grid-column: 4/5;
+  height: 100%;
+  border-radius: 0 0 10px 0;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .add-to-cart {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .shopping-option-link {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #570000;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .shopping-option-link:hover {
+  filter: brightness(1.5);
+}
+.main-content-search .main-content-container .mid-grid .page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-content-search .main-content-container .mid-grid .page-nav .page-nav-container {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.main-content-search .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item {
+  float: left;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 10px;
+  margin: 3px;
+  background-color: #dedede;
+}
+.main-content-search .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item a {
+  color: #111111;
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
+}
+.main-content-search .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item:hover {
+  cursor: pointer;
+  filter: brightness(1.5);
+}
+.main-content-search .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item a {
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
+}
+.main-content-search .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item.selected {
+  background-color: #570000;
+}
+.main-content-search .main-content-container .mid-grid .page-nav .page-nav-container .page-nav-item.selected a {
+  color: #ffffff;
+}
+.main-content-search .main-content-container .right-grid {
+  grid-column: 18/21;
+  grid-row: 1/2;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.main-content-search .main-content-container .right-grid .bands-title {
+  padding: 10px 10px 0 10px;
+  font-size: 20px;
+  color: #570000;
+}
+.main-content-search .main-content-container .right-grid .bands .bands-option {
+  list-style: none;
+  font-size: 18px;
+}
+.main-content-search .main-content-container .right-grid .bands .bands-option .band {
+  text-decoration: none;
+  color: #111111;
+}
+.main-content-search .main-content-container .right-grid .bands .bands-option .view-all {
+  text-decoration: none;
+  color: #570000;
+}
+.main-content-search .main-content-container .right-grid .genres-title {
+  padding: 10px 10px 0 10px;
+  font-size: 20px;
+  color: #570000;
+}
+.main-content-search .main-content-container .right-grid .genres .genres-option {
+  list-style: none;
+  font-size: 18px;
+}
+.main-content-search .main-content-container .right-grid .genres .genres-option .genre {
+  text-decoration: none;
+  color: #111111;
+}
+.main-content-search .main-content-container .right-grid .genres .genres-option .view-all {
+  text-decoration: none;
+  color: #570000;
+}
+.main-content-search .main-content-container .bottom-grid {
+  grid-column: 4/18;
+  grid-row: 2/3;
+  background-color: #ffffff;
+  width: 100%;
+  padding: 1vh 0;
+}
+.main-content-search .main-content-container .bottom-grid .blog {
+  position: relative;
+  border-top: 0.5px solid #cccccc;
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-container {
+  width: 100%;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr 4fr 1fr;
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-container .thumbnail img {
+  padding: 15px;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-container .post-title-and-author .post-title {
+  padding: 10px 10px 0 30px;
+  font-family: "Metal Mania";
+  font-size: 30px;
+  color: #111111;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-container .post-title-and-author .post-author {
+  display: flex;
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-container .post-title-and-author .post-author .profile-pic img {
+  width: 40px;
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-left: 30px;
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-container .post-title-and-author .post-author .author-info {
+  margin-left: 15px;
+  font-family: "Metal Mania";
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-container .post-title-and-author .post-author .author-info .name {
+  padding: 10px 0 0 0;
+  font-size: 20px;
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-container .post-title-and-author .post-author .author-info .joint-date {
+  font-size: 16px;
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-container .post-title-and-author .post-author .author-info .title {
+  font-size: 16px;
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-container .time-date {
+  font-family: "Metal Mania";
+  font-size: 16px;
+  text-align: right;
+  padding: 10px;
+}
+.main-content-search .main-content-container .bottom-grid .blog .blog-link .link-spanner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.main-content-search .main-content-container .bottom-grid .page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-content-search .main-content-container .bottom-grid .page-nav .page-nav-container {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.main-content-search .main-content-container .bottom-grid .page-nav .page-nav-container .page-nav-item {
+  float: left;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 10px;
+  margin: 3px;
+  background-color: #dedede;
+}
+.main-content-search .main-content-container .bottom-grid .page-nav .page-nav-container .page-nav-item a {
+  color: #111111;
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
+}
+.main-content-search .main-content-container .bottom-grid .page-nav .page-nav-container .page-nav-item:hover {
+  cursor: pointer;
+  filter: brightness(1.5);
+}
+.main-content-search .main-content-container .bottom-grid .page-nav .page-nav-container .page-nav-item a {
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
+}
+.main-content-search .main-content-container .bottom-grid .page-nav .page-nav-container .page-nav-item.selected {
+  background-color: #570000;
+}
+.main-content-search .main-content-container .bottom-grid .page-nav .page-nav-container .page-nav-item.selected a {
+  color: #ffffff;
+}
+
+/* Main Content */
+.main-content-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  background: url("/images/background/homebg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+.main-content-login .breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2px 0;
+}
+.main-content-login .breadcrumb .breadcrumb-container {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  background-color: #111111;
+}
+.main-content-login .breadcrumb .breadcrumb-container .breadcrumb-item {
+  padding: 10px 0;
+  background-color: #570000;
+  height: 100%;
+  padding-left: 10px;
+  font-family: "Metal Mania";
+  font-size: 18px;
+  color: #cccccc;
+}
+.main-content-login .breadcrumb .breadcrumb-container .breadcrumb-item a {
+  color: #cccccc;
+  text-decoration: none;
+}
+.main-content-login .breadcrumb .breadcrumb-container .breadcrumb-item a:hover {
+  color: #ffffff;
+}
+.main-content-login .breadcrumb .breadcrumb-container .breadcrumb-item + .breadcrumb-item::before {
+  color: #111111;
+  content: "/ ";
+}
+.main-content-login .breadcrumb .breadcrumb-container .triangle {
+  padding: 0 !important;
+  padding-left: 0 !important;
+  background-color: transparent !important;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 21px solid transparent;
+  border-bottom: 21px solid transparent;
+  border-left: 21px solid #570000;
+  border-right: 15px solid transparent;
+}
+.main-content-login .breadcrumb .breadcrumb-container .triangle::before {
+  content: none !important;
+}
+.main-content-login .main-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 40%;
+}
+.main-content-login .main-content-container .login-form {
+  padding: 2vh;
+  font-family: "Metal Mania";
+}
+.main-content-login .main-content-container .login-form .login-label {
+  font-size: 4vh;
+}
+.main-content-login .main-content-container .login-form .login-input {
+  font-family: "Metal Mania";
+  font-size: 3vh;
+  padding: 4px;
+  width: 400px;
+}
+.main-content-login .main-content-container .login-form .submit-text a {
+  text-decoration: none;
+  color: #ad0000;
+}
+.main-content-login .main-content-container .login-form .submit-text a:hover {
+  text-decoration: underline;
+}
+.main-content-login .main-content-container .login-form button[type=submit] {
+  padding: 10px 40px;
+  font-family: "Metal Mania";
+  font-size: 3vh;
+  background-color: #570000;
+  color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.main-content-login .main-content-container .login-form button[type=submit]:hover {
+  color: #111111;
+  background-color: #ffffff;
+  border: 2px solid #111111;
+}
+.main-content-login .main-content-container .division-line {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #cccccc;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+}
+.main-content-login .main-content-container .division-line .division-text {
+  font-family: "Metal Mania";
+  background: #ffffff;
+  padding: 0 10px;
+}
+.main-content-login .main-content-container .login-option {
+  font-family: "Metal Mania";
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+.main-content-login .main-content-container .login-option .login-link {
+  text-decoration: none;
+  color: #ad0000;
+}
+.main-content-login .main-content-container .login-option .login-link:hover {
+  text-decoration: underline;
+}
+
+.page-wrapper-admin {
+  font-family: "PT Sans";
+}
+.page-wrapper-admin .header-admin {
+  display: flex;
+  align-items: center;
+  background-color: #111111;
+  width: 100%;
+  border-bottom: 2px solid #570000;
+}
+.page-wrapper-admin .header-admin .home #logo {
+  height: 60px;
+}
+.page-wrapper-admin .header-admin .topnav {
+  flex-grow: 1;
+  text-align: right;
+}
+.page-wrapper-admin .header-admin .topnav .topnav-item {
+  position: relative;
+  display: inline-block;
+}
+.page-wrapper-admin .header-admin .topnav .topnav-item:active .dropdown-content {
+  display: block;
+}
+.page-wrapper-admin .header-admin .topnav .topnav-item .dropbtn {
+  color: #ffffff;
+  background-color: #111111;
+  padding: 16px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+.page-wrapper-admin .header-admin .topnav .topnav-item .dropbtn span[data-count]:after {
+  position: absolute;
+  right: 14%;
+  top: 10%;
+  content: attr(data-count);
+  font-size: 50%;
+  padding: 0.6em;
+  border-radius: 100%;
+  line-height: 0.75em;
+  color: #ffffff;
+  background: #ad0000;
+  text-align: center;
+  font-weight: bold;
+}
+.page-wrapper-admin .header-admin .topnav .topnav-item .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(17, 17, 17, 0.8);
+  text-align: left;
+  z-index: 1;
+}
+.page-wrapper-admin .header-admin .topnav .topnav-item .dropdown-content a {
+  color: #111111;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.page-wrapper-admin .header-admin .topnav .topnav-item .dropdown-content a:hover {
+  background-color: #dedede;
+}
+.page-wrapper-admin .main-content-admin {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  height: 100vh;
+}
+.page-wrapper-admin .main-content-admin .side-bar {
+  display: flex;
+  flex-direction: column;
+  background-color: #111111;
+  color: #ffffff;
+  text-align: center;
+  min-height: 100%;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-item {
+  font-size: 20px;
+  padding: 15px 0px;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-item:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
 /* Small Mobile */
 @media only screen and (max-width: 319px) {
   /* Header */

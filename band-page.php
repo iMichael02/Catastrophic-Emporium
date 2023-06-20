@@ -1,6 +1,7 @@
 <?php
 include "./dbconnect.php";
 include "./load-band.php";
+include "./functions.php";
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ include "./load-band.php";
             $("#footer").load("./asset/header&footer/footer.php");
         });
     </script>
-    <title>Bring Me The Horizon Store</title>
+    <title><?php echo $band->name ?> Store</title>
 </head>
 <body>
     <div class="page-wrapper">
@@ -38,7 +39,8 @@ include "./load-band.php";
             <div class="breadcrumb">
                 <div class="breadcrumb-container">
                     <div class="breadcrumb-item"><a href="./index.php">Home</a></div>
-                    <div class="breadcrumb-item">Bands</div>
+                    <div class="breadcrumb-item"><a href="./bands.php">Bands</a></div>
+                    <div class="breadcrumb-item"><?php echo $band->name?></div>
                     <div class="breadcrumb-item triangle"></div>
                 </div>
             </div>
@@ -46,27 +48,25 @@ include "./load-band.php";
             <div class="main-content-container">
                 <div class="band-description">
                     <div class="banner">
-                        <img src="<?php echo "data:image/png;base64,".base64_encode( $result_band['banner'] );?>" alt="">
+                        <img src="<?php echo "data:image/png;base64,".$band->banner ;?>" alt="">
                     </div>
                     <div class="info-container">
                         <div class="info">
-                            <p class="name"><?php echo $result_band['name'];?></p>
+                            <p class="name"><?php echo $band->name;?></p>
                             <div class="description">
-                                <p class="bibliography"><?php echo $result_band['bibliography']; ?></p>
+                                <p class="bibliography"><?php echo $band->bibliography; ?></p>
                                 <div class="collapsible">
                                     <?php
                                     for ($i = 0; $i < 5; $i++) {
-                                        if ($question[$i] != null) {
+                                        if ($band->questions[$i] != null) {
                                             ?>
                                             <div class="accordion">
-                                                <button type="button" class="accordion-button"><?php echo $question[$i]->question; ?></button>
+                                                <button type="button" class="accordion-button"><?php echo $band->questions[$i]; ?></button>
                                                 <div class="accordion-content">
-                                                    <p><?php echo $question[$i]->answer; ?></p>
+                                                    <p><?php echo $band->answers[$i]; ?></p>
                                                 </div>
                                             </div>
                                             <?php
-                                        } else {
-                                            continue;
                                         }
                                     }
                                     ?>
@@ -80,6 +80,7 @@ include "./load-band.php";
                     <ul class="product-type apparels">
                         <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">T-Shirts</li>
                         <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Sweat Shirts</li>
+                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Hoodies</li>
                         <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Shorts</li>
                         <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Pants</li>
                         <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Shoes</li>
@@ -116,14 +117,14 @@ include "./load-band.php";
                 <div class="mid-grid">
                     <div class="mid-grid-container">
                         <?php
-                        for ($i = 0; $i < sizeof($products_list); $i++) {
+                        foreach($products_list as $product) {
                             ?>
                             <div class="grid-item">
                                 <div class="grid-item-container">
-                                    <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="<?php echo "data:image/png;base64,".base64_encode( $products_list[$i]['image1'] );?>" alt=""></a></div>
-                                    <div class="grid-item-title"><?php echo $result_band['name'];?></div>
-                                    <div class="grid-item-name"><a href="#" class="grid-item-link"><?php echo $products_list[$i]['name'];?></a></div>
-                                    <div class="grid-item-price">280.000VND</div>
+                                    <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="<?php echo "data:image/png;base64,".$product->image1; ?>" alt=""></a></div>
+                                    <div class="grid-item-title"><?php echo $band->name;?></div>
+                                    <div class="grid-item-name"><a href="#" class="grid-item-link"><?php echo $product->name; ?></a></div>
+                                    <div class="grid-item-price"><?php echo commas($product->price);?>VND</div>
                                     <div class="grid-item-shopping-options">
                                         <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
                                         <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
@@ -136,9 +137,23 @@ include "./load-band.php";
                     </div>
                     <div class="page-nav">
                         <ul class="page-nav-container" id="page-nav-container">
-                            <li class="page-nav-item" onclick="pageChange(this)" id="page-nav-item1">1</li>
-                            <li class="page-nav-item" onclick="pageChange(this)" id="page-nav-item2">2</li>
-                            <li class="page-nav-item" onclick="pageChange(this)" id="page-nav-item3">3</li>
+                            <?php
+                            for ($i = 1; $i <= $pages; $i++) {
+                                if ($page == $i) {
+                                    ?>
+                                    <li class="page-nav-item selected"><a href="./band-page.php?id=<?php echo $band->_id ?>&page=<?php echo $i?>"><?php echo $i?></a></li>
+                                    <?php
+                                } elseif ($page == "" && $i == 1) {
+                                    ?>
+                                    <li class="page-nav-item selected"><a href="./band-page.php?id=<?php echo $band->_id ?>&page=<?php echo $i?>"><?php echo $i?></a></li>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <li class="page-nav-item"><a href="./band-page.php?id=<?php echo $band->_id ?>&page=<?php echo $i?>"><?php echo $i?></a></li>
+                                    <?php
+                                }
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>

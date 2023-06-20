@@ -62,12 +62,14 @@
 								font-size: 18px;
 								background-color: $color-primary-red;
 								color: $color-white;
-								border: 1px solid $color-white;
 								border-radius: 5px;
 								padding: 10px;
 								margin-left: 10px;
+								border: none;
 								&:hover {
-									background-color: $color-primary-light-red;
+									background-color: $color-white;
+									color: $color-primary-black;
+									border: 2px solid $color-primary-black;
 									cursor: pointer;
 								}
 							}

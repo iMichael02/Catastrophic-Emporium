@@ -40,27 +40,26 @@
             <!-- End Breadcrumb -->
             <div class="main-content-container">
                 <ul class="genres-list">
-                    <li class="genre"><a href="#">Black Metal</a></li>
-                    <li class="genre"><a href="#">Christian Metal</a></li>
-                    <li class="genre"><a href="#">Death Metal</a></li>
-                    <li class="genre"><a href="#">Deathcore</a></li>
-                    <li class="genre"><a href="#">Doom Metal</a></li>
-                    <li class="genre"><a href="#">Experimental Metal</a></li>
-                    <li class="genre"><a href="#">Extreme Metal</a></li>
-                    <li class="genre"><a href="#">Folk Metal</a></li>
-                    <li class="genre"><a href="#">Glam Metal</a></li>
-                    <li class="genre"><a href="#">Gothic Metal</a></li>
-                    <li class="genre"><a href="#">Grindcore</a></li>
-                    <li class="genre"><a href="#">Groove Metal</a></li>
-                    <li class="genre"><a href="#">Industrial Metal</a></li>
-                    <li class="genre"><a href="#">Black Metal</a></li>
-                    <li class="genre"><a href="#">Heavy Metal</a></li>
-                    <li class="genre"><a href="./genre-page.php">Metalcore</a></li>
-                    <li class="genre"><a href="#">Power Metal</a></li>
-                    <li class="genre"><a href="#">Progressive Metal</a></li>
-                    <li class="genre"><a href="#">Speed Metal</a></li>
-                    <li class="genre"><a href="#">Symphonic Metal</a></li>
-                    <li class="genre"><a href="#">Thrash Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=1">Avant-garde Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=2">Black Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=3">Christian Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=4">Death Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=5">Deathcore</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=6">Doom Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=7">Folk Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=8">Glam Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=9">Gothic Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=10">Grindcore</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=11">Groove Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=12">Industrial Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=13">Heavy Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=14">Metalcore</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=15">Nü Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=16">Power Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=17">Progressive Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=18">Speed Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=19">Symphonic Metal</a></li>
+                    <li class="genre"><a href="./genre-page.php?id=20">Thrash Metal</a></li>
                 </ul>
             </div>
         </div>

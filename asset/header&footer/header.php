@@ -36,10 +36,10 @@
                     <a class="topnav-item" href="./bands.php">Bands</a>
                     <a class="topnav-item" href="./genres.php">Genres</a>
                     <a class="topnav-item" href="./blogs.php">Blogs</a>
-                    <form action="">
+                    <form action="search.php" method="post">
                         <div class="search-form">
                             <button class="topnav-item button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <input class="topnav-item search-field" type="text" placeholder="Search...">
+                            <input class="topnav-item search-field" type="text" name="search" placeholder="Search...">
                         </div>
                     </form>
                 </div>

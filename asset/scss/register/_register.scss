@@ -64,13 +64,13 @@
 		flex-direction: column;
 		background-color: $color-white;
 		width: 40%;
-        .subscribe-form {
+        .register-form {
             padding: 2vh;
             font-family: $font-primary;
-            .subscribe-label {
+            .register-label {
                 font-size: 4vh;
             }
-            .subscribe-input {
+            .register-input {
                 font-family: $font-primary;
                 font-size: 3vh;
                 padding: 4px;
@@ -80,15 +80,48 @@
                 a {
                     text-decoration: none;
                     color: $color-primary-light-red;
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
-            input[type=submit] {
+            button[type=submit] {
                 padding: 10px 40px;
                 font-family: $font-primary;
                 font-size: 3vh;
                 background-color: $color-primary-red;
                 color: $color-white;
                 border-radius: 10px;
+                cursor: pointer;
+                &:hover {
+                    color: $color-primary-black;
+                    background-color: $color-white;
+                    border: 2px solid $color-primary-black;
+                }
+            }
+        }
+        .division-line {
+            width: 100%; 
+            text-align: center;
+            border-bottom: 1px solid $color-primary-grey;
+            line-height: 0.1em;
+            margin: 10px 0 20px;
+            .division-text {
+                font-family: $font-primary;
+                background: $color-white; 
+                padding:0 10px; 
+            }
+        }
+        .login-option {
+            font-family: $font-primary;
+            font-size: 20px;
+            padding-bottom: 20px;
+            .login-link {
+                text-decoration: none;
+                color: $color-primary-light-red;
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
     }
