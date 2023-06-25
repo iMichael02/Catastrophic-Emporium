@@ -68,7 +68,7 @@
             padding: 2vh;
             font-family: $font-primary;
             .login-label {
-                font-size: 4vh;
+                font-size: 24px;
             }
             .login-input {
                 font-family: $font-primary;
@@ -112,11 +112,11 @@
                 padding:0 10px; 
             }
         }
-        .login-option {
+        .register-option {
             font-family: $font-primary;
             font-size: 20px;
             padding-bottom: 20px;
-            .login-link {
+            .register-link {
                 text-decoration: none;
                 color: $color-primary-light-red;
                 &:hover {

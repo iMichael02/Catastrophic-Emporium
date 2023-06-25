@@ -915,17 +915,23 @@ body {
   width: 40%;
 }
 .main-content-register .main-content-container .register-form {
-  padding: 2vh;
+  padding: 30px;
   font-family: "Metal Mania";
 }
 .main-content-register .main-content-container .register-form .register-label {
-  font-size: 4vh;
+  font-size: 24px;
 }
 .main-content-register .main-content-container .register-form .register-input {
   font-family: "Metal Mania";
   font-size: 3vh;
   padding: 4px;
   width: 400px;
+}
+.main-content-register .main-content-container .register-form .password-notice {
+  font-family: "Metal Mania";
+  color: #111111;
+  font-size: 14px;
+  max-width: 400px;
 }
 .main-content-register .main-content-container .register-form .submit-text a {
   text-decoration: none;
@@ -957,6 +963,7 @@ body {
 }
 .main-content-register .main-content-container .division-line .division-text {
   font-family: "Metal Mania";
+  font-size: 20px;
   background: #ffffff;
   padding: 0 10px;
 }
@@ -3630,7 +3637,7 @@ body {
   font-family: "Metal Mania";
 }
 .main-content-login .main-content-container .login-form .login-label {
-  font-size: 4vh;
+  font-size: 24px;
 }
 .main-content-login .main-content-container .login-form .login-input {
   font-family: "Metal Mania";
@@ -3671,16 +3678,16 @@ body {
   background: #ffffff;
   padding: 0 10px;
 }
-.main-content-login .main-content-container .login-option {
+.main-content-login .main-content-container .register-option {
   font-family: "Metal Mania";
   font-size: 20px;
   padding-bottom: 20px;
 }
-.main-content-login .main-content-container .login-option .login-link {
+.main-content-login .main-content-container .register-option .register-link {
   text-decoration: none;
   color: #ad0000;
 }
-.main-content-login .main-content-container .login-option .login-link:hover {
+.main-content-login .main-content-container .register-option .register-link:hover {
   text-decoration: underline;
 }
 
@@ -3704,9 +3711,6 @@ body {
 .page-wrapper-admin .header-admin .topnav .topnav-item {
   position: relative;
   display: inline-block;
-}
-.page-wrapper-admin .header-admin .topnav .topnav-item:active .dropdown-content {
-  display: block;
 }
 .page-wrapper-admin .header-admin .topnav .topnav-item .dropbtn {
   color: #ffffff;
@@ -3748,27 +3752,154 @@ body {
 .page-wrapper-admin .header-admin .topnav .topnav-item .dropdown-content a:hover {
   background-color: #dedede;
 }
+.page-wrapper-admin .header-admin .topnav .topnav-item .dropdown-content.active {
+  display: block;
+}
 .page-wrapper-admin .main-content-admin {
   display: grid;
   grid-template-columns: 1fr 5fr;
   height: 100vh;
 }
 .page-wrapper-admin .main-content-admin .side-bar {
-  display: flex;
-  flex-direction: column;
   background-color: #111111;
   color: #ffffff;
-  text-align: center;
   min-height: 100%;
 }
-.page-wrapper-admin .main-content-admin .side-bar .side-bar-item {
-  font-size: 20px;
-  padding: 15px 0px;
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list {
+  padding: 0;
 }
-.page-wrapper-admin .main-content-admin .side-bar .side-bar-item:hover {
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-item {
+  font-size: 20px;
+  padding: 0;
+  list-style-type: none;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-item:hover {
   background-color: #ffffff;
   color: #111111;
 }
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-item:hover > a {
+  background-color: #ffffff;
+  color: #111111;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-item a {
+  display: block;
+  padding: 15px 0px;
+  padding-left: 30px;
+  text-decoration: none;
+  color: #ffffff;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-item.products {
+  padding: 15px 0px;
+  padding-left: 30px;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-item.posts {
+  padding: 15px 0px;
+  padding-left: 30px;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown {
+  padding: 0;
+  font-size: 18px;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown .side-bar-dropdown-item {
+  padding: 0;
+  list-style-type: none;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown .side-bar-dropdown-item:hover {
+  color: #111111;
+  background-color: #ffffff;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown .side-bar-dropdown-item:hover > a {
+  background-color: #ffffff;
+  color: #111111;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown .side-bar-dropdown-item a {
+  display: block;
+  padding: 10px 0px;
+  padding-left: 50px;
+  text-decoration: none;
+  color: #ffffff;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.products {
+  display: none;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.products.active {
+  display: block;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.posts {
+  display: none;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.posts.active {
+  display: block;
+}
+.page-wrapper-admin .main-content-admin .content {
+  padding: 15px;
+  background-color: #ebe7dd;
+}
+.page-wrapper-admin .main-content-admin .content :not(:first-child) {
+  margin-top: 20px;
+}
+.page-wrapper-admin .main-content-admin .content hr {
+  height: 1px;
+  background-color: #dedede;
+  border: none;
+}
+.page-wrapper-admin .main-content-admin .content .block {
+  background-color: #ffffff;
+  padding: 15px;
+}
+.page-wrapper-admin .main-content-admin .content .block form label {
+  font-size: 20px;
+}
+.page-wrapper-admin .main-content-admin .content .block form .add-post-button {
+  font-family: "PT Sans";
+  font-size: 20px;
+  padding: 10px;
+  background-color: #570000;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #111111;
+  transition: 0.2s;
+}
+.page-wrapper-admin .main-content-admin .content .block form .add-post-button:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+.page-wrapper-admin .main-content-admin .content .table {
+  border: 1px solid #dedede;
+  border-collapse: collapse;
+}
+.page-wrapper-admin .main-content-admin .content .table thead tr th {
+  border: 1px solid #dedede;
+}
+.page-wrapper-admin .main-content-admin .content .table tbody tr:hover {
+  background-color: #dedede;
+}
+.page-wrapper-admin .main-content-admin .content .table tbody tr td {
+  border: 1px solid #cccccc;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+.page-wrapper-admin .main-content-admin .content .table tbody tr td .profile-pic {
+  width: 50px;
+}
+.page-wrapper-admin .main-content-admin .content .table tbody tr td .product-image {
+  width: 50px;
+}
+.page-wrapper-admin .main-content-admin .content .table tbody tr td .banner {
+  width: 50px;
+}
+.page-wrapper-admin .main-content-admin .content .table tbody tr td .logo {
+  width: 50px;
+}
+.page-wrapper-admin .main-content-admin .content .table tbody tr td .thumbnail {
+  width: 50px;
+}
+.page-wrapper-admin .main-content-admin .content .table tbody tr td form {
+  max-width: 60px;
+  margin: 0;
+}
+
 /* Small Mobile */
 @media only screen and (max-width: 319px) {
   /* Header */

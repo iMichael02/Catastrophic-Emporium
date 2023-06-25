@@ -17,9 +17,6 @@
             .topnav-item {
                 position: relative;
                 display: inline-block;
-                &:active .dropdown-content {
-                    display: block;
-                }
                 .dropbtn {
                     color: $color-white;
                     background-color: $color-primary-black;
@@ -60,6 +57,9 @@
                         }
                     }
                 }
+                .dropdown-content.active {
+                    display: block;
+                }
             }
         }
     }
@@ -68,23 +68,152 @@
         grid-template-columns: 1fr 5fr;
         height: 100vh;
         .side-bar {
-            display: flex;
-            flex-direction: column;
             background-color: $color-primary-black;
             color: $color-white;
-            text-align: center;
             min-height: 100%;
-            .side-bar-item {
-                font-size: 20px;
-                padding: 15px 0px;
-                &:hover {
-                    background-color: $color-white;
-                    color: $color-primary-black;
+            .side-bar-list {
+                padding: 0;
+                .side-bar-item {
+                    font-size: 20px;
+                    padding: 0;
+                    list-style-type: none;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: $color-white;
+                        color: $color-primary-black;
+                        & > a {
+                            background-color: $color-white;
+                            color: $color-primary-black;
+                        }
+                    }
+                    a {
+                        display: block;
+                        padding: 15px 0px;
+                        padding-left: 30px;
+                        text-decoration: none;
+                        color: $color-white;
+                    }
+                }
+                .side-bar-item.products {
+                    padding: 15px 0px;
+                    padding-left: 30px;
+                }
+                .side-bar-item.posts {
+                    padding: 15px 0px;
+                    padding-left: 30px;
+                }
+                .side-bar-dropdown {
+                    padding: 0;
+                    font-size: 18px;
+                    .side-bar-dropdown-item {
+                        padding: 0;
+                        list-style-type: none;
+                        &:hover {
+                            color: $color-primary-black;
+                            background-color: $color-white;
+                            & > a {
+                                background-color: $color-white;
+                                color: $color-primary-black;
+                            }
+                        }
+                        a {
+                            display: block;
+                            padding: 10px 0px;
+                            padding-left: 50px;
+                            text-decoration: none;
+                            color: $color-white;
+                        }
+                    }
+                }
+                .side-bar-dropdown.products {
+                    display: none;
+                }
+                .side-bar-dropdown.products.active {
+                    display: block;
+                }
+                .side-bar-dropdown.posts {
+                    display: none;
+                }
+                .side-bar-dropdown.posts.active {
+                    display: block;
                 }
             }
         }
         .content {
-
+            padding: 15px;
+            background-color: $color-ivory;
+            :not(:first-child) {
+                margin-top: 20px;
+            }
+            hr {
+                height: 1px;
+                background-color: $color-primary-light-grey;
+                border: none;
+            }
+            .block {
+                background-color: $color-white;
+                padding: 15px;
+                form {
+                    label {
+                        font-size: 20px;
+                    }
+                    .add-post-button {
+                        font-family: $font-admin;
+                        font-size: 20px;
+                        padding: 10px;
+                        background-color: $color-primary-red;
+                        color: $color-white;
+                        border-radius: 5px;
+                        border: 1px solid $color-primary-black;
+                        transition: 0.2s;
+                        &:hover {
+                            background-color: $color-white;
+                            color: $color-primary-black;
+                        }
+                    }
+                }
+            }
+            .table {
+                border: 1px solid $color-primary-light-grey;
+                border-collapse: collapse;
+                thead {
+                    tr {
+                        th {
+                            border: 1px solid $color-primary-light-grey;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        &:hover {
+                            background-color: $color-primary-light-grey;
+                        }
+                        td {
+                            border: 1px solid $color-primary-grey;
+                            max-width: fit-content;
+                            .profile-pic {
+                                width: 50px;
+                            }
+                            .product-image {
+                                width: 50px;
+                            }
+                            .banner {
+                                width: 50px;
+                            }
+                            .logo {
+                                width: 50px;
+                            }
+                            .thumbnail {
+                                width: 50px;
+                            }
+                            form {
+                                max-width: 60px;
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

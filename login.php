@@ -40,12 +40,14 @@
             <!-- End Breadcrumb -->
             <div class="main-content-container">
                 <form class="login-form">
-                    <label for="email" class="login-label">Email:</label><br><br>
+                    <label for="email" class="login-label">Email:</label><br>
                     <input type="email" id="email" name="email" class="login-input" placeholder="Enter your email"><br><br>
-                    <label for="password" class="login-label">Password:</label><br><br>
+                    <label for="password" class="login-label">Password:</label><br>
                     <input type="password" id="password" name="password" class="login-input" placeholder="Enter you password"><br><br>
                     <button type="submit" name="submit">Login</button>
                 </form>
+                <div class="division-line"><span class="division-text">Don't have an account yet?</span></div>
+                <div class="register-option"><a href="#" class="register-link">Register</a> to Catastrophic Emporium</div>
             </div>
         </div>
         <!-- End Main Content -->

@@ -40,21 +40,22 @@
             <!-- End Breadcrumb -->
             <div class="main-content-container">
                 <form class="register-form">
-                    <label for="fname" class="register-label">First Name:</label><br><br>
+                    <label for="fname" class="register-label">First Name:</label><br>
                     <input type="text" id="fname" name="fname" class="register-input" placeholder="Enter your first name"><br><br>
-                    <label for="lname" class="register-label">Last Name:</label><br><br>
+                    <label for="lname" class="register-label">Last Name:</label><br>
                     <input type="text" id="lname" name="lname" class="register-input" placeholder="Enter your last name"><br><br>
-                    <label for="email" class="register-label">Email:</label><br><br>
+                    <label for="email" class="register-label">Email:</label><br>
                     <input type="email" id="email" name="email" class="register-input" placeholder="Enter your email"><br><br>
-                    <label for="password" class="register-label">Password:</label><br><br>
-                    <input type="password" id="password" name="password" class="register-input" placeholder="Enter you password"><br><br>
-                    <label for="cfpassword" class="register-label">Confirm Password:</label><br><br>
+                    <label for="password" class="register-label">Password:</label><br>
+                    <input type="password" id="password" name="password" class="register-input" placeholder="Enter you password"><br>
+                    <div class="password-notice">Password's length should be at least 8 characters and should consist of uppercase, lowercase letter and number</div><br>
+                    <label for="cfpassword" class="register-label">Confirm Password:</label><br>
                     <input type="password" id="cfpassword" name="cfpassword" class="register-input" placeholder="Enter you password again"><br><br>
                     <input type="checkbox"><span class="submit-text">I agree with all <a href="#">Terms and Conditions</a></span>
                     <br><br>
                     <button type="submit" name="submit">Register</button>
                 </form>
-                <h2 class="division-line"><span class="division-text">or</span></h2>
+                <div class="division-line"><span class="division-text">or</span></div>
                 <div class="login-option"><a href="#" class="login-link">Login</a> if you already have an account</div>
             </div>
         </div>
