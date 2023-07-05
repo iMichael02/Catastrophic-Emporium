@@ -1,5 +1,6 @@
 <?php
 include "./dbconnect.php";
+include "../functions.php";
 $blogs = $maindb->blog;
 $blogs_list = $blogs->find([]);
 $first_blog = $blogs->findOne([]);
@@ -7,19 +8,7 @@ if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $blog_content = $_POST['blog_content'];
     $tags = explode(", ",$_POST['tags']);
-    $fileName = $_FILES["thumbnail"]["name"];
-    $fileSize = $_FILES["thumbnail"]["size"]/1024;
-    $fileType = $_FILES["thumbnail"]["type"];
-    $fileTmpName = $_FILES["thumbnail"]["tmp_name"];
-    if ($fileType == "image/png") {
-        $random=rand(1111,9999);
-        $newFileName=$random.$fileName;
-        $uploadPath="testUpload/".$newFileName;
-        if(move_uploaded_file($fileTmpName,$uploadPath)){
-            $imageData = file_get_contents($uploadPath);
-            $base64String = base64_encode($imageData);
-        }
-    }
+    $base64String = imageUpload($_FILES["thumbnail"]["name"], $_FILES["thumbnail"]["size"], $_FILES["thumbnail"]["type"], $_FILES["thumbnail"]["tmp_name"]);
     $largest = $first_blog->_id;
     foreach ($blogs_list as $blog) {
         if ($blog->_id > $largest) {
@@ -44,16 +33,16 @@ if (isset($_POST['submit'])) {
 
 ?>
 <div class="block">
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data" class="add-post-form">
         <label for="title">Title:</label><br>
         <input type="text" name="title"><br><br>
         <label for="blog_content">Content:</label><br>
-        <textarea name="blog_content"></textarea><br><br>
+        <textarea name="blog_content" cols="100" rows="20"></textarea><br><br>
         <label for="tags">Tags:</label><br>
         <textarea name="tags"></textarea><br><br>
         <label for="thumbnail">Thumbnail:</label><br>
         <input type="file" name="thumbnail" accept="image/png"><br><br>
-        <button type="submit" name="submit"  value="submit" class="add-post-button">Add Post</button>
+        <button type="submit" name="submit"  value="submit" class="add-button submit">Add Post</button>
     </form>
 
 </div>

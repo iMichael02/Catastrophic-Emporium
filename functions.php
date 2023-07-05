@@ -11,4 +11,24 @@ function commas($n) {
     }
     return $n;
 }
+function imageUpload($fileName, $fileSize, $fileType, $fileTmpName) {
+    $fileSize = $fileSize/1024;
+    $base64String = "";
+    if ($fileType == "image/png") {
+        $random = rand(1111,9999);
+        $newFileName = $random.$fileName;
+        $uploadPath = "testUpload/".$newFileName;
+        if(move_uploaded_file($fileTmpName,$uploadPath)){
+            $imageData = file_get_contents($uploadPath);
+            $base64String = base64_encode($imageData);
+            unlink($uploadPath);
+        }
+    }
+    if ($base64String != null) {
+        return $base64String;
+    }
+    else {
+        return "";
+    }
+}
 ?>

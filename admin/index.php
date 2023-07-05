@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../asset/scss/style.css?v=<?php echo time(); ?>"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
     <title>Admin</title>
 </head>
 <body>
@@ -54,7 +56,11 @@
                         <li class="side-bar-dropdown-item"><a href="index.php?content=all_products">All Products</a></li>
                         <li class="side-bar-dropdown-item"><a href="index.php?content=add_product">Add Product</a></li>
                     </ul>
-                    <li class="side-bar-item bands"><a href="index.php?content=bands"><i class="fa-solid fa-guitar"></i> Bands</a></li>
+                    <li class="side-bar-item bands"><i class="fa-solid fa-guitar"></i> Bands <i class="fa-solid fa-angle-down"></i></li>
+                    <ul class="side-bar-dropdown bands">
+                        <li class="side-bar-dropdown-item"><a href="index.php?content=all_bands">All Bands</a></li>
+                        <li class="side-bar-dropdown-item"><a href="index.php?content=add_band">Add Band</a></li>
+                    </ul>
                     <li class="side-bar-item genres"><a href="index.php?content=genres"><i class="fa-solid fa-list"></i> Genres</a></li>
                     <li class="side-bar-item posts"><i class="fa-solid fa-newspaper"></i> Posts <i class="fa-solid fa-angle-down"></i></li>
                     <ul class="side-bar-dropdown posts">
@@ -83,11 +89,14 @@
                         case "all_products":
                             include_once "./all-products.php";
                             break;
-                        case "add_products":
-                            include_once "./add-products.php";
+                        case "add_product":
+                            include_once "./add-product.php";
                             break;
-                        case "bands":
-                            include_once "./bands.php";
+                        case "all_bands":
+                            include_once "./all-bands.php";
+                            break;
+                        case "add_band":
+                            include_once "./add-band.php";
                             break;
                         case "genres":
                             include_once "./genres.php";
@@ -109,5 +118,15 @@
         </div>
     </div>
     <script src="../asset/js/admin/dropdown.js"></script>
+    <script src="../asset/js/admin/addOptionsType.js"></script>
+    <script src="../asset/js/admin/addOptionsQuestion.js"></script>
+    <script src="../asset/js/admin/addOptionsAnswer.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('select').selectize({
+            sortField: 'text'
+        });
+    });
+</script>
 </body>
 </html>

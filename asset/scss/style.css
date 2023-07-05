@@ -3793,6 +3793,10 @@ body {
   padding: 15px 0px;
   padding-left: 30px;
 }
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-item.bands {
+  padding: 15px 0px;
+  padding-left: 30px;
+}
 .page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-item.posts {
   padding: 15px 0px;
   padding-left: 30px;
@@ -3826,6 +3830,12 @@ body {
 .page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.products.active {
   display: block;
 }
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.bands {
+  display: none;
+}
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.bands.active {
+  display: block;
+}
 .page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.posts {
   display: none;
 }
@@ -3851,19 +3861,41 @@ body {
 .page-wrapper-admin .main-content-admin .content .block form label {
   font-size: 20px;
 }
-.page-wrapper-admin .main-content-admin .content .block form .add-post-button {
+.page-wrapper-admin .main-content-admin .content .block form .add-button {
+  font-family: "PT Sans";
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  padding: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .content .block form .add-button:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+.page-wrapper-admin .main-content-admin .content .block form .add-button.submit {
   font-family: "PT Sans";
   font-size: 20px;
   padding: 10px;
-  background-color: #570000;
-  color: #ffffff;
-  border-radius: 5px;
-  border: 1px solid #111111;
-  transition: 0.2s;
 }
-.page-wrapper-admin .main-content-admin .content .block form .add-post-button:hover {
-  background-color: #ffffff;
-  color: #111111;
+.page-wrapper-admin .main-content-admin .content .block .add-product-form .sub-label {
+  display: inline-block;
+  padding-left: 40px;
+  width: 100px;
+}
+.page-wrapper-admin .main-content-admin .content .block .add-product-form .sub-input {
+  margin-left: 40px;
+}
+.page-wrapper-admin .main-content-admin .content .block .add-post-form .sub-label {
+  display: inline-block;
+  padding-left: 40px;
+  width: 100px;
+}
+.page-wrapper-admin .main-content-admin .content .block .add-post-form .sub-input {
+  margin-left: 40px;
 }
 .page-wrapper-admin .main-content-admin .content .table {
   border: 1px solid #dedede;

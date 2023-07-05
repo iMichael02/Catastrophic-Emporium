@@ -30,9 +30,17 @@ $bands = $maindb->band;
                 <td><?= $genre->description ?></td>
                 <td><img src="data:image/png;base64,<?= $genre->logo ?>" alt="" class="logo"></td>
                 <td><?php
+                $band_list = [];
                 foreach ($genre->bands as $bid) {
                     $band = $bands->findOne(['_id' => $bid]);
-                    echo $band->name.", ";
+                    array_push($band_list, $band);
+                }
+                for ($i = 0; $i < sizeof($band_list); $i++) {
+                    if ($i == sizeof($band_list) - 1) {
+                        echo $band->name;
+                    } else {
+                        echo $band->name.", ";
+                    }
                 }
                 ?></td>
                 <td><?php

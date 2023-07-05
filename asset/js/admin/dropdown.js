@@ -8,6 +8,16 @@ products.addEventListener("blur", function(e) {
     this.classList.remove("active");
 });
 
+var bands = document.querySelector(".side-bar-item.bands");
+var bandDropdown = document.querySelector(".side-bar-dropdown.bands");
+bands.addEventListener("click", function(e) {
+    this.classList.toggle("active");
+    bandDropdown.classList.toggle("active");
+});
+bands.addEventListener("blur", function(e) {
+    this.classList.remove("active");
+});
+
 var posts = document.querySelector(".side-bar-item.posts");
 var postDropdown = document.querySelector(".side-bar-dropdown.posts");
 posts.addEventListener("click", function(e) {
