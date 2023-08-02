@@ -1,3 +1,19 @@
+<?php
+session_start();
+include "./dbconnect.php";
+include "./functions.php";
+if (isset($_SESSION['uid'])) {
+    $uid = $_SESSION['uid'];
+    $members = $maindb->member;
+    $member = $members->findOne(['_id' => $uid]);
+    $products = $maindb->product;
+    $products_list = [];
+    for ($i = 0; $i < sizeof($member->cart); $i++) {
+        $result = $products->findOne(['_id' => $member->cart[$i][0]]);
+        array_push($products_list, $result);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +25,14 @@
     <link rel="stylesheet" href="./asset/scss/style.css?v=<?php echo time(); ?>"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script> 
-        $(function(){
-            $("#header").load("./asset/header&footer/header.php");
-            $("#footer").load("./asset/header&footer/footer.php");
-        });
-    </script>
     <title>Cart</title>
 </head>
 <body>
     <div class="page-wrapper">
         <!-- Header -->
-        <div id="header"></div>
+        <?php
+        include "./asset/header&footer/header.php";
+        ?>
         <!-- End Header -->
 
         <!-- Main Content -->
@@ -42,92 +54,54 @@
                 <div class="headings">
                     <div class="heading-item"></div>
                     <div class="heading-item">Item Name</div>
-                    <div class="heading-item">Type</div>
+                    <div class="heading-item">Color</div>
+                    <div class="heading-item">Size</div>
                     <div class="heading-item">Item Price</div>
                     <div class="heading-item">Quantity</div>
                     <div class="heading-item">Total Price</div>
                     <div class="heading-item">Actions</div>
                 </div>
                 <div class="items-list">
-                    <div class="item" id="item1">
-                        <div class="item-info item-image">
-                            <a href="#">
-                                <img src="./images/latest/latest1.png">
-                            </a>
-                        </div>
-                        <div class="item-info item-name"><p>Sempiternal T-Shirt</p></div>
-                        <div class="item-info item-type"><p>XL</p></div>
-                        <div class="item-info item-price"><p>280.000 VND</p></div>
-                        <div class="item-info item-quantity">
-                            <div class="counter">
-                                <span class="down" onClick='decreaseCount(this)'>-</span>
-                                <input type="text" value="1">
-                                <span class="up" onClick='increaseCount(this)'>+</span>
+                    <?php
+                    for ($i = 0; $i <sizeof($products_list); $i++) {
+                        ?>
+                        <div class="item">
+                            <div class="item-info item-image">
+                                <a href="#">
+                                    <img src="./images/latest/latest1.png">
+                                </a>
+                            </div>
+                            <div class="item-info item-name"><p><?= $products_list[$i]->name ?></p></div>
+                            <div class="item-info item-color"><p><?= $member->cart[$i][1] ?></p></div>
+                            <div class="item-info item-size"><p><?= $member->cart[$i][2] ?></p></div>
+                            <div class="item-info item-price"><p><?= $products_list[$i]->price ?></p></div>
+                            <div class="item-info item-quantity">
+                                <div class="counter">
+                                    <span class="down" onClick='decreaseCount(this)'>-</span>
+                                    <input type="text" value="1">
+                                    <span class="up" onClick='increaseCount(this)'>+</span>
+                                </div>
+                            </div>
+                            <div class="item-info total-price"></div>
+                            <div class="item-info action">
+                                <div class="action-container">
+                                    <div class="action1"><a href="#">Delete item</a></div>
+                                    <div class="action2"><a href="#">Find similar items</a></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="item-info total-price"></div>
-                        <div class="item-info action">
-                            <div class="action-container">
-                                <div class="action1"><a href="#">Delete item</a></div>
-                                <div class="action2"><a href="#">Find similar items</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" id="item2">
-                        <div class="item-info item-image">
-                            <a href="#">
-                                <img src="./images/latest/latest2.png">
-                            </a>
-                        </div>
-                        <div class="item-info item-name"><p>Wolf T-Shirt</p></div>
-                        <div class="item-info item-type"><p>XL</p></div>
-                        <div class="item-info item-price"><p>280.000 VND</p></div>
-                        <div class="item-info item-quantity">
-                            <div class="counter">
-                                <span class="down" onClick='decreaseCount(this)'>-</span>
-                                <input type="text" value="1">
-                                <span class="up" onClick='increaseCount(this)'>+</span>
-                            </div>
-                        </div>
-                        <div class="item-info total-price"></div>
-                        <div class="item-info action">
-                            <div class="action-container">
-                                <div class="action1"><a href="#">Delete item</a></div>
-                                <div class="action2"><a href="#">Find similar items</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" id="item3">
-                        <div class="item-info item-image">
-                            <a href="#">
-                                <img src="./images/latest/latest3.png">
-                            </a>
-                        </div>
-                        <div class="item-info item-name"><p>And I Return To Nothingness T-Shirt</p></div>
-                        <div class="item-info item-type"><p>XL</p></div>
-                        <div class="item-info item-price"><p>280.000 VND</p></div>
-                        <div class="item-info item-quantity">
-                            <div class="counter">
-                                <span class="down" onClick='decreaseCount(this)'>-</span>
-                                <input type="text" value="1">
-                                <span class="up" onClick='increaseCount(this)'>+</span>
-                            </div>
-                        </div>
-                        <div class="item-info total-price"></div>
-                        <div class="item-info action">
-                            <div class="action-container">
-                                <div class="action1"><a href="#">Delete item</a></div>
-                                <div class="action2"><a href="#">Find similar items</a></div>
-                            </div>
-                        </div>
-                    </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
         <!-- End Main Content -->
         
         <!-- Footer -->
-        <div id="footer"></div>
+        <?php
+        include "./asset/header&footer/footer.php";
+        ?>
         <!-- End Footer -->
     </div>
     <script

@@ -1,3 +1,15 @@
+<?php
+session_start();
+include "./dbconnect.php";
+include "./functions.php";
+if(isset($_GET['id'])) {
+    $bid = (int)$_GET['id'];
+    $blogs = $maindb->blog;
+    $target_blog = $blogs->findOne(['_id' => $bid]);
+    $members = $maindb->member;
+    $author = $members->findOne(['_id' => $target_blog->author]);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +21,14 @@
     <link rel="stylesheet" href="./asset/scss/style.css?v=<?php echo time(); ?>"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $(function(){
-            $("#header").load("./asset/header&footer/header.php"); 
-            $("#footer").load("./asset/header&footer/footer.php"); 
-        });
-    </script>
-    <title>Metallica's "72 Seasons" Album Review</title>
+    <title><?= $target_blog->title ?></title>
 </head>
 <body>
     <div class="page-wrapper">
         <!-- Header -->
-        <div id="header"></div>
+        <?php
+        include "./asset/header&footer/header.php";
+        ?>
         <!-- End Header -->
 
         <!-- Main Content -->
@@ -34,49 +42,61 @@
                 <div class="breadcrumb-container">
                     <div class="breadcrumb-item"><a href="./index.php">Home</a></div>
                     <div class="breadcrumb-item"><a href="./store.php">Blogs</a></div>
-                    <div class="breadcrumb-item">Metallica's "72 Seasons" Album Review</div>
+                    <div class="breadcrumb-item"><?= $target_blog->title ?></div>
                     <div class="breadcrumb-item triangle"></div>
                 </div>
             </div>
             <!-- End Breadcrumb -->
             <div class="blog-page-container">
-                <div class="blog-head">
+                <div class="blog-head" style="background-image: url('data:image/png;base64,<?= $target_blog->thumbnail ?>');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                width: 100%;">
                     <div class="score" id="score">
                         <div class="votes upvotes">
                             <div class="arrow up"><i class="fa-solid fa-arrow-up"></i></div>
-                            <div class="number">100</div>
+                            <div class="number"><?= sizeof((array)$target_blog->upvote) ?></div>
                         </div>
                         <div class="votes downvotes">
                             <div class="arrow up"><i class="fa-solid fa-arrow-down"></i></div>
-                            <div class="number">0</div>
+                            <div class="number"><?= sizeof((array)$target_blog->downvote) ?></div>
                         </div>
                     </div>
                     <div class="blog-info" id="blog-info">
-                        <div class="title">Metallica's "72 Seasons" Album Review</div>
+                        <div class="title"><?= $target_blog->title ?></div>
                         <div class="author">
                             <div class="profile-pic">
-                                <img src="./logo/facebook_profile_image.png" alt="">
+                                <img src="data:image/png;base64,<?= $author->profile_pic ?>" alt="">
                             </div>
                             <div class="author-info">
-                                <div class="name">Mike Sovereignborn</div>
-                                <div class="description">The Creator</div>
-                                <div class="joint-date">Joint Apr 4th, 2023</div>
+                                <div class="name"><?= $author->display_name ?></div>
+                                <div class="description"><?php
+                                if ($author->title->active_member != "") {
+                                    if ($author->title->certified_writer != "") {
+                                        if ($author->title->the_creator != "") {
+                                            echo "The Creator";
+                                        } else {
+                                            echo "Certified Writer";
+                                        }
+                                    } else {
+                                        echo "Active Member";
+                                    }
+                                } else {
+                                    echo "New Member";
+                                }
+                                ?></div>
+                                <div class="joint-date"><?= $author->joint_date ?></div>
                             </div>
                         </div>
                         <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
+                            <div class="date"><?= substr($target_blog->time, 0, 10) ?></div>
+                            <div class="time"><?= substr($target_blog->time, 11, 8) ?></div>
                         </div>
                     </div>
                 </div>
                 <div class="blog-content">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti eum, explicabo modi rerum laborum cumque odio sit. Nesciunt, eaque amet delectus itaque ducimus, natus neque beatae, adipisci eveniet dolore exercitationem?</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur, magni illo! Quia asperiores laborum sint necessitatibus incidunt voluptatibus inventore cum porro debitis aut harum ipsam est aliquam laboriosam, quidem exercitationem.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, quasi! Dolor, earum hic error nihil omnis accusantium, ex culpa, iure consequatur natus a pariatur labore rerum vero ipsa tempora est!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum fuga consectetur dignissimos vel tempore perferendis reiciendis excepturi atque quo molestiae voluptatum quasi, pariatur mollitia unde modi facere ab, ipsam iure?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto tempore placeat accusantium vitae ad aliquam, fugit hic similique! Sunt autem ea quis quos nobis impedit expedita voluptate at ipsa minima!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quasi atque quaerat nisi iste reprehenderit aliquam quis quidem, excepturi nihil minus tempore harum voluptas. Necessitatibus quod rem nulla harum quam.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium omnis error itaque autem eligendi veniam distinctio dicta officiis iste consequatur, odit non minima aspernatur quo? Cumque enim ratione aliquam libero!</p>
+                    <?= $target_blog->content ?>
                 </div>
                 <hr>
                 <div class="argument">
@@ -104,7 +124,9 @@
         <!-- End Main Content -->
 
         <!-- Footer -->
-        <div id="footer"></div>
+        <?php
+        include "./asset/header&footer/footer.php";
+        ?>
         <!-- End Footer -->
     </div>
     <script

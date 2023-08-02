@@ -31,4 +31,27 @@ function imageUpload($fileName, $fileSize, $fileType, $fileTmpName) {
         return "";
     }
 }
+function simpleQuickSort($arr)
+{
+    if(count($arr) <= 1){
+        return $arr;
+    }
+    else{
+        $pivot = $arr[0];
+        $left = [];
+        $right = [];
+        for($i = 1; $i < sizeof($arr); $i++)
+        {
+            if($arr[$i][1] > $pivot[1]){
+                $left[] = $arr[$i];
+            }
+            else{
+                $right[] = $arr[$i];
+            }
+        }
+        return (
+            array_merge(simpleQuickSort($left), array($pivot), simpleQuickSort($right))
+        );
+    }
+}
 ?>

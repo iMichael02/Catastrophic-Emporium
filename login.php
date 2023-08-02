@@ -1,3 +1,22 @@
+<?php
+session_start();
+include "./dbconnect.php";
+
+$members = $maindb->member;
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $searched_member = $members->findOne(['email' => $email]);
+    if ($searched_member != null) {
+        if(password_verify($password, $searched_member->password)) {
+            $_SESSION['uid'] = $searched_member->_id;
+            header("Location: ./index.php");
+        } else {
+            header("Location: ./login.php");
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +28,14 @@
     <link rel="stylesheet" href="./asset/scss/style.css?v=<?php echo time(); ?>"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script> 
-        $(function(){
-            $("#header").load("./asset/header&footer/header.php");
-            $("#footer").load("./asset/header&footer/footer.php");
-        });
-    </script>
     <title>Login</title>
 </head>
 <body>
     <div class="page-wrapper">
         <!-- Header -->
-        <div id="header"></div>
+        <?php
+        include "./asset/header&footer/header.php"
+        ?>
         <!-- End Header -->
 
         <!-- Main Content -->
@@ -33,27 +48,29 @@
             <div class="breadcrumb">
                 <div class="breadcrumb-container">
                     <div class="breadcrumb-item"><a href="./index.php">Home</a></div>
-                    <div class="breadcrumb-item">Genres</div>
+                    <div class="breadcrumb-item">Login</div>
                     <div class="breadcrumb-item triangle"></div>
                 </div>
             </div>
             <!-- End Breadcrumb -->
             <div class="main-content-container">
-                <form class="login-form">
+                <form class="login-form" method="post" action="./login.php">
                     <label for="email" class="login-label">Email:</label><br>
                     <input type="email" id="email" name="email" class="login-input" placeholder="Enter your email"><br><br>
                     <label for="password" class="login-label">Password:</label><br>
                     <input type="password" id="password" name="password" class="login-input" placeholder="Enter you password"><br><br>
-                    <button type="submit" name="submit">Login</button>
+                    <button type="submit" name="login">Login</button>
                 </form>
                 <div class="division-line"><span class="division-text">Don't have an account yet?</span></div>
-                <div class="register-option"><a href="#" class="register-link">Register</a> to Catastrophic Emporium</div>
+                <div class="register-option"><a href="./register.php" class="register-link">Register</a> to Catastrophic Emporium</div>
             </div>
         </div>
         <!-- End Main Content -->
         
         <!-- Footer -->
-        <div id="footer"></div>
+        <?php
+        include "./asset/header&footer/footer.php"
+        ?>
         <!-- End Footer -->
     </div>
     <script

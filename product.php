@@ -1,3 +1,39 @@
+<?php
+session_start();
+include "./dbconnect.php";
+include "./functions.php";
+if(isset($_GET['id'])) {
+    $pid = (int)($_GET['id']);
+    $products = $maindb->product;
+    $bands = $maindb->band;
+    $target_product = $products->findOne(['_id' => $pid]);
+    if (isset($_SESSION['uid'])) {
+        $uid = $_SESSION['uid'];
+        $members = $maindb->member;
+        $member = $members->findOne(['_id' => $uid]);
+        if (isset($_POST['add_to_cart']) && isset($_POST['color']) && isset($_POST['size'])) {
+            $cart_pid = (int)($_POST['add_to_cart']);
+            $color = $_POST['color'];
+            $size = $_POST['size'];
+            $cart = (array)($member->cart);
+            array_push($cart, [$cart_pid, $color, $size]);
+            $result = $members->updateOne(['_id' => $uid], ['$set' => ['cart' => $cart]]);
+            header('Location: ./cart.php');
+        }
+        if (isset($_POST['add_to_wishlist'])) {
+            $wl_pid = (int)($_POST['add_to_wishlist']);
+            $wishlist = (array)($member->wishlist);
+            if (array_search($wl_pid, $wishlist) != false) {
+                array_push($wishlist, $pid);
+                $cursor = $members->updateOne(['_id' => $uid], ['$set' => ['wishlist' => $wishlist]]);
+                header('Location: ./wishlist.php');
+            }
+        }
+    } else {
+        header('Location: ./login.php');
+    }
+    if ($target_product != null) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +45,14 @@
     <link rel="stylesheet" href="./asset/scss/style.css?v=<?php echo time(); ?>"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script> 
-        $(function(){
-            $("#header").load("./asset/header&footer/header.php"); 
-            $("#footer").load("./asset/header&footer/footer.php"); 
-        });
-    </script>
-    <title>Product</title>
+    <title><?= $target_product->name ?></title>
 </head>
 <body>
     <div class="page-wrapper">
         <!-- Header -->
-        <div id="header"></div>
+        <?php
+        include "./asset/header&footer/header.php"
+        ?>
         <!-- End Header -->
 
         <!-- Main Content -->
@@ -34,7 +66,7 @@
                 <div class="breadcrumb-container">
                     <div class="breadcrumb-item"><a href="./index.php">Home</a></div>
                     <div class="breadcrumb-item"><a href="./store.php">Store</a></div>
-                    <div class="breadcrumb-item">Product</div>
+                    <div class="breadcrumb-item"><?= $target_product->name ?></div>
                     <div class="breadcrumb-item triangle"></div>
                 </div>
             </div>
@@ -45,373 +77,88 @@
                 <div class="product-grid">
                     <div class="product-image" id="product-image">
                         <div id="lens"></div>
-                        <img src="./images/latest/latest1.png" alt="" id="featured">
+                        <img src="data:image/png;base64,<?= $target_product->image1 ?>" alt="" id="featured">
                     </div>
                     <div id="slide-wrapper" class="slide-wrapper">
                         <div class="arrow" id="slide-left"><i class="fa-solid fa-angle-left"></i></div>
                         <div id="slider" class="slider">
-                            <img class="thumbnail active" src="./images/latest/latest1.png">
-                            <img class="thumbnail" src="./images/latest/latest2.png">
-                            <img class="thumbnail" src="./images/latest/latest3.png">
+                            <img class="thumbnail active" src="data:image/png;base64,<?= $target_product->image1 ?>">
+                            <?php
+                            if($target_product->image2 != "") {
+                                ?>
+                                <img class="thumbnail" src="data:image/png;base64,<?= $target_product->image2 ?>">
+                                <?php
+                            }
+                            if($target_product->image3 != "") {
+                                ?>
+                                <img class="thumbnail" src="data:image/png;base64,<?= $target_product->image3 ?>">
+                                <?php
+                            }
+                            if($target_product->image4 != "") {
+                                ?>
+                                <img class="thumbnail" src="data:image/png;base64,<?= $target_product->image4 ?>">
+                                <?php
+                            }
+                            ?>
                         </div>
                         <div class="arrow" id="slide-right"><i class="fa-solid fa-angle-right"></i></div>
                     </div>
                     <div class="product-info">
-                        <h1>Bring Me The Horizon</h1>
-                        <h2>Sempiternal T-Shirt</h2>
+                        <h1><?php
+                        $band = $bands->findOne(['_id' => $target_product->band_id]);
+                        echo $band->name;
+                        ?></h1>
+                        <h2><?= $target_product->name ?></h2>
                         <hr>
-                        <h3>280.000 VND</h3>
-                        <p class="product-id">Product ID: <span class="prod-id">#1651</span></p>
+                        <h3><?= commas($target_product->price) ?> VND</h3>
+                        <p class="product-id">Product ID: <span class="prod-id">#<?= $target_product->_id ?></span></p>
                         <p class="size">Size <span class="open-size-chart" onclick="showChart()"><i class="fa-solid fa-ruler-horizontal"></i> Size chart</span></p>
-                        <div class="size-chart" id="size-chart">
-                            <i class="fa-solid fa-xmark" onclick="closeChart()"></i>
-                            <div class="inner">
-                                <p class="chart-header">Size Chart</p>
-                                <hr>
-                                <table>
-                                    <caption>T-shirts/Sweatshirts</caption>
-                                    <tbody>
-                                        <tr>
-                                            <td>Size</td>
-                                            <td>Width</td>
-                                            <td>Length</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Small</td>
-                                            <td>34-36(in)/87-92(cm)</td>
-                                            <td>27(in)/69(cm)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Medium</td>
-                                            <td>38-40(in)/97-102(cm)</td>
-                                            <td>28.5(in)/73(cm)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Large</td>
-                                            <td>42-44(in)/107-112(cm)</td>
-                                            <td>29.5(in)/75(cm)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>X-Large</td>
-                                            <td>46-48(in)/117-122(cm)</td>
-                                            <td>31(in)/79(cm)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>XX-Large</td>
-                                            <td>50-52(in)/127-132(cm)</td>
-                                            <td>32(in)/82(cm)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>XXX-Large</td>
-                                            <td>54-56(in)/137-142(cm)</td>
-                                            <td>33.5(in)/86(cm)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>XXXX-Large</td>
-                                            <td>58-60(in)/148-152(cm)</td>
-                                            <td>34.5(in)/88(cm)</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <hr>
-                                <table>
-                                    <caption>Caps</caption>
-                                    <tbody>
-                                        <tr>
-                                            <td>Item Size</td>
-                                            <td>Cap Size</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Small/Medium</td>
-                                            <td>6.75-7.25(in)/18-19(cm)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Large/X-large</td>
-                                            <td>7.125-7.625(in)/19-20(cm)</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <hr>
-                                <table>
-                                    <caption>Girls/Junior Tees</caption>
-                                    <tbody>
-                                        <tr>
-                                            <td>Our Size</td>
-                                            <td>Junior Size</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Small</td>
-                                            <td>3/4</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Medium</td>
-                                            <td>5/6</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Large</td>
-                                            <td>7/8</td>
-                                        </tr>
-                                        <tr>
-                                            <td>X-Large</td>
-                                            <td>9/10</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <hr>
-                                <table>
-                                    <caption>Youth Sizes</caption>
-                                    <tbody>
-                                        <tr>
-                                            <td>Our Size</td>
-                                            <td>Youth's Size</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Small</td>
-                                            <td>6-8</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Medium</td>
-                                            <td>10-12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Large</td>
-                                            <td>14-16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>X-Large</td>
-                                            <td>18-20</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <hr>
-                                <table>
-                                    <caption>Baby Dolls/Fitted & Raglan Tees/Tanks</caption>
-                                    <tbody>
-                                        <tr>
-                                            <td>Size</td>
-                                            <td>Bust</td>
-                                            <td>Waist</td>
-                                            <td>Length</td>
-                                            <td>Dress Size</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Small</td>
-                                            <td>28(in)</td>
-                                            <td>26(in)</td>
-                                            <td>22.125(in)</td>
-                                            <td>0-2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Medium</td>
-                                            <td>30(in)</td>
-                                            <td>28(in)</td>
-                                            <td>22.75(in)</td>
-                                            <td>4-6</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Large</td>
-                                            <td>33(in)</td>
-                                            <td>31(in)</td>
-                                            <td>23.375(in)</td>
-                                            <td>8-10</td>
-                                        </tr>
-                                        <tr>
-                                            <td>X-Large</td>
-                                            <td>35(in)</td>
-                                            <td>33(in)</td>
-                                            <td>24(in)</td>
-                                            <td>12</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <hr>
-                                <table>
-                                    <caption>Shoe Size Conversion Chart (Mens 3.5-7.5)</caption>
-                                    <tbody>
-                                        <tr>
-                                            <td>USA Men</td>
-                                            <td>3.5</td>
-                                            <td>4</td>
-                                            <td>4.5</td>
-                                            <td>5</td>
-                                            <td>5.5</td>
-                                            <td>6</td>
-                                            <td>6.5</td>
-                                            <td>7</td>
-                                            <td>7.5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>USA Women</td>
-                                            <td>5</td>
-                                            <td>5.5</td>
-                                            <td>6</td>
-                                            <td>6.5</td>
-                                            <td>7</td>
-                                            <td>7.5</td>
-                                            <td>8</td>
-                                            <td>8.5</td>
-                                            <td>9</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Europe</td>
-                                            <td>-</td>
-                                            <td>36</td>
-                                            <td>-</td>
-                                            <td>37</td>
-                                            <td>38</td>
-                                            <td>-</td>
-                                            <td>39</td>
-                                            <td>40</td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>UK</td>
-                                            <td>2.5</td>
-                                            <td>3</td>
-                                            <td>3.5</td>
-                                            <td>4</td>
-                                            <td>4.5</td>
-                                            <td>5</td>
-                                            <td>5.5</td>
-                                            <td>6</td>
-                                            <td>6.5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Japan</td>
-                                            <td>-</td>
-                                            <td>220</td>
-                                            <td>-</td>
-                                            <td>230</td>
-                                            <td>235</td>
-                                            <td>-</td>
-                                            <td>245</td>
-                                            <td>250</td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vietnam</td>
-                                            <td>-</td>
-                                            <td>37</td>
-                                            <td>-</td>
-                                            <td>38</td>
-                                            <td>39</td>
-                                            <td>-</td>
-                                            <td>40</td>
-                                            <td>41</td>
-                                            <td>-</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table>
-                                    <caption>Shoe Size Conversion Chart (Mens 8-12)</caption>
-                                    <tbody>
-                                        <tr>
-                                            <td>USA Men</td>
-                                            <td>8</td>
-                                            <td>8.5</td>
-                                            <td>9</td>
-                                            <td>9.5</td>
-                                            <td>10</td>
-                                            <td>10.5</td>
-                                            <td>11</td>
-                                            <td>11.5</td>
-                                            <td>12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>USA Men</td>
-                                            <td>9.5</td>
-                                            <td>10</td>
-                                            <td>10.5</td>
-                                            <td>11</td>
-                                            <td>11.5</td>
-                                            <td>12</td>
-                                            <td>12.5</td>
-                                            <td>13</td>
-                                            <td>13.5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Europe</td>
-                                            <td>41</td>
-                                            <td>42</td>
-                                            <td>-</td>
-                                            <td>43</td>
-                                            <td>44</td>
-                                            <td>-</td>
-                                            <td>45</td>
-                                            <td>46</td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>UK</td>
-                                            <td>7</td>
-                                            <td>7.5</td>
-                                            <td>8</td>
-                                            <td>8.5</td>
-                                            <td>9</td>
-                                            <td>9.5</td>
-                                            <td>10</td>
-                                            <td>10.5</td>
-                                            <td>11</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Japan</td>
-                                            <td>260</td>
-                                            <td>265</td>
-                                            <td>-</td>
-                                            <td>275</td>
-                                            <td>280</td>
-                                            <td>-</td>
-                                            <td>290</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vietnam</td>
-                                            <td>42</td>
-                                            <td>43</td>
-                                            <td>-</td>
-                                            <td>44</td>
-                                            <td>45</td>
-                                            <td>-</td>
-                                            <td>46</td>
-                                            <td>47</td>
-                                            <td>-</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <?php
+                        include "./sizechart.php";
+                        ?>
+                        <form action="" id="action-form" method="post"></form>
                         <div class="size-options">
-                            <div class="container" >
-                                <input type="radio" name="size" value="MD" id="sizeM">
-                                <label for="sizeM" class="size-btn"> M </label>
-                            </div>
-                            <div class="container">
-                                <input type="radio" name="size" value="LG" id="sizeL">
-                                <label for="sizeL" class="size-btn"> L </label>
-                            </div>
-                            <div class="container">
-                                <input type="radio" name="size" value="XL" id="sizeXL">
-                                <label for="sizeXL" class="size-btn"> XL </label>
-                            </div>
+                            <?php
+                            foreach($target_product->variances as $color => $sizes) {
+                                ?>
+                                <div class="size-container">
+                                    <input form="action-form" type="radio" name="color" value="<?= $color ?>" id="color_<?= $color ?>">
+                                    <label for="color_<?= $color ?>" class="size-btn"> <?= $color ?> </label>
+                                </div>
+                                <br><br>
+                                <?php
+                                foreach($sizes as $size => $quantity) {
+                                    ?>
+                                    <div class="size-container">
+                                        <input form="action-form" type="radio" name="size" value="<?= $size ?>" id="size_<?= $size ?>">
+                                        <label for="size_<?= $size ?>" class="size-btn"> <?= $size ?> </label>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                <br><br>
+                                <?php
+                            }
+                            ?>
                         </div>
                         <div class="quantity">
-                            <input value=1 type="number">
+                            <input form="action-form" value=1 type="number" name="quantity">
                             <br>
                             <div class="buttons">
-                                <button class="add-to-cart" type="submit">Add to Cart</button>
-                                <button class="add-to-wishlist" type="submit"><i class="fa-solid fa-plus"></i> Add to Wishlist</button>
+                                <button form="action-form" class="buy-now" type="submit" name="buy_now" value="<?= $target_product->_id ?>">Buy Now</button>
+                                <button form="action-form" class="add-to-cart" type="submit" name="add_to_cart" value="<?= $target_product->_id ?>">Add to Cart</button>
+                                <button form="action-form" class="add-to-wishlist" type="submit" name="add_to_wishlist" value="<?= $target_product->_id ?>"><i class="fa-solid fa-plus"></i> Add to Wishlist</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr class="section-divider">
                 <div class="banner">
-                    <img src="./images/band-banner/Bring-Me-The-Horizon.png" alt="">
+                    <img src="data:image/png;base64,<?= $band->banner ?>" alt="">
                     <div class="band-info">
-                        <h1 class="name">Bring Me The Horizon</h1>
-                        <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit sapiente illo repellendus assumenda consectetur dignissimos eligendi iste mollitia tempore enim. Quisquam excepturi nam, ratione quibusdam obcaecati cupiditate in rerum facilis.</p>
-                        <div class="page-btn"><a href="#"><span>Bring Me The Horizon</span> Store <i class="fa-solid fa-angle-right"></i></a></div>
+                        <h1 class="name"><?= $band->name ?></h1>
+                        <p class="description"><?= $band->bibliography ?></p>
+                        <div class="page-btn"><a href="#"><?= $band->name ?> Store <i class="fa-solid fa-angle-right"></i></a></div>
                     </div>
                 </div>
                 <h1 class="review-title">Reviews</h1>
@@ -444,7 +191,9 @@
         <!-- End Main Content -->
 
         <!-- Footer -->
-        <div id="footer"></div>
+        <?php
+        include "./asset/header&footer/footer.php"
+        ?>
         <!-- End Footer -->
     </div>
     <script
@@ -466,3 +215,7 @@
     <script src="./asset/js/product/lens.js"></script>
 </body>
 </html>
+<?php
+    }
+}
+?>

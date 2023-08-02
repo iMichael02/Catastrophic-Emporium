@@ -18,13 +18,13 @@ bands.addEventListener("blur", function(e) {
     this.classList.remove("active");
 });
 
-var posts = document.querySelector(".side-bar-item.posts");
-var postDropdown = document.querySelector(".side-bar-dropdown.posts");
-posts.addEventListener("click", function(e) {
+var blogs = document.querySelector(".side-bar-item.blogs");
+var blogDropdown = document.querySelector(".side-bar-dropdown.blogs");
+blogs.addEventListener("click", function(e) {
     this.classList.toggle("active");
-    postDropdown.classList.toggle("active");
+    blogDropdown.classList.toggle("active");
 });
-posts.addEventListener("blur", function(e) {
+blogs.addEventListener("blur", function(e) {
     this.classList.remove("active");
 });
 

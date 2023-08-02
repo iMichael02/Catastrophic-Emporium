@@ -15,11 +15,26 @@ if ($page == "" || $page == 1) {
 } else {
     $skip = ($page*6)-6;
 }
-$product_count = $products->count(['band_id' => $band->_id]);
+if (sizeof($type) > 0) {
+    $products_result = $products->find(
+        ['band_id' => $band->_id, 
+        'type' => ['$in' => $type]],
+        ['limit' => 6,
+        'skip' => $skip]
+    );
+    $products_result_total = $products->find(['band_id' => $band->_id, 'type' => ['$in' => $type]]);
+    $product_count = count($products_result_total->toArray());
+} else {
+    $products_result = $products->find(
+        ['band_id' => $band->_id],
+        ['limit' => 6,
+        'skip' => $skip]
+    );
+    $product_count = $products->count(['band_id' => $band->_id]);
+}
+$products_list = [];
+foreach($products_result as $prod) {
+    array_push($products_list, $prod);
+}
 $pages = ceil($product_count / 6);
-$products_list = $products->find(
-    ['band_id' => $band->_id],
-    ['limit' => 6,
-    'skip' => $skip]
-);
 ?>

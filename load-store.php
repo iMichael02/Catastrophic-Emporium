@@ -11,10 +11,23 @@ if ($page == "" || $page == 1) {
 } else {
     $skip = ($page*6)-6;
 }
-$product_count = $products->count();
+if (sizeof($type) > 0) {
+    $products_result = $products->find(['type' => ['$in' => $type]],
+        ['limit' => 6,
+        'skip' => $skip]
+    );
+    $products_result_total = $products->find(['type' => ['$in' => $type]]);
+    $product_count = count($products_result_total->toArray());
+} else {
+    $products_result = $products->find([],
+        ['limit' => 6,
+        'skip' => $skip]
+    );
+    $product_count = $products->count();
+}
+$products_list = [];
+foreach($products_result as $prod) {
+    array_push($products_list, $prod);
+}
 $pages = ceil($product_count / 6);
-$products_list = $products->find([],
-    ['limit' => 6,
-    'skip' => $skip]
-);
 ?>

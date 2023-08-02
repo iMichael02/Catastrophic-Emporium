@@ -1,5 +1,6 @@
 <?php
 include "./dbconnect.php";
+include "../functions.php";
 // session_start();
 $bands = $maindb->band;
 $bands_list = $bands->find([]);
@@ -13,40 +14,48 @@ foreach ($genres_list as $genre) {
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $bibliography = $_POST['bibliography'];
+    $genre_temp = $_POST['genre'];
+    $genre = [];
+    for($i = 0; $i < sizeof($genre_temp); $i++) {
+        if ($genre_temp[$i] != "") {
+            array_push($genre, (int)($genre_temp[$i]));
+        }
+    }
+    $question_temp = $_POST['question'];
+    $question = [];
+    for($i = 0; $i < sizeof($question_temp); $i++) {
+        if ($question_temp[$i] != "") {
+            array_push($question, $question_temp[$i]);
+        }
+    }
+    $answer_temp = $_POST['answer'];
+    $answer = [];
+    for($i = 0; $i < sizeof($answer_temp); $i++) {
+        if ($answer_temp[$i] != "") {
+            array_push($answer, $answer_temp[$i]);
+        }
+    }
     $tags = explode(", ",$_POST['tags']);
-    $fileName = $_FILES["thumbnail"]["name"];
-    $fileSize = $_FILES["thumbnail"]["size"]/1024;
-    $fileType = $_FILES["thumbnail"]["type"];
-    $fileTmpName = $_FILES["thumbnail"]["tmp_name"];
-    if ($fileType == "image/png") {
-        $random = rand(1111, 9999);
-        $newFileName = $random.$fileName;
-        $uploadPath = "testUpload/".$newFileName;
-        if(move_uploaded_file($fileTmpName,$uploadPath)){
-            $imageData = file_get_contents($uploadPath);
-            $base64String = base64_encode($imageData);
+    $base64String = imageUpload($_FILES["banner"]["name"], $_FILES["banner"]["size"], $_FILES["banner"]["type"], $_FILES["banner"]["tmp_name"]);
+    $largest = $first_band->_id;
+    foreach ($bands_list as $band) {
+        if ($band->_id > $largest) {
+            $largest = $band->_id;
         }
     }
-    $largest = $first_blog->_id;
-    foreach ($blogs_list as $blog) {
-        if ($blog->_id > $largest) {
-            $largest = $blog->_id;
-        }
-    }
-    date_default_timezone_set("Asia/Ho_Chi_Minh");
-    // $cursor = $blogs->insertOne([
-    //     '_id' => $largest + 1, 
-    //     'title' => $title, 
-    //     'author' => 1, 
-    //     'time' => date("d-m-Y H:i:s", strtotime('now')),
-    //     'content' => $blog_content,
-    //     'thumbnail' => $base64String,
-    //     'upvote' => [],
-    //     'downvote' => [],
-    //     'tags' => $tags,
-    //     'accepted' => true,
-    //     'comment' => []
-    // ]);
+    $cursor = $bands->insertOne([
+        '_id' => $largest + 1,
+        'name' => $name,
+        'bibliography' => $bibliography,
+        'genres' => $genre,
+        'questions' => $question,
+        'answers' => $answer,
+        'tags' => $tags,
+        'banner' => $base64String,
+        'products' => [],
+        'sales' => 0,
+        'member_followers' => []
+    ]);
 }
 
 ?>
@@ -56,7 +65,7 @@ if (isset($_POST['submit'])) {
         <input type="text" name="name"><br><br>
         <label>Bibliography:</label><br>
         <textarea name="bibliography" cols="100" rows="10"></textarea><br><br>
-        <label>Genre(s):</label><br>
+        <label for="genre">Genre(s):</label><br>
         <select name="genre[0]" placeholder="Pick a genre...">
             <option value="">Select a genre...</option>
             <?php
@@ -112,4 +121,6 @@ if (genreButton != null) {
         j++;
     });
 }
+var k = 1;
+var l = 1;
 </script>

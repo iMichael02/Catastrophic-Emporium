@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +53,7 @@
                     <li class="side-bar-item dashboard"><a href="index.php?content=dashboard"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
                     <li class="side-bar-item charts"><a href="index.php?content=charts"><i class="fa-solid fa-chart-simple"></i> Charts</a></li>
                     <li class="side-bar-item tables"><a href="index.php?content=tables"><i class="fa-solid fa-table"></i> Tables</a></li>
-                    <li class="side-bar-item users"><a href="index.php?content=users"><i class="fa-solid fa-user"></i> Users</a></li>
+                    <li class="side-bar-item users"><a href="index.php?content=members"><i class="fa-solid fa-user"></i> Users</a></li>
                     <li class="side-bar-item products"><i class="fa-brands fa-product-hunt"></i> Products <i class="fa-solid fa-angle-down"></i></li>
                     <ul class="side-bar-dropdown products">
                         <li class="side-bar-dropdown-item"><a href="index.php?content=all_products">All Products</a></li>
@@ -62,10 +65,10 @@
                         <li class="side-bar-dropdown-item"><a href="index.php?content=add_band">Add Band</a></li>
                     </ul>
                     <li class="side-bar-item genres"><a href="index.php?content=genres"><i class="fa-solid fa-list"></i> Genres</a></li>
-                    <li class="side-bar-item posts"><i class="fa-solid fa-newspaper"></i> Posts <i class="fa-solid fa-angle-down"></i></li>
-                    <ul class="side-bar-dropdown posts">
-                        <li class="side-bar-dropdown-item"><a href="index.php?content=all_posts">All Posts</a></li>
-                        <li class="side-bar-dropdown-item"><a href="index.php?content=add_post">Add Post</a></li>
+                    <li class="side-bar-item blogs"><i class="fa-solid fa-newspaper"></i> Blogs <i class="fa-solid fa-angle-down"></i></li>
+                    <ul class="side-bar-dropdown blogs">
+                        <li class="side-bar-dropdown-item"><a href="index.php?content=all_blogs">All Blogs</a></li>
+                        <li class="side-bar-dropdown-item"><a href="index.php?content=add_blog">Add Blog</a></li>
                     </ul>
                 </ul>
             </div>
@@ -83,8 +86,8 @@
                         case "tables":
                             include_once "./tables.php";
                             break;
-                        case "users":
-                            include_once "./users.php";
+                        case "members":
+                            include_once "./members.php";
                             break;
                         case "all_products":
                             include_once "./all-products.php";
@@ -101,11 +104,11 @@
                         case "genres":
                             include_once "./genres.php";
                             break;
-                        case "all_posts":
-                            include_once "./all-posts.php";
+                        case "all_blogs":
+                            include_once "./all-blogs.php";
                             break;
-                        case "add_post":
-                            include_once "./add-post.php";
+                        case "add_blog":
+                            include_once "./add-blog.php";
                             break;
                         default:
                             include_once "./dashboard.php";
@@ -121,6 +124,7 @@
     <script src="../asset/js/admin/addOptionsType.js"></script>
     <script src="../asset/js/admin/addOptionsQuestion.js"></script>
     <script src="../asset/js/admin/addOptionsAnswer.js"></script>
+    <script src="../asset/js/admin/closeForm.js"></script>
     <script>
     $(document).ready(function () {
         $('select').selectize({

@@ -65,12 +65,13 @@
     }
     .main-content-admin {
         display: grid;
-        grid-template-columns: 1fr 5fr;
+        grid-template-columns: 16% 84%;
         height: 100vh;
         .side-bar {
             background-color: $color-primary-black;
             color: $color-white;
             min-height: 100%;
+            grid-column: 1/2;
             .side-bar-list {
                 padding: 0;
                 .side-bar-item {
@@ -102,7 +103,7 @@
                     padding: 15px 0px;
                     padding-left: 30px;
                 }
-                .side-bar-item.posts {
+                .side-bar-item.blogs {
                     padding: 15px 0px;
                     padding-left: 30px;
                 }
@@ -141,10 +142,10 @@
                 .side-bar-dropdown.bands.active {
                     display: block;
                 }
-                .side-bar-dropdown.posts {
+                .side-bar-dropdown.blogs {
                     display: none;
                 }
-                .side-bar-dropdown.posts.active {
+                .side-bar-dropdown.blogs.active {
                     display: block;
                 }
             }
@@ -152,6 +153,7 @@
         .content {
             padding: 15px;
             background-color: $color-ivory;
+            grid-column: 2/3;
             :not(:first-child) {
                 margin-top: 20px;
             }
@@ -163,6 +165,7 @@
             .block {
                 background-color: $color-white;
                 padding: 15px;
+                overflow: scroll;
                 form {
                     label {
                         font-size: 20px;
@@ -189,9 +192,6 @@
                     
                 }
                 .add-product-form {
-                    #add-type {
-                        
-                    }
                     .sub-label {
                         display: inline-block;
                         padding-left: 40px;
@@ -201,7 +201,7 @@
                         margin-left: 40px;
                     }
                 }
-                .add-post-form {
+                .add-blog-form {
                     .sub-label {
                         display: inline-block;
                         padding-left: 40px;
@@ -209,6 +209,313 @@
                     }
                     .sub-input {
                         margin-left: 40px;
+                    }
+                }
+            }
+            .edit-band-window {
+                position: absolute;
+                width: 82%;
+                padding-top: 20px;
+                background-color: $color-primary-black-transparent;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                z-index: 2;
+                .close-button-container {
+                    width: 100%;
+                    color: $color-white;
+                    font-size: 30px;
+                    .close-button {
+                        display: inline;
+                        position: relative;
+                        right: -85%;
+                        cursor: pointer;
+                    }
+                }
+                .edit-form-container {
+                    margin: 0 auto;
+                    width: 800px;
+                    background-color: $color-white;
+                    padding: 10px;
+                    border-radius: 5px;
+                    #edit-band-form {
+                        label {
+                            font-weight: bold;
+                        }
+                        input {
+                            width: 400px;
+                        }
+                        .banner {
+                            width: 400px;
+                        }
+                        .add-button {
+                            font-family: $font-admin;
+                            background-color: $color-primary-red;
+                            color: $color-white;
+                            border: 2px solid $color-primary-black;
+                            border-radius: 5px;
+                            padding: 5px;
+                            width: fit-content;
+                            cursor: pointer;
+                            &:hover {
+                                background-color: $color-white;
+                                color: $color-primary-black;
+                            }
+                            &.submit {
+                                font-family: $font-admin;
+                                font-size: 16px;
+                                padding: 10px;
+                            }
+                        }
+                    }
+                }
+                .spacer-bottom {
+                    height: 20px;
+                }
+            }
+            .edit-prod-window {
+                position: absolute;
+                width: 82%;
+                padding-top: 20px;
+                background-color: $color-primary-black-transparent;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                z-index: 2;
+                .close-button-container {
+                    width: 100%;
+                    color: $color-white;
+                    font-size: 30px;
+                    .close-button {
+                        display: inline;
+                        position: relative;
+                        right: -85%;
+                        cursor: pointer;
+                    }
+                }
+                .edit-form-container {
+                    margin: 0 auto;
+                    width: 800px;
+                    background-color: $color-white;
+                    padding: 10px;
+                    border-radius: 5px;
+                    #edit-prod-form {
+                        label {
+                            font-weight: bold;
+                        }
+                        input {
+                            width: 400px;
+                        }
+                        .prod-image {
+                            width: 400px;
+                        }
+                        .add-button {
+                            font-family: $font-admin;
+                            background-color: $color-primary-red;
+                            color: $color-white;
+                            border: 2px solid $color-primary-black;
+                            border-radius: 5px;
+                            padding: 5px;
+                            width: fit-content;
+                            cursor: pointer;
+                            &:hover {
+                                background-color: $color-white;
+                                color: $color-primary-black;
+                            }
+                            &.submit {
+                                font-family: $font-admin;
+                                font-size: 16px;
+                                padding: 10px;
+                            }
+                        }
+                    }
+                }
+                .spacer-bottom {
+                    height: 20px;
+                }
+            }
+            .edit-genre-window {
+                position: absolute;
+                width: 82%;
+                padding-top: 20px;
+                background-color: $color-primary-black-transparent;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                z-index: 2;
+                .close-button-container {
+                    width: 100%;
+                    color: $color-white;
+                    font-size: 30px;
+                    .close-button {
+                        display: inline;
+                        position: relative;
+                        right: -85%;
+                        cursor: pointer;
+                    }
+                }
+                .edit-form-container {
+                    margin: 0 auto;
+                    width: 800px;
+                    background-color: $color-white;
+                    padding: 10px;
+                    border-radius: 5px;
+                    #edit-genre-form {
+                        label {
+                            font-weight: bold;
+                        }
+                        input {
+                            width: 400px;
+                        }
+                        .banner {
+                            width: 400px;
+                        }
+                        .add-button {
+                            font-family: $font-admin;
+                            background-color: $color-primary-red;
+                            color: $color-white;
+                            border: 2px solid $color-primary-black;
+                            border-radius: 5px;
+                            padding: 5px;
+                            width: fit-content;
+                            cursor: pointer;
+                            &:hover {
+                                background-color: $color-white;
+                                color: $color-primary-black;
+                            }
+                            &.submit {
+                                font-family: $font-admin;
+                                font-size: 16px;
+                                padding: 10px;
+                            }
+                        }
+                    }
+                }
+                .spacer-bottom {
+                    height: 20px;
+                }
+            }
+            .edit-blog-window {
+                position: absolute;
+                width: 82%;
+                padding-top: 20px;
+                background-color: $color-primary-black-transparent;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                z-index: 2;
+                .close-button-container {
+                    width: 100%;
+                    color: $color-white;
+                    font-size: 30px;
+                    .close-button {
+                        display: inline;
+                        position: relative;
+                        right: -85%;
+                        cursor: pointer;
+                    }
+                }
+                .edit-form-container {
+                    margin: 0 auto;
+                    width: 800px;
+                    background-color: $color-white;
+                    padding: 10px;
+                    border-radius: 5px;
+                    #edit-blog-form {
+                        label {
+                            font-weight: bold;
+                        }
+                        input {
+                            width: 400px;
+                        }
+                        .add-button {
+                            font-family: $font-admin;
+                            background-color: $color-primary-red;
+                            color: $color-white;
+                            border: 2px solid $color-primary-black;
+                            border-radius: 5px;
+                            padding: 5px;
+                            width: fit-content;
+                            cursor: pointer;
+                            &:hover {
+                                background-color: $color-white;
+                                color: $color-primary-black;
+                            }
+                            &.submit {
+                                font-family: $font-admin;
+                                font-size: 16px;
+                                padding: 10px;
+                            }
+                        }
+                    }
+                }
+                .spacer-bottom {
+                    height: 20px;
+                }
+            }
+            .pop-up-message-window {
+                position: absolute;
+                width: 82%;
+                height: 100%;
+                padding-top: 20px;
+                background-color: $color-primary-black-transparent;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                z-index: 2;
+                #confirm-delete-band-form {
+                    display: none;
+                }
+                #confirm-ban-form {
+                    display: none;
+                }
+                #confirm-unban-form {
+                    display: none;
+                }
+                .message-container {
+                    background-color: $color-white;
+                    width: 500px;
+                    height: 80px;
+                    border-radius: 5px 5px 0 0;
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 20px;
+                }
+                .options-container {
+                    background-color: $color-white;
+                    width: 500px;
+                    height: 120px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 0 0 5px 5px;
+                    margin: 0;
+                    .confirm-button-container {
+                        padding: 70px;
+                        .confirm-button {
+                            padding: 15px 30px;
+                            background-color: $color-primary-light-grey;
+                            font-family: $font-admin;
+                            font-size: 20px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
+                    }
+                    .cancel-button-container {
+                        padding: 70px;
+                        margin: 0;
+                        .cancel-button {
+                            padding: 15px 30px;
+                            background-color: $color-primary-red;
+                            font-family: $font-admin;
+                            font-size: 20px;
+                            color: $color-white;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
                     }
                 }
             }

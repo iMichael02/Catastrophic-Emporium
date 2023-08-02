@@ -9,7 +9,13 @@ $first_product = $products->findOne([]);
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $band_id = (int)$_POST['band'];
-    $type = $_POST['type'];
+    $type_temp = $_POST['type'];
+    $type = [];
+    for($i = 0; $i < sizeof($type_temp); $i++) {
+        if ($type_temp[$i] != "") {
+            array_push($type, $type_temp[$i]);
+        }
+    }
     $variance = $_POST['variance'];
     $variance = json_decode($variance);
     $tags = explode(", ",$_POST['tags']);
@@ -32,7 +38,6 @@ if (isset($_POST['submit'])) {
             $largest = $product->_id;
         }
     }
-    date_default_timezone_set("Asia/Ho_Chi_Minh");
     $cursor = $products->insertOne([
         '_id' => $largest + 1,
         'name' => $name,

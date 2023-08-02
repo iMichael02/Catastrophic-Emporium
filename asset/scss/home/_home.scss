@@ -56,14 +56,24 @@
 			font-family: $font-primary;
 			font-size: 25px;
 			padding: 1vh;
+			width: 98%;
 		}
 		.strength-list {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
 			gap: 10px;
+			width: 98%;
 		}
 		.strength-item {
-			text-align: center;
+			&.item1 {
+				text-align: left;
+			}
+			&.item2 {
+				text-align: center;
+			}
+			&.item3 {
+				text-align: right;
+			}
 		}
 		/* Top Banner */
 		.top-banner {

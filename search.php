@@ -1,7 +1,102 @@
 <?php
 include "./dbconnect.php";
-include "./load-search.php";
 include "./functions.php";
+if (isset($_POST['add_to_wishlist'])) {
+    if (isset($_SESSION['uid'])) {
+        $pid = (int)($_POST['add_to_wishlist']);
+        $members = $maindb->member;
+        $uid = $_SESSION['uid'];
+        $online_member = $members->findOne(['_id' => $uid]);
+        $updated_wishlist = $online_member->wishlist;
+        array_push($updated_wishlist, $pid);
+        $cursor = $members->updateOne(['_id' => $uid], ['$set' => ['wishlist' => $updated_wishlist]]);
+        header("Location: ./wishlist.php");
+    } else {
+        ?>
+        <script>alert("You have to login first!")</script>
+        <?php
+        header("Location: ./login.php");
+    }
+}
+$type = [];
+if (isset($_GET['type'])) {
+    foreach($_GET['type'] as $submit_type) {
+        switch($submit_type) {
+            case "t_shirt":
+                array_push($type, "t-shirt");
+                break;
+            case "sweatshirt":
+                array_push($type, "sweatshirt");
+                break;
+            case "hoodie":
+                array_push($type, "hoodie");
+                break;
+            case "shorts":
+                array_push($type, "shorts");
+                break;
+            case "pants":
+                array_push($type, "pants");
+                break;
+            case "shoes":
+                array_push($type, "shoes");
+                break;
+            case "hat":
+                array_push($type, "hat");
+                break;
+            case "tank_top":
+                array_push($type, "tank-top");
+                break;
+            case "mask":
+                array_push($type, "mask");
+                break;
+            case "necklace":
+                array_push($type, "necklace");
+                break;
+            case "ring":
+                array_push($type, "ring");
+                break;
+            case "bracelet":
+                array_push($type, "bracelet");
+                break;
+            case "earing":
+                array_push($type, "earing");
+                break;
+            case "nose_ring":
+                array_push($type, "nose-ring");
+                break;
+            case "patch":
+                array_push($type, "patch");
+                break;
+            case "vinyl":
+                array_push($type, "vinyl");
+                break;
+            case "cd_dvd":
+                array_push($type, "cd-dvd");
+                break;
+            case "figure":
+                array_push($type, "figure");
+                break;
+            case "guitar_pick":
+                array_push($type, "guitar-pick");
+                break;
+            case "collectibles_other":
+                array_push($type, "collectibles-other");
+                break;
+            case "banner":
+                array_push($type, "banner");
+                break;
+            case "picture_frame":
+                array_push($type, "picture-frame");
+                break;
+            case "decors_other":
+                array_push($type, "decors-other");
+                break;
+            default:
+                break;
+        }
+    }
+}
+include "./load-search.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,63 +140,31 @@ include "./functions.php";
             <!-- End Breadcrumb -->
             <div class="main-content-container">
                 <div class="left-grid">
-                    <div class="product-type-title apparels-title">Apparels</div>
-                    <ul class="product-type apparels">
-                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">T-Shirts</li>
-                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Sweat Shirts</li>
-                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Hoodies</li>
-                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Shorts</li>
-                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Pants</li>
-                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Shoes</li>
-                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Hats</li>
-                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Tank-tops</li>
-                        <li class="product-option apparels-option"><input type="checkbox" id="" name="" class="option">Masks</li>
-                    </ul>
-                    <hr>
-                    <div class="product-type-title accessories-title">Accessories</div>
-                    <ul class="product-type accessories">
-                        <li class="product-option accessories-option"><input type="checkbox" id="" name="" class="option">Necklaces</li>
-                        <li class="product-option accessories-option"><input type="checkbox" id="" name="" class="option">Rings</li>
-                        <li class="product-option accessories-option"><input type="checkbox" id="" name="" class="option">Bracelets</li>
-                        <li class="product-option accessories-option"><input type="checkbox" id="" name="" class="option">Earings</li>
-                        <li class="product-option accessories-option"><input type="checkbox" id="" name="" class="option">Nose Rings</li>
-                    </ul>
-                    <hr>
-                    <div class="product-type-title collectibles-title">Collectibles</div>
-                    <ul class="product-type collectibles">
-                        <li class="product-option collectibles-option"><input type="checkbox" id="" name="" class="option">Figures</li>
-                        <li class="product-option collectibles-option"><input type="checkbox" id="" name="" class="option">Guitar Picks</li>
-                        <li class="product-option collectibles-option"><input type="checkbox" id="" name="" class="option">Patches</li>
-                        <li class="product-option collectibles-option"><input type="checkbox" id="" name="" class="option">Others</li>
-                    </ul>
-                    <hr>
-                    <div class="product-type-title decors-title">Decors</div>
-                    <ul class="product-type decors">
-                        <li class="product-option decors-option"><input type="checkbox" id="" name="" class="option">Banners</li>
-                        <li class="product-option decors-option"><input type="checkbox" id="" name="" class="option">Picture Frames</li>
-                        <li class="product-option decors-option"><input type="checkbox" id="" name="" class="option">Others</li>
-                    </ul>
-                    <hr>
+                    <?php
+                    include "./filter-form.php";
+                    ?>
                 </div>
                 <div class="mid-grid">
                     <div class="mid-grid-container">
                         <?php
-                        foreach($products_display_list as $product) {
+                        for($i = 0; $i < sizeof($products_display_list); $i++) {
                             ?>
                             <div class="grid-item">
                                 <div class="grid-item-container">
-                                    <div class="grid-item-image"><a href="#" class="grid-item-link"><img src="<?php echo "data:image/png;base64,".$product->image1; ?>" alt=""></a></div>
+                                    <div class="grid-item-image"><a href="./product.php?id=<?= $products_display_list[$i]->_id ?>" class="grid-item-link"><img src="<?php echo "data:image/png;base64,".$products_display_list[$i]->image1; ?>" alt=""></a></div>
                                     <div class="grid-item-title">
                                         <?php
-                                        $band = $bands->findOne(['_id' => $product->band_id]);
+                                        $band = $bands->findOne(['_id' => $products_display_list[$i]->band_id]);
                                         echo $band->name;
                                         ?>
                                     </div>
-                                    <div class="grid-item-name"><a href="#" class="grid-item-link"><?php echo $product->name; ?></a></div>
-                                    <div class="grid-item-price"><?php echo commas($product->price);?>VND</div>
+                                    <div class="grid-item-name"><a href="#" class="grid-item-link"><?php echo $products_display_list[$i]->name; ?></a></div>
+                                    <div class="grid-item-price"><?php echo commas($products_display_list[$i]->price);?>VND</div>
                                     <div class="grid-item-shopping-options">
-                                        <a href="#" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
-                                        <a href="#" class="shopping-option-link add-to-cart-link"><div class="add-to-cart"><div><i class="fa-solid fa-cart-shopping"></i></div></div></a>
+                                        <a href="./product.php?id=<?= $products_display_list[$i]->_id ?>" class="shopping-option-link buy-now-link"><div class="buy-now"><div>Buy Now</div></div></a>
+                                        <form action="./search.php" id="add-to-wishlist-form" method="post">
+                                            <button type="submit" class="add-to-wishlist-button" name="add_to_wishlist" value="<?= $products_display_list[$i]->_id ?>"><i class="fa-solid fa-plus"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -115,15 +178,39 @@ include "./functions.php";
                             for ($i = 1; $i <= $products_pages; $i++) {
                                 if ($products_page == $i) {
                                     ?>
-                                    <li class="page-nav-item selected"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=<?php echo $i?>&blogs_page=1"><?php echo $i?></a></li>
+                                    <li class="page-nav-item selected"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=<?php
+                                    echo $i;
+                                    if (isset($_GET['type'])) {
+                                        foreach($_GET['type'] as $index => $submit_type) {
+                                            echo "&type%5B".$index."%5D=".$submit_type;
+                                        }
+                                        echo "&filter=";
+                                    }
+                                    ?>&blogs_page=1"><?php echo $i?></a></li>
                                     <?php
                                 } elseif ($products_page == "" && $i == 1) {
                                     ?>
-                                    <li class="page-nav-item selected"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=<?php echo $i?>&blogs_page=1"><?php echo $i?></a></li>
+                                    <li class="page-nav-item selected"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=<?php
+                                    echo $i;
+                                    if (isset($_GET['type'])) {
+                                        foreach($_GET['type'] as $index => $submit_type) {
+                                            echo "&type%5B".$index."%5D=".$submit_type;
+                                        }
+                                        echo "&filter=";
+                                    }
+                                    ?>&blogs_page=1"><?php echo $i?></a></li>
                                     <?php
                                 } else {
                                     ?>
-                                    <li class="page-nav-item"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=<?php echo $i?>&blogs_page=1"><?php echo $i?></a></li>
+                                    <li class="page-nav-item"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=<?php
+                                    echo $i;
+                                    if (isset($_GET['type'])) {
+                                        foreach($_GET['type'] as $index => $submit_type) {
+                                            echo "&type%5B".$index."%5D=".$submit_type;
+                                        }
+                                        echo "&filter=";
+                                    }
+                                    ?>&blogs_page=1"><?php echo $i?></a></li>
                                     <?php
                                 }
                             }
@@ -132,36 +219,9 @@ include "./functions.php";
                     </div>
                 </div>
                 <div class="right-grid">
-                    <div class="bands-title">Bands</div>
-                    <ul class="bands">
-                        <li class="bands-option"><a href="#" class="band">Architects</a></li>
-                        <li class="bands-option"><a href="#" class="band">Bring Me The Horizon</a></li>
-                        <li class="bands-option"><a href="#" class="band">Cannibal Corpse</a></li>
-                        <li class="bands-option"><a href="#" class="band">Infant Annihilator</a></li>
-                        <li class="bands-option"><a href="#" class="band">Jinjer</a></li>
-                        <li class="bands-option"><a href="#" class="band">Korn</a></li>
-                        <li class="bands-option"><a href="#" class="band">Lorna Shore</a></li>
-                        <li class="bands-option"><a href="#" class="band">Metallica</a></li>
-                        <li class="bands-option"><a href="#" class="band">Pantera</a></li>
-                        <li class="bands-option"><a href="#" class="band">Slipknot</a></li>
-                        <li class="bands-option"><a href="./bands.html" class="view-all">View all bands list <i class="fa-solid fa-angles-right"></i></a></li>
-                    </ul>
-                    <hr>
-                    <div class="genres-title">Genres</div>
-                    <ul class="genres">
-                        <li class="genres-option"><a href="#" class="genre">Alternative Metal</a></li>
-                        <li class="genres-option"><a href="#" class="genre">Black Metal</a></li>
-                        <li class="genres-option"><a href="#" class="genre">Christian Metal</a></li>
-                        <li class="genres-option"><a href="#" class="genre">Death Metal</a></li>
-                        <li class="genres-option"><a href="#" class="genre">Deathcore</a></li>
-                        <li class="genres-option"><a href="#" class="genre">Heavy Metal</a></li>
-                        <li class="genres-option"><a href="#" class="genre">Grindcore</a></li>
-                        <li class="genres-option"><a href="#" class="genre">Metalcore</a></li>
-                        <li class="genres-option"><a href="#" class="genre">Nü Metal</a></li>
-                        <li class="genres-option"><a href="#" class="genre">Thrash Metal</a></li>
-                        <li class="genres-option"><a href="#" class="view-all">View all genres list <i class="fa-solid fa-angles-right"></i></a></li>
-                    </ul>
-                    <hr>
+                    <?php
+                    include "./bands-genres-list.php";
+                    ?>
                 </div>
                 <div class="bottom-grid">
                     <?php
@@ -223,15 +283,39 @@ include "./functions.php";
                             for ($i = 1; $i <= $blogs_pages; $i++) {
                                 if ($blogs_page == $i) {
                                     ?>
-                                    <li class="page-nav-item selected"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=1&blogs_page=<?php echo $i?>"><?php echo $i?></a></li>
+                                    <li class="page-nav-item selected"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=1&blogs_page=<?php
+                                    echo $i;
+                                    if (isset($_GET['type'])) {
+                                        foreach($_GET['type'] as $index => $submit_type) {
+                                            echo "&type%5B".$index."%5D=".$submit_type;
+                                        }
+                                        echo "&filter=";
+                                    }
+                                    ?>"><?php echo $i?></a></li>
                                     <?php
                                 } elseif ($blogs_page == "" && $i == 1) {
                                     ?>
-                                    <li class="page-nav-item selected"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=1&blogs_page=<?php echo $i?>"><?php echo $i?></a></li>
+                                    <li class="page-nav-item selected"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=1&blogs_page=<?php
+                                    echo $i;
+                                    if (isset($_GET['type'])) {
+                                        foreach($_GET['type'] as $index => $submit_type) {
+                                            echo "&type%5B".$index."%5D=".$submit_type;
+                                        }
+                                        echo "&filter=";
+                                    }
+                                    ?>"><?php echo $i?></a></li>
                                     <?php
                                 } else {
                                     ?>
-                                    <li class="page-nav-item"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=1&blogs_page=<?php echo $i?>"><?php echo $i?></a></li>
+                                    <li class="page-nav-item"><a href="./search.php?search=<?php echo $spaced_searchterms ?>&products_page=1&blogs_page=<?php
+                                    echo $i;
+                                    if (isset($_GET['type'])) {
+                                        foreach($_GET['type'] as $index => $submit_type) {
+                                            echo "&type%5B".$index."%5D=".$submit_type;
+                                        }
+                                        echo "&filter=";
+                                    }
+                                    ?>"><?php echo $i?></a></li>
                                     <?php
                                 }
                             }

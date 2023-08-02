@@ -187,7 +187,7 @@
                     }
                 }
                 .size-options {
-                    .container {
+                    .size-container {
                         position: relative;
                         display: inline-block;
                         margin-right: 5px;
@@ -225,6 +225,22 @@
                         text-align: center;
                     }
                     .buttons {
+                        .buy-now {
+                            margin-top: 10px;
+                            padding: 10px 20px;
+                            font-family: $font-primary;
+                            font-size: 20px;
+                            background-color: $color-primary-red;
+                            color: $color-white;
+                            border: 2px solid $color-primary-black;
+                            border-radius: 5px;
+                            transition: 0.2s;
+                            &:hover {
+                                background-color: $color-white;
+                                color: $color-primary-black;
+                                cursor: pointer;
+                            }
+                        }
                         .add-to-cart {
                             margin-top: 10px;
                             padding: 10px 20px;

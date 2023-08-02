@@ -1,3 +1,29 @@
+<?php
+session_start();
+include "./dbconnect.php";
+include "./functions.php";
+$blogs = $maindb->blog;
+$members = $maindb->member;
+$blogs_list = $blogs->find([]);
+$members_list = $members->find([]);
+$sorted_blog_list = [];
+foreach ($blogs_list as $blog) {
+    $sorted_blog_list[] = $blog;
+}
+usort($sorted_blog_list, function ($a, $b) {
+    if ($a == $b) {
+        return 0;
+    }
+    return ($a < $b) ? -1 : 1;
+});
+if (isset($_GET['page'])) {
+    $page = (int)$_GET['page'];
+    $skip = 6 * ($page - 1);
+} else {
+    $page = 1;
+    $skip = 0;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +35,14 @@
     <link rel="stylesheet" href="./asset/scss/style.css?v=<?php echo time(); ?>"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script> 
-        $(function(){
-            $("#header").load("./asset/header&footer/header.php");
-            $("#footer").load("./asset/header&footer/footer.php");
-        });
-    </script>
     <title>Blogs</title>
 </head>
 <body>
     <div class="page-wrapper">
         <!-- Header -->
-        <div id="header"></div>
+        <?php
+        include "./asset/header&footer/header.php";
+        ?>
         <!-- End Header -->
 
         <!-- Main Content -->
@@ -41,551 +63,81 @@
 
             <!-- Main Content Container -->
             <div class="main-content-container">
+                <?php
+                for ($i = sizeof($sorted_blog_list) - 1 - $skip; $i > sizeof($sorted_blog_list) - 1 - $skip - 6; $i--) {
+                    if ($i >= 0) {
+                ?>
                 <div class="blog">
                     <div class="blog-container">
                         <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog1.png" alt="" id="thumbnail-pic">
+                            <img src="data:image/png;base64,<?= $sorted_blog_list[$i]->thumbnail ?>" alt="" id="thumbnail-pic">
                         </div>
                         <div class="post-info">
                             <div class="post-title-and-author">
-                                <div class="post-title">Metallica's "72 Seasons" Album Review</div>
+                                <div class="post-title"><?= $sorted_blog_list[$i]->title ?></div>
                                 <div class="post-author">
                                     <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
+                                        <img src="data:image/png;base64,<?php
+                                        $author = $members->findOne(['_id' => $sorted_blog_list[$i]->author]);
+                                        echo $author->profile_pic;
+                                        ?>" alt="">
                                     </div>
                                     <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
+                                        <div class="name"><?= $author->display_name ?></div>
                                         <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
+                                        <div class="joint-date">Joint <?= $author->joint_date ?></div>
+                                        <div class="title"><?php
+                                        if($author->title->active_member != "") {
+                                            if($author->title->certified_writer != "") {
+                                                if($author->title->the_creator != "") {
+                                                    echo "The Creator";
+                                                } else {
+                                                    echo "Certified Writer";
+                                                }
+                                            } else {
+                                                echo "Active Member";
+                                            }
+                                        } else {
+                                            echo "New Member";
+                                        }
+                                        ?></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
+                            <div class="date"><?= substr($sorted_blog_list[$i]->time, 0, 10) ?></div>
+                            <div class="time"><?= substr($sorted_blog_list[$i]->time, 11, 8) ?></div>
                         </div>
                     </div>
-                    <a href="./blog-page.html" class="blog-link">
+                    <a href="./blog-page.php?id=<?= $sorted_blog_list[$i]->_id ?>" class="blog-link">
                         <span class="link-spanner"></span>
                     </a>
                 </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog1.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Metallica's "72 Seasons" Album Review</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="./blog-page.html" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog1.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Metallica's "72 Seasons" Album Review</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="./blog-page.html" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog1.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Metallica's "72 Seasons" Album Review</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="./blog-page.html" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog1.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Metallica's "72 Seasons" Album Review</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="./blog-page.html" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog1.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Metallica's "72 Seasons" Album Review</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="./blog-page.html" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog2.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Top 10 Albums of 2023 So Far</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog2.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Top 10 Albums of 2023 So Far</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog2.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Top 10 Albums of 2023 So Far</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog2.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Top 10 Albums of 2023 So Far</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog2.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Top 10 Albums of 2023 So Far</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog2.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Top 10 Albums of 2023 So Far</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog3.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog3.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog3.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog3.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog3.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
-                <div class="blog">
-                    <div class="blog-container">
-                        <div class="thumbnail" id="thumbnail">
-                            <img src="./images/blog/blog3.png" alt="" id="thumbnail-pic">
-                        </div>
-                        <div class="post-info">
-                            <div class="post-title-and-author">
-                                <div class="post-title">Meet Sleep Token, A New Rising Star In The Metal Scene</div>
-                                <div class="post-author">
-                                    <div class="profile-pic">
-                                        <img src="./logo/facebook_profile_image.png" alt="">
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="name">Mike Sovereignborn</div>
-                                        <hr>
-                                        <div class="joint-date">Joint Apr 4th, 2023</div>
-                                        <div class="title">The Creator</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="time-date">
-                            <div class="date">Apr 20th, 2023</div>
-                            <div class="time">9:04 AM</div>
-                        </div>
-                    </div>
-                    <a href="#" class="blog-link">
-                        <span class="link-spanner"></span>
-                    </a>
-                </div>
+                <?php
+                    }
+                }
+                ?>
                 <div class="page-nav">
                     <ul class="page-nav-container" id="page-nav-container">
-                        <li class="page-nav-item" onclick="pageChange(this)" id="page-nav-item1">1</li>
-                        <li class="page-nav-item" onclick="pageChange(this)" id="page-nav-item2">2</li>
-                        <li class="page-nav-item" onclick="pageChange(this)" id="page-nav-item3">3</li>
+                        <?php
+                        $pages = ceil(sizeof($sorted_blog_list)/6);
+                        for ($i = 1; $i <= $pages; $i++) {
+                            if ($page == $i) {
+                                ?>
+                                <li class="page-nav-item selected"><a href="./blogs.php?page=<?= $i ?>"><?= $i?></a></li>
+                                <?php
+                            } elseif ($page == "" && $i == 1) {
+                                ?>
+                                <li class="page-nav-item selected"><a href="./blogs.php?page=<?= $i ?>"><?= $i?></a></li>
+                                <?php
+                            } else {
+                                ?>
+                                <li class="page-nav-item"><a href="./blogs.php?page=<?= $i ?>"><?php echo $i?></a></li>
+                                <?php
+                            }
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -594,7 +146,9 @@
         <!-- End Main Content -->
 
         <!-- Footer -->
-        <div id="footer"></div>
+        <?php
+        include "./asset/header&footer/header.php";
+        ?>
         <!-- End Footer -->
     </div>
     <script

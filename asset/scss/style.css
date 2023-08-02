@@ -48,6 +48,14 @@ body {
 .header .header-container .header-item a:hover {
   filter: brightness(0.8);
 }
+.header .header-container .header-item #log-out-form .log-out-button {
+  font-family: "Metal Mania";
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #570000;
+  border: none;
+  cursor: pointer;
+}
 
 /* Menu */
 .topnavbar {
@@ -358,14 +366,22 @@ body {
   font-family: "Metal Mania";
   font-size: 25px;
   padding: 1vh;
+  width: 98%;
 }
 .main-content .main-content-container .strength-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  width: 98%;
 }
-.main-content .main-content-container .strength-item {
+.main-content .main-content-container .strength-item.item1 {
+  text-align: left;
+}
+.main-content .main-content-container .strength-item.item2 {
   text-align: center;
+}
+.main-content .main-content-container .strength-item.item3 {
+  text-align: right;
 }
 .main-content .main-content-container .top-banner {
   display: flex;
@@ -809,7 +825,7 @@ body {
 .main-content-wl .main-content-container .headings {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid #cccccc;
 }
 .main-content-wl .main-content-container .headings .heading-item {
@@ -825,10 +841,11 @@ body {
   padding: 10px 0;
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid #cccccc;
 }
 .main-content-wl .main-content-container .items-list .item .item-info {
+  font-family: "PT Sans";
   display: flex;
   align-items: center;
   justify-content: center;
@@ -844,8 +861,25 @@ body {
   width: 40%;
   aspect-ratio: 1/1;
 }
-.main-content-wl .main-content-container .items-list .item .item-action a {
-  text-decoration: none;
+.main-content-wl .main-content-container .items-list .item .item-action #action-form .action-button button {
+  font-family: "PT Sans";
+  color: #ffffff;
+  background-color: #570000;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.main-content-wl .main-content-container .items-list .item .item-action #action-form .action-button button:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+.main-content-wl .main-content-container .items-list .item .item-action #action-form .delete-button button {
+  background-color: #111111;
+}
+.main-content-wl .main-content-container .items-list .item .item-action #action-form .buy-button {
+  margin-top: 10px;
 }
 
 /* Main Content */
@@ -1157,14 +1191,31 @@ body {
   grid-column: 1/4;
   background-color: rgba(255, 255, 255, 0.8);
 }
-.main-content-store .main-content-container .left-grid .product-type-title {
+.main-content-store .main-content-container .left-grid #filter-form .product-type-title {
   padding: 10px 10px 0 10px;
   font-size: 20px;
   color: #570000;
 }
-.main-content-store .main-content-container .left-grid .product-type .product-option {
+.main-content-store .main-content-container .left-grid #filter-form .product-type .product-option {
   list-style: none;
   font-size: 18px;
+}
+.main-content-store .main-content-container .left-grid #filter-form .filter-button-container {
+  display: flex;
+  justify-content: center;
+}
+.main-content-store .main-content-container .left-grid #filter-form .filter-button-container .filter-button {
+  font-family: "Metal Mania";
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  cursor: pointer;
+}
+.main-content-store .main-content-container .left-grid #filter-form .filter-button-container .filter-button:hover {
+  filter: brightness(1.5);
 }
 .main-content-store .main-content-container .mid-grid {
   grid-column: 4/18;
@@ -1241,16 +1292,20 @@ body {
   align-items: center;
   justify-content: center;
 }
-.main-content-store .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .add-to-cart-link {
-  grid-column: 4/5;
+.main-content-store .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form {
   height: 100%;
-  border-radius: 0 0 10px 0;
 }
-.main-content-store .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .add-to-cart {
-  display: flex;
+.main-content-store .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form .add-to-wishlist-button {
+  color: #ffffff;
+  background-color: #570000;
   height: 100%;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  border-radius: 0 0 10px 0;
+  border: none;
+  cursor: pointer;
+}
+.main-content-store .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form .add-to-wishlist-button:hover {
+  filter: brightness(1.5);
 }
 .main-content-store .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .shopping-option-link {
   text-decoration: none;
@@ -1487,23 +1542,36 @@ body {
 }
 .main-content-blogs .main-content-container .page-nav .page-nav-container .page-nav-item {
   float: left;
-  padding: 13px 15px;
-  width: 20px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   font-size: 18px;
   border-radius: 10px;
   margin: 3px;
-}
-.main-content-blogs .main-content-container .page-nav .page-nav-container .page-nav-item:nth-child(1) {
-  background-color: #570000;
-  color: #ffffff;
-}
-.main-content-blogs .main-content-container .page-nav .page-nav-container .page-nav-item:not(:nth-child(1)) {
   background-color: #dedede;
+}
+.main-content-blogs .main-content-container .page-nav .page-nav-container .page-nav-item a {
+  color: #111111;
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
 }
 .main-content-blogs .main-content-container .page-nav .page-nav-container .page-nav-item:hover {
   cursor: pointer;
-  filter: brightness(1.1);
+  filter: brightness(1.5);
+}
+.main-content-blogs .main-content-container .page-nav .page-nav-container .page-nav-item a {
+  display: block;
+  padding: 13px 15px;
+  text-decoration: none;
+  text-align: center;
+}
+.main-content-blogs .main-content-container .page-nav .page-nav-container .page-nav-item.selected {
+  background-color: #570000;
+}
+.main-content-blogs .main-content-container .page-nav .page-nav-container .page-nav-item.selected a {
+  color: #ffffff;
 }
 
 /* Main Content */
@@ -1977,7 +2045,7 @@ body {
 .main-content-cart .main-content-container .headings {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   border-top: 1px solid #cccccc;
 }
 .main-content-cart .main-content-container .headings .heading-item {
@@ -1993,7 +2061,7 @@ body {
   padding: 10px 0;
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   border-top: 1px solid #cccccc;
 }
 .main-content-cart .main-content-container .items-list .item .item-info {
@@ -2231,33 +2299,33 @@ body {
 .main-content-product .main-content-container .product-grid .product-info .size-chart .inner table tbody tr:nth-child(odd) {
   background-color: #ebe7dd;
 }
-.main-content-product .main-content-container .product-grid .product-info .size-options .container {
+.main-content-product .main-content-container .product-grid .product-info .size-options .size-container {
   position: relative;
   display: inline-block;
   margin-right: 5px;
   margin-bottom: 10px;
   font-size: 20px;
 }
-.main-content-product .main-content-container .product-grid .product-info .size-options .container input {
+.main-content-product .main-content-container .product-grid .product-info .size-options .size-container input {
   display: none;
   box-sizing: border-box;
   padding: 0;
   cursor: pointer;
 }
-.main-content-product .main-content-container .product-grid .product-info .size-options .container input:checked ~ .size-btn {
+.main-content-product .main-content-container .product-grid .product-info .size-options .size-container input:checked ~ .size-btn {
   border: 2px solid #111111;
 }
-.main-content-product .main-content-container .product-grid .product-info .size-options .container .size-btn {
+.main-content-product .main-content-container .product-grid .product-info .size-options .size-container .size-btn {
   line-height: 30px;
   padding: 5px 10px;
   cursor: pointer;
   background-color: #dedede;
   border: 2px solid transparent;
 }
-.main-content-product .main-content-container .product-grid .product-info .size-options .container .size-btn:hover {
+.main-content-product .main-content-container .product-grid .product-info .size-options .size-container .size-btn:hover {
   background-color: #cccccc;
 }
-.main-content-product .main-content-container .product-grid .product-info .size-options .container .size-btn::after {
+.main-content-product .main-content-container .product-grid .product-info .size-options .size-container .size-btn::after {
   display: none;
 }
 .main-content-product .main-content-container .product-grid .product-info .quantity {
@@ -2267,6 +2335,22 @@ body {
   width: 100px;
   padding: 5px 0;
   text-align: center;
+}
+.main-content-product .main-content-container .product-grid .product-info .quantity .buttons .buy-now {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-family: "Metal Mania";
+  font-size: 20px;
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+.main-content-product .main-content-container .product-grid .product-info .quantity .buttons .buy-now:hover {
+  background-color: #ffffff;
+  color: #111111;
+  cursor: pointer;
 }
 .main-content-product .main-content-container .product-grid .product-info .quantity .buttons .add-to-cart {
   margin-top: 10px;
@@ -2686,14 +2770,31 @@ body {
   grid-row: 2/3;
   background-color: rgba(255, 255, 255, 0.8);
 }
-.main-content-band-page .main-content-container .left-grid .product-type-title {
+.main-content-band-page .main-content-container .left-grid #filter-form .product-type-title {
   padding: 10px 10px 0 10px;
   font-size: 20px;
   color: #570000;
 }
-.main-content-band-page .main-content-container .left-grid .product-type .product-option {
+.main-content-band-page .main-content-container .left-grid #filter-form .product-type .product-option {
   list-style: none;
   font-size: 18px;
+}
+.main-content-band-page .main-content-container .left-grid #filter-form .filter-button-container {
+  display: flex;
+  justify-content: center;
+}
+.main-content-band-page .main-content-container .left-grid #filter-form .filter-button-container .filter-button {
+  font-family: "Metal Mania";
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  cursor: pointer;
+}
+.main-content-band-page .main-content-container .left-grid #filter-form .filter-button-container .filter-button:hover {
+  filter: brightness(1.5);
 }
 .main-content-band-page .main-content-container .mid-grid {
   grid-column: 4/18;
@@ -2771,16 +2872,20 @@ body {
   align-items: center;
   justify-content: center;
 }
-.main-content-band-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .add-to-cart-link {
-  grid-column: 4/5;
+.main-content-band-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form {
   height: 100%;
-  border-radius: 0 0 10px 0;
 }
-.main-content-band-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .add-to-cart {
-  display: flex;
+.main-content-band-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form .add-to-wishlist-button {
+  color: #ffffff;
+  background-color: #570000;
   height: 100%;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  border-radius: 0 0 10px 0;
+  border: none;
+  cursor: pointer;
+}
+.main-content-band-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form .add-to-wishlist-button:hover {
+  filter: brightness(1.5);
 }
 .main-content-band-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .shopping-option-link {
   text-decoration: none;
@@ -3003,14 +3108,31 @@ body {
   grid-row: 2/3;
   background-color: rgba(255, 255, 255, 0.8);
 }
-.main-content-genre-page .main-content-container .left-grid .product-type-title {
+.main-content-genre-page .main-content-container .left-grid #filter-form .product-type-title {
   padding: 10px 10px 0 10px;
   font-size: 20px;
   color: #570000;
 }
-.main-content-genre-page .main-content-container .left-grid .product-type .product-option {
+.main-content-genre-page .main-content-container .left-grid #filter-form .product-type .product-option {
   list-style: none;
   font-size: 18px;
+}
+.main-content-genre-page .main-content-container .left-grid #filter-form .filter-button-container {
+  display: flex;
+  justify-content: center;
+}
+.main-content-genre-page .main-content-container .left-grid #filter-form .filter-button-container .filter-button {
+  font-family: "Metal Mania";
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  cursor: pointer;
+}
+.main-content-genre-page .main-content-container .left-grid #filter-form .filter-button-container .filter-button:hover {
+  filter: brightness(1.5);
 }
 .main-content-genre-page .main-content-container .mid-grid {
   grid-column: 4/18;
@@ -3088,16 +3210,20 @@ body {
   align-items: center;
   justify-content: center;
 }
-.main-content-genre-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .add-to-cart-link {
-  grid-column: 4/5;
+.main-content-genre-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form {
   height: 100%;
-  border-radius: 0 0 10px 0;
 }
-.main-content-genre-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .add-to-cart {
-  display: flex;
+.main-content-genre-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form .add-to-wishlist-button {
+  color: #ffffff;
+  background-color: #570000;
   height: 100%;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  border-radius: 0 0 10px 0;
+  border: none;
+  cursor: pointer;
+}
+.main-content-genre-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form .add-to-wishlist-button:hover {
+  filter: brightness(1.5);
 }
 .main-content-genre-page .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .shopping-option-link {
   text-decoration: none;
@@ -3273,6 +3399,23 @@ body {
   list-style: none;
   font-size: 18px;
 }
+.main-content-search .main-content-container .left-grid .filter-button-container {
+  display: flex;
+  justify-content: center;
+}
+.main-content-search .main-content-container .left-grid .filter-button-container .filter-button {
+  font-family: "Metal Mania";
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  cursor: pointer;
+}
+.main-content-search .main-content-container .left-grid .filter-button-container .filter-button:hover {
+  filter: brightness(1.5);
+}
 .main-content-search .main-content-container .mid-grid {
   grid-column: 4/18;
   grid-row: 1/2;
@@ -3349,16 +3492,20 @@ body {
   align-items: center;
   justify-content: center;
 }
-.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .add-to-cart-link {
-  grid-column: 4/5;
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form {
   height: 100%;
-  border-radius: 0 0 10px 0;
 }
-.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .add-to-cart {
-  display: flex;
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form .add-to-wishlist-button {
+  color: #ffffff;
+  background-color: #570000;
   height: 100%;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  border-radius: 0 0 10px 0;
+  border: none;
+  cursor: pointer;
+}
+.main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options #add-to-wishlist-form .add-to-wishlist-button:hover {
+  filter: brightness(1.5);
 }
 .main-content-search .main-content-container .mid-grid .mid-grid-container .grid-item .grid-item-container .grid-item-shopping-options .shopping-option-link {
   text-decoration: none;
@@ -3629,8 +3776,8 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #ffffff;
-  width: 40%;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 70%;
 }
 .main-content-login .main-content-container .login-form {
   padding: 2vh;
@@ -3641,7 +3788,7 @@ body {
 }
 .main-content-login .main-content-container .login-form .login-input {
   font-family: "Metal Mania";
-  font-size: 3vh;
+  font-size: 24px;
   padding: 4px;
   width: 400px;
 }
@@ -3655,7 +3802,7 @@ body {
 .main-content-login .main-content-container .login-form button[type=submit] {
   padding: 10px 40px;
   font-family: "Metal Mania";
-  font-size: 3vh;
+  font-size: 24px;
   background-color: #570000;
   color: #ffffff;
   border-radius: 10px;
@@ -3757,13 +3904,14 @@ body {
 }
 .page-wrapper-admin .main-content-admin {
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 16% 84%;
   height: 100vh;
 }
 .page-wrapper-admin .main-content-admin .side-bar {
   background-color: #111111;
   color: #ffffff;
   min-height: 100%;
+  grid-column: 1/2;
 }
 .page-wrapper-admin .main-content-admin .side-bar .side-bar-list {
   padding: 0;
@@ -3797,7 +3945,7 @@ body {
   padding: 15px 0px;
   padding-left: 30px;
 }
-.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-item.posts {
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-item.blogs {
   padding: 15px 0px;
   padding-left: 30px;
 }
@@ -3836,15 +3984,16 @@ body {
 .page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.bands.active {
   display: block;
 }
-.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.posts {
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.blogs {
   display: none;
 }
-.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.posts.active {
+.page-wrapper-admin .main-content-admin .side-bar .side-bar-list .side-bar-dropdown.blogs.active {
   display: block;
 }
 .page-wrapper-admin .main-content-admin .content {
   padding: 15px;
   background-color: #ebe7dd;
+  grid-column: 2/3;
 }
 .page-wrapper-admin .main-content-admin .content :not(:first-child) {
   margin-top: 20px;
@@ -3857,6 +4006,7 @@ body {
 .page-wrapper-admin .main-content-admin .content .block {
   background-color: #ffffff;
   padding: 15px;
+  overflow: scroll;
 }
 .page-wrapper-admin .main-content-admin .content .block form label {
   font-size: 20px;
@@ -3889,13 +4039,316 @@ body {
 .page-wrapper-admin .main-content-admin .content .block .add-product-form .sub-input {
   margin-left: 40px;
 }
-.page-wrapper-admin .main-content-admin .content .block .add-post-form .sub-label {
+.page-wrapper-admin .main-content-admin .content .block .add-blog-form .sub-label {
   display: inline-block;
   padding-left: 40px;
   width: 100px;
 }
-.page-wrapper-admin .main-content-admin .content .block .add-post-form .sub-input {
+.page-wrapper-admin .main-content-admin .content .block .add-blog-form .sub-input {
   margin-left: 40px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window {
+  position: absolute;
+  width: 82%;
+  padding-top: 20px;
+  background-color: rgba(17, 17, 17, 0.8);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window .close-button-container {
+  width: 100%;
+  color: #ffffff;
+  font-size: 30px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window .close-button-container .close-button {
+  display: inline;
+  position: relative;
+  right: -85%;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window .edit-form-container {
+  margin: 0 auto;
+  width: 800px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window .edit-form-container #edit-band-form label {
+  font-weight: bold;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window .edit-form-container #edit-band-form input {
+  width: 400px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window .edit-form-container #edit-band-form .banner {
+  width: 400px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window .edit-form-container #edit-band-form .add-button {
+  font-family: "PT Sans";
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  padding: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window .edit-form-container #edit-band-form .add-button:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window .edit-form-container #edit-band-form .add-button.submit {
+  font-family: "PT Sans";
+  font-size: 16px;
+  padding: 10px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-band-window .spacer-bottom {
+  height: 20px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window {
+  position: absolute;
+  width: 82%;
+  padding-top: 20px;
+  background-color: rgba(17, 17, 17, 0.8);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window .close-button-container {
+  width: 100%;
+  color: #ffffff;
+  font-size: 30px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window .close-button-container .close-button {
+  display: inline;
+  position: relative;
+  right: -85%;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window .edit-form-container {
+  margin: 0 auto;
+  width: 800px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window .edit-form-container #edit-prod-form label {
+  font-weight: bold;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window .edit-form-container #edit-prod-form input {
+  width: 400px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window .edit-form-container #edit-prod-form .prod-image {
+  width: 400px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window .edit-form-container #edit-prod-form .add-button {
+  font-family: "PT Sans";
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  padding: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window .edit-form-container #edit-prod-form .add-button:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window .edit-form-container #edit-prod-form .add-button.submit {
+  font-family: "PT Sans";
+  font-size: 16px;
+  padding: 10px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-prod-window .spacer-bottom {
+  height: 20px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window {
+  position: absolute;
+  width: 82%;
+  padding-top: 20px;
+  background-color: rgba(17, 17, 17, 0.8);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window .close-button-container {
+  width: 100%;
+  color: #ffffff;
+  font-size: 30px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window .close-button-container .close-button {
+  display: inline;
+  position: relative;
+  right: -85%;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window .edit-form-container {
+  margin: 0 auto;
+  width: 800px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window .edit-form-container #edit-genre-form label {
+  font-weight: bold;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window .edit-form-container #edit-genre-form input {
+  width: 400px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window .edit-form-container #edit-genre-form .banner {
+  width: 400px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window .edit-form-container #edit-genre-form .add-button {
+  font-family: "PT Sans";
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  padding: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window .edit-form-container #edit-genre-form .add-button:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window .edit-form-container #edit-genre-form .add-button.submit {
+  font-family: "PT Sans";
+  font-size: 16px;
+  padding: 10px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-genre-window .spacer-bottom {
+  height: 20px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-blog-window {
+  position: absolute;
+  width: 82%;
+  padding-top: 20px;
+  background-color: rgba(17, 17, 17, 0.8);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2;
+}
+.page-wrapper-admin .main-content-admin .content .edit-blog-window .close-button-container {
+  width: 100%;
+  color: #ffffff;
+  font-size: 30px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-blog-window .close-button-container .close-button {
+  display: inline;
+  position: relative;
+  right: -85%;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .content .edit-blog-window .edit-form-container {
+  margin: 0 auto;
+  width: 800px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-blog-window .edit-form-container #edit-blog-form label {
+  font-weight: bold;
+}
+.page-wrapper-admin .main-content-admin .content .edit-blog-window .edit-form-container #edit-blog-form input {
+  width: 400px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-blog-window .edit-form-container #edit-blog-form .add-button {
+  font-family: "PT Sans";
+  background-color: #570000;
+  color: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 5px;
+  padding: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .content .edit-blog-window .edit-form-container #edit-blog-form .add-button:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+.page-wrapper-admin .main-content-admin .content .edit-blog-window .edit-form-container #edit-blog-form .add-button.submit {
+  font-family: "PT Sans";
+  font-size: 16px;
+  padding: 10px;
+}
+.page-wrapper-admin .main-content-admin .content .edit-blog-window .spacer-bottom {
+  height: 20px;
+}
+.page-wrapper-admin .main-content-admin .content .pop-up-message-window {
+  position: absolute;
+  width: 82%;
+  height: 100%;
+  padding-top: 20px;
+  background-color: rgba(17, 17, 17, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+.page-wrapper-admin .main-content-admin .content .pop-up-message-window #confirm-delete-band-form {
+  display: none;
+}
+.page-wrapper-admin .main-content-admin .content .pop-up-message-window #confirm-ban-form {
+  display: none;
+}
+.page-wrapper-admin .main-content-admin .content .pop-up-message-window #confirm-unban-form {
+  display: none;
+}
+.page-wrapper-admin .main-content-admin .content .pop-up-message-window .message-container {
+  background-color: #ffffff;
+  width: 500px;
+  height: 80px;
+  border-radius: 5px 5px 0 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+.page-wrapper-admin .main-content-admin .content .pop-up-message-window .options-container {
+  background-color: #ffffff;
+  width: 500px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 5px 5px;
+  margin: 0;
+}
+.page-wrapper-admin .main-content-admin .content .pop-up-message-window .options-container .confirm-button-container {
+  padding: 70px;
+}
+.page-wrapper-admin .main-content-admin .content .pop-up-message-window .options-container .confirm-button-container .confirm-button {
+  padding: 15px 30px;
+  background-color: #dedede;
+  font-family: "PT Sans";
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.page-wrapper-admin .main-content-admin .content .pop-up-message-window .options-container .cancel-button-container {
+  padding: 70px;
+  margin: 0;
+}
+.page-wrapper-admin .main-content-admin .content .pop-up-message-window .options-container .cancel-button-container .cancel-button {
+  padding: 15px 30px;
+  background-color: #570000;
+  font-family: "PT Sans";
+  font-size: 20px;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .page-wrapper-admin .main-content-admin .content .table {
   border: 1px solid #dedede;

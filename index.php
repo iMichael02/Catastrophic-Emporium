@@ -1,3 +1,27 @@
+<?php
+session_start();
+include "./dbconnect.php";
+include "./functions.php";
+$products = $maindb->product;
+$bands = $maindb->band;
+$genres = $maindb->genre;
+$blogs = $maindb->blog;
+$members = $maindb->member;
+$products_list = $products->find([]);
+$bands_list = $bands->find([]);
+$genres_list = $genres->find([]);
+$blogs_list = $blogs->find([]);
+$sorted_blog_list = [];
+foreach ($blogs_list as $blog) {
+    $sorted_blog_list[] = $blog;
+}
+usort($sorted_blog_list, function ($a, $b) {
+    if ($a->time == $b->time) {
+        return 0;
+    }
+    return ($a->time > $b->time) ? -1 : 1;
+});
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +33,14 @@
     <link rel="stylesheet" href="./asset/scss/style.css?v=<?php echo time(); ?>"/>
     <script src="https://kit.fontawesome.com/a11103ae03.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script> 
-        $(function(){
-            $("#header").load("./asset/header&footer/header.php");
-            $("#footer").load("./asset/header&footer/footer.php");
-        });
-    </script>
     <title>Catastrophic Emporium</title>
 </head>
 <body>
     <div class="page-wrapper">
         <!-- Header -->
-        <div id="header"></div>
+        <?php
+        include "./asset/header&footer/header.php";
+        ?>
         <!-- End Header -->
 
         <!-- Main Content -->
@@ -59,9 +79,9 @@
                 <!-- Top Banner -->
                 <div class="top-banner">
                     <div class="top-banner-container">
-                        <div class="top-banner-item item1"><a href="#"><img src="./images/banner/top/banner1.png" alt=""></a></div>
-                        <div class="top-banner-item item2"><a href="#"><img src="./images/banner/top/banner2.png" alt=""></a></div>
-                        <div class="top-banner-item item2"><a href="#"><img src="./images/banner/top/banner3.png" alt=""></a></div>
+                        <div class="top-banner-item item1"><a href="./store.php?type%5B0%5D=t_shirt"><img src="./images/banner/top/banner1.png" alt=""></a></div>
+                        <div class="top-banner-item item2"><a href="./store.php?type%5B15%5D=vinyl"><img src="./images/banner/top/banner2.png" alt=""></a></div>
+                        <div class="top-banner-item item2"><a href="./store.php?type%5B8%5D=mask"><img src="./images/banner/top/banner3.png" alt=""></a></div>
                     </div>
                 </div>
                 <!-- End Top Banner -->
@@ -69,303 +89,97 @@
                 <!-- Latest Products -->
                 <div class="section-title latest-title">Lastest Products</div>
                 <div class="latest-slider">
+                    <?php
+                    $products_time_list = [];
+                    foreach($products_list as $prod) {
+                        array_push($products_time_list, [$prod, $prod->sales]);
+                    }
+                    simpleQuickSort($products_time_list);
+                    for($i = 0; $i < 10; $i++) {
+                    ?>
                     <div class="latest-item">
-                        <a href="#">
+                        <a href="./product.php?id=<?= $products_time_list[$i][0]->_id ?>">
                             <div class="latest-content">
                                 <div class="latest-image">
-                                    <img src="./images/latest/latest1.png" alt="">
+                                    <img src="data:image/png;base64,<?= $products_time_list[$i][0]->image1 ?>" alt="">
                                 </div>
                                 <p class="latest-description">
-                                    <span class="latest-item-title">Bring Me The Horizon</span><br>
-                                    <span class="latest-name">Sempiternal T-Shirt</span>
+                                    <span class="latest-item-title"><?php
+                                    $product_band = $bands->findOne(['_id' => $products_time_list[$i][0]->band_id]);
+                                    echo $product_band->name;
+                                    ?></span><br>
+                                    <span class="latest-name"><?= $products_time_list[$i][0]->name ?></span>
                                 </p>
-                                <p class="latest-price">280.000VND</p>
+                                <p class="latest-price"><?= commas($products_time_list[$i][0]->price)." VND" ?></p>
                             </div>
                         </a>
                     </div>
-                    <div class="latest-item">
-                        <a href="#">
-                            <div class="latest-content">
-                                <div class="latest-image">
-                                    <img src="./images/latest/latest2.png" alt="">
-                                </div>
-                                <p class="latest-description">
-                                    <span class="latest-item-title">Architects</span><br>
-                                    <span class="latest-name">Wolf T-Shirt</span>
-                                </p>
-                                <p class="latest-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="latest-item">
-                        <a href="#">
-                            <div class="latest-content">
-                                <div class="latest-image">
-                                    <img src="./images/latest/latest3.png" alt="">
-                                </div>
-                                <p class="latest-description">
-                                    <span class="latest-item-title">Lorna Shore</span><br>
-                                    <span class="latest-name">And I Return To Nothingness... T-Shirt</span>
-                                </p>
-                                <p class="latest-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="latest-item">
-                        <a href="#">
-                            <div class="latest-content">
-                                <div class="latest-image">
-                                    <img src="./images/latest/latest4.png" alt="">
-                                </div>
-                                <p class="latest-description">
-                                    <span class="latest-item-title">Slaughter To Prevail</span><br>
-                                    <span class="latest-name">Demon Mask T-Shirt</span>
-                                </p>
-                                <p class="latest-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="latest-item">
-                        <a href="#">
-                            <div class="latest-content">
-                                <div class="latest-image">
-                                    <img src="./images/latest/latest5.png" alt="">
-                                </div>
-                                <p class="latest-description">
-                                    <span class="latest-item-title">Slipknot</span><br>
-                                    <span class="latest-name">New Masks T-Shirt</span>
-                                </p>
-                                <p class="latest-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="latest-item">
-                        <a href="#">
-                            <div class="latest-content">
-                                <div class="latest-image">
-                                    <img src="./images/latest/latest6.png" alt="">
-                                </div>
-                                <p class="latest-description">
-                                    <span class="latest-item-title">Motionless In White</span><br>
-                                    <span class="latest-name">Face Split T-Shirt</span>
-                                </p>
-                                <p class="latest-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="latest-item">
-                        <a href="#">
-                            <div class="latest-content">
-                                <div class="latest-image">
-                                    <img src="./images/latest/latest7.png" alt="">
-                                </div>
-                                <p class="latest-description">
-                                    <span class="latest-item-title">Metallica</span><br>
-                                    <span class="latest-name">Overprint Justice T-Shirt</span>
-                                </p>
-                                <p class="latest-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="latest-item">
-                        <a href="#">
-                            <div class="latest-content">
-                                <div class="latest-image">
-                                    <img src="./images/latest/latest8.png" alt="">
-                                </div>
-                                <p class="latest-description">
-                                    <span class="latest-item-title">Thy Art Is Murder</span><br>
-                                    <span class="latest-name">Skull Pile T-Shirt</span>
-                                </p>
-                                <p class="latest-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="latest-item">
-                        <a href="#">
-                            <div class="latest-content">
-                                <div class="latest-image">
-                                    <img src="./images/latest/latest9.png" alt="">
-                                </div>
-                                <p class="latest-description">
-                                    <span class="latest-item-title">Lamb Of God</span><br>
-                                    <span class="latest-name">Crow T-Shirt</span>
-                                </p>
-                                <p class="latest-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="latest-item">
-                        <a href="#">
-                            <div class="latest-content">
-                                <div class="latest-image">
-                                    <img src="./images/latest/latest10.png" alt="">
-                                </div>
-                                <p class="latest-description">
-                                    <span class="latest-item-title">Cannibal Corpse</span><br>
-                                    <span class="latest-name">Cannibal Feast T-Shirt</span>
-                                </p>
-                                <p class="latest-price">280.000VND</p>
-                            </div>
-                        </a>
-                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <!-- End Latest Products -->
 
                 <!-- Bands And Genres -->
                 <div class="section-title bands-title">Infamous Bands</div>
                 <div class="bands-slider">
+                <?php
+                $sorted_band_list = [];
+                foreach($bands_list as $band) {
+                    $sorted_band_list[] = $band;
+                }
+                usort($sorted_band_list, function ($a, $b) {
+                    if ($a->sales == $b->sales) {
+                        return 0;
+                    }
+                    return ($a->sales > $b->sales) ? -1 : 1;
+                });
+                for ($i = 0; $i < 10; $i++) {
+                    ?>
                     <div class="bands-item">
                         <div class="band">
-                            <a href="#" class="band-link">
-                                <img src="./images/band-logo/logo1.png" alt="">
+                            <a href="./band-page.php?id=<?= $sorted_band_list[$i]->_id ?>" class="band-link">
+                                <img src="data:image/png;base64,<?= $sorted_band_list[$i]->logo ?>" alt="">
                             </a>
                         </div>
                     </div>
-                    <div class="bands-item">
-                        <div class="band">
-                            <a href="#" class="band-link">
-                                <img src="./images/band-logo/logo2.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bands-item">
-                        <div class="band">
-                            <a href="#" class="band-link">
-                                <img src="./images/band-logo/logo3.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bands-item">
-                        <div class="band">
-                            <a href="#" class="band-link">
-                                <img src="./images/band-logo/logo4.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bands-item">
-                        <div class="band">
-                            <a href="#" class="band-link">
-                                <img src="./images/band-logo/logo5.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bands-item">
-                        <div class="band">
-                            <a href="#" class="band-link">
-                                <img src="./images/band-logo/logo6.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bands-item">
-                        <div class="band">
-                            <a href="#" class="band-link">
-                                <img src="./images/band-logo/logo7.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bands-item">
-                        <div class="band">
-                            <a href="#" class="band-link">
-                                <img src="./images/band-logo/logo8.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bands-item">
-                        <div class="band">
-                            <a href="#" class="band-link">
-                                <img src="./images/band-logo/logo9.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bands-item">
-                        <div class="band">
-                            <a href="#" class="band-link">
-                                <img src="./images/band-logo/logo10.png" alt="">
-                            </a>
-                        </div>
-                    </div>
+                    <?php
+                }
+                ?>
                 </div>
                 <div class="section-title genres-title">Popular Genres</div>
                 <div class="genres-slider">
+                <?php
+                $sorted_genre_list = [];
+                foreach($genres_list as $genre) {
+                    $sorted_genre_list[] = $genre;
+                }
+                usort($sorted_genre_list, function ($a, $b) {
+                    if ($a->sales == $b->sales) {
+                        return 0;
+                    }
+                    return ($a->sales > $b->sales) ? -1 : 1;
+                });
+                for ($i = 0; $i < 10; $i++) {
+                    ?>
                     <div class="genres-item">
                         <div class="genre">
-                            <a href="#" class="genre-link">
-                                <img src="./images/genre-logo/logo1.png" alt="">
+                            <a href="./genre-page.php?id=<?= $sorted_genre_list[$i]->_id ?>" class="genre-link">
+                                <img src="data:image/png;base64,<?= $sorted_genre_list[$i]->logo ?>" alt="">
                             </a>
                         </div>
                     </div>
-                    <div class="genres-item">
-                        <div class="genre">
-                            <a href="#" class="genre-link">
-                                <img src="./images/genre-logo/logo2.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="genres-item">
-                        <div class="genre">
-                            <a href="#" class="genre-link">
-                                <img src="./images/genre-logo/logo3.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="genres-item">
-                        <div class="genre">
-                            <a href="#" class="genre-link">
-                                <img src="./images/genre-logo/logo4.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="genres-item">
-                        <div class="genre">
-                            <a href="#" class="genre-link">
-                                <img src="./images/genre-logo/logo5.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="genres-item">
-                        <div class="genre">
-                            <a href="#" class="genre-link">
-                                <img src="./images/genre-logo/logo6.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="genres-item">
-                        <div class="genre">
-                            <a href="#" class="genre-link">
-                                <img src="./images/genre-logo/logo7.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="genres-item">
-                        <div class="genre">
-                            <a href="#" class="genre-link">
-                                <img src="./images/genre-logo/logo8.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="genres-item">
-                        <div class="genre">
-                            <a href="#" class="genre-link">
-                                <img src="./images/genre-logo/logo9.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="genres-item">
-                        <div class="genre">
-                            <a href="#" class="genre-link">
-                                <img src="./images/genre-logo/logo10.png" alt="">
-                            </a>
-                        </div>
-                    </div>
+                    <?php
+                }
+                ?>
                 </div>
                 <!-- End Bands And Genres -->
 
                 <!-- Bottom Banner -->
                 <div class="bottom-banner">
                     <div class="bottom-banner-container">
-                        <div class="bottom-banner-item item1"><a href="#"><img src="./images/banner/bottom/banner1.png" alt=""></a></div>
-                        <div class="bottom-banner-item item2"><a href="#"><img src="./images/banner/bottom/banner2.png" alt=""></a></div>
+                        <div class="bottom-banner-item item1"><a href="./store.php?type%5B9%5D=necklace&type%5B10%5D=ring&type%5B11%5D=bracelet&type%5B12%5D=earing&type%5B13%5D=nose_ring"><img src="./images/banner/bottom/banner1.png" alt=""></a></div>
+                        <div class="bottom-banner-item item2"><a href="./store.php?type%5B17%5D=figure"><img src="./images/banner/bottom/banner2.png" alt=""></a></div>
                     </div>
                 </div>
 
@@ -399,39 +213,26 @@
                 <!-- Blog -->
                 <div class="section-title blog-title">Newest Blogs</div>
                 <div class="blog-container">
+                <?php
+                for ($i = 0; $i < 3; $i++) {
+                    ?>
                     <div class="blog-item">
-                        <div class="blog-image"><a href="#"><img src="./images/blog/blog1.png" alt=""></a></div>
-                        <div class="blog-item-title"><a href="#">Metallica's "72 Seasons" Album Review</a></div>
-                        <div class="blog-description">Coming up on 14th this month is the premiere of the thrash metal icon Metallica with their brand new album "72 Seasons". Fortunately, we, people at Catastrophic Emporium, had a chance to pre-experience this infamous comeback.</div>
-                        <div class="blog-read-more"><a href="#">READ MORE <i class="fa-solid fa-angles-right"></i></a></div>
+                        <div class="blog-image"><a href="./blog-page.php?id=<?= $sorted_blog_list[$i]->_id ?>"><img src="data:image/png;base64,<?= $sorted_blog_list[$i]->thumbnail ?>" alt=""></a></div>
+                        <div class="blog-item-title"><a href="./blog-page.php?id=<?= $sorted_blog_list[$i]->_id ?>"><?= $sorted_blog_list[$i]->title ?></a></div>
+                        <div class="blog-description"><?= $sorted_blog_list[$i]->content ?></div>
+                        <div class="blog-read-more"><a href="./blog-page.php?id=<?= $sorted_blog_list[$i]->_id ?>">READ MORE <i class="fa-solid fa-angles-right"></i></a></div>
                         <hr>
                         <div class="blog-info">
-                            <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> Apr, 6th, 2023</div>
-                            <div class="blog-author"><i class="fa-solid fa-pen"></i> Mike Sovereignborn</div>
+                            <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> <?= $sorted_blog_list[$i]->time ?></div>
+                            <div class="blog-author"><i class="fa-solid fa-pen"></i> <?php
+                            $author = $members->findOne(['_id' => $sorted_blog_list[$i]->author]);
+                            echo $author->display_name;
+                            ?></div>
                         </div>
                     </div>
-                    <div class="blog-item">
-                        <div class="blog-image"><a href="#"><img src="./images/blog/blog2.png" alt=""></a></div>
-                        <div class="blog-item-title"><a href="#">Top 10 Albums of 2023 So Far</a></div>
-                        <div class="blog-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti magnam veritatis quaerat vel beatae odit eligendi laborum magni. Veritatis omnis, nostrum blanditiis tenetur mollitia quia totam doloremque. Fugit, nemo aspernatur?</div>
-                        <div class="blog-read-more"><a href="#">READ MORE <i class="fa-solid fa-angles-right"></i></a></div>
-                        <hr>
-                        <div class="blog-info">
-                            <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> Apr, 6th, 2023</div>
-                            <div class="blog-author"><i class="fa-solid fa-pen"></i> Mike Sovereignborn</div>
-                        </div>
-                    </div>
-                    <div class="blog-item">
-                        <div class="blog-image"><a href="#"><img src="./images/blog/blog3.png" alt=""></a></div>
-                        <div class="blog-item-title"><a href="#">Meet Sleep Token, A New Rising Star In The Metal Scene</a></div>
-                        <div class="blog-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti magnam veritatis quaerat vel beatae odit eligendi laborum magni. Veritatis omnis, nostrum blanditiis tenetur mollitia quia totam doloremque. Fugit, nemo aspernatur?</div>
-                        <div class="blog-read-more"><a href="#">READ MORE <i class="fa-solid fa-angles-right"></i></a></div>
-                        <hr>
-                        <div class="blog-info">
-                            <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> Apr, 6th, 2023</div>
-                            <div class="blog-author"><i class="fa-solid fa-pen"></i> Mike Sovereignborn</div>
-                        </div>
-                    </div>
+                    <?php
+                }
+                ?>
                 </div>
                 <!-- End Blog -->
 
@@ -441,7 +242,9 @@
         <!-- End Main Content -->
 
         <!-- Footer -->
-        <div id="footer"></div>
+        <?php
+        include "./asset/header&footer/footer.php";
+        ?>
         <!-- End Footer -->
     </div>
     <script

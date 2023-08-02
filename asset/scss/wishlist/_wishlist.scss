@@ -69,7 +69,7 @@
         .headings {
             display: grid;
             width: 100%;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             border-top: 1px solid $color-primary-grey;
             .heading-item {
 				padding: 10px;
@@ -84,9 +84,10 @@
 				padding: 10px 0;
 				display: grid;
 				width: 100%;
-				grid-template-columns: repeat(5, 1fr);
+				grid-template-columns: repeat(4, 1fr);
 				border-top: 1px solid $color-primary-grey;
 				.item-info {
+                    font-family: $font-admin;
 					display: flex;
 					align-items: center;
 					justify-content: center;
@@ -103,10 +104,32 @@
 					}
 				}
 				.item-action {
-					a {
-						
-						text-decoration: none;
-					}
+					#action-form {
+                        .action-button {
+                            button {
+                                font-family: $font-admin;
+                                color: $color-white;
+                                background-color: $color-primary-red;
+                                border: 2px solid $color-primary-black;
+                                border-radius: 5px;
+                                padding: 5px;
+                                cursor: pointer;
+                                transition: 0.3s;
+                                &:hover {
+                                    background-color: $color-white;
+                                    color: $color-primary-black;
+                                }
+                            }
+                        }
+                        .delete-button {
+                            button {
+                                background-color: $color-primary-black;
+                            }
+                        }
+                        .buy-button {
+                            margin-top: 10px;
+                        }
+                    }
 				}
 			}
         }

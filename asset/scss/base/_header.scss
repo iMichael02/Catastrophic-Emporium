@@ -41,6 +41,16 @@ body {
 					filter: brightness(0.8);
 				}
 			}
+			#log-out-form {
+				.log-out-button {
+					font-family: $font-primary;
+					font-size: 18px;
+					color: $color-white;
+					background-color: $color-primary-red;
+					border: none;
+					cursor: pointer;
+				}
+			}
 		}
 	}
 }

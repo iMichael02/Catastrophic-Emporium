@@ -13,7 +13,7 @@ function bubble_Sort($my_array) {
     return $my_array;
 }
 function search($searchterms_old) {
-    global $products_list, $products, $products_skip, $blogs_list, $blogs, $blogs_skip;
+    global $products_list, $products, $products_skip, $blogs_list, $blogs, $blogs_skip, $type;
     $products_match_list = [];
     $blogs_match_list = [];
     $products_id_list = [];
@@ -39,13 +39,31 @@ function search($searchterms_old) {
     for ($i = 0; $i < sizeof($products_match_list); $i++) {
         array_push($products_id_list, $products_match_list[$i][0]->_id);
     }
-    $products_count = sizeof($products_match_list);
+    if (sizeof($type) > 0) {
+        $products_result = $products->find(
+            ['_id' => ['$in' => $products_id_list], 
+            'type' => ['$in' => $type]],
+            ['limit' => 6,
+            'skip' => $products_skip]
+        );
+        $products_result_total = $products->find(
+            ['_id' => ['$in' => $products_id_list], 
+            'type' => ['$in' => $type]]);
+        $products_count = count($products_result_total->toArray());
+    } else {
+        $products_result = $products->find(
+            ['_id' => ['$in' => $products_id_list]],
+            ['limit' => 6,
+            'skip' => $products_skip]
+        );
+        $products_count = sizeof($products_match_list);
+    }
+    $products_display_list = [];
+    foreach($products_result as $prod) {
+        array_push($products_display_list, $prod);
+    }
     $products_pages = ceil($products_count / 6);
-    $products_display_list = $products->find(
-        ['_id' => ['$in' => $products_id_list]],
-        ['limit' => 6,
-        'skip' => $products_skip]
-    );
+
     foreach ($blogs_list as $blog) {
         $count = 0;
         foreach ($searchterms as $word) {
